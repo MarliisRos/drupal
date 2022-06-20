@@ -3,13 +3,27 @@
 namespace Drupal\reservation\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Returns responses for Reservation routes.
+ */
 class ReservationController extends ControllerBase
 {
-  public function content()
+  private ?Request $request;
+  private $reservationStorage;
+
+  public function showAvailableTimes()
   {
-    return [
-      '#markup' => 'Reserveeringud!'
-    ];
+    /*** @var ReservationService $reservationService */
+    $reservationService = \Drupal::service(\ReservationService::SERVICE_ID);
+    return new JasonResponse(['data' => $reservationService->availTimes(), 'method' => 'GET', 'status' => 200]);
   }
+
+//  public function content()
+//  {
+//    return [
+//      '#markup' => 'Reserveeringud!'
+//    ];
+//  }
 }
