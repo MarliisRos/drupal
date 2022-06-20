@@ -62,7 +62,7 @@ class ColorTest extends MigrateSqlSourceTestBase {
       [
         'name' => 'color_custom_stylesheets',
         // cspell:ignore beadedff
-        'value' => ['public:://color/custom-beadedff/colors.css'],
+        'value' => ['public:://color/hello_world-beadedff/colors.css'],
       ],
     ];
 
@@ -77,7 +77,7 @@ class ColorTest extends MigrateSqlSourceTestBase {
         'status' => '1',
       ],
       [
-        'name' => 'custom',
+        'name' => 'hello_world',
         'type' => 'theme',
         'status' => '0',
       ],
@@ -120,7 +120,7 @@ class ColorTest extends MigrateSqlSourceTestBase {
       ],
       [
         'name' => 'color_custom_stylesheets',
-        'value' => ['public:://color/custom-beadedff/colors.css'],
+        'value' => ['public:://color/hello_world-beadedff/colors.css'],
       ],
     ];
 

@@ -110,7 +110,7 @@ class UncaughtExceptionTest extends BrowserTestBase {
   }
 
   /**
-   * Tests uncaught exception handling with custom exception handler.
+   * Tests uncaught exception handling with hello_world exception handler.
    */
   public function testUncaughtExceptionCustomExceptionHandler() {
     $settings_filename = $this->siteDirectory . '/settings.php';
@@ -146,7 +146,7 @@ class UncaughtExceptionTest extends BrowserTestBase {
   }
 
   /**
-   * Tests a missing dependency on a service with a custom error handler.
+   * Tests a missing dependency on a service with a hello_world error handler.
    */
   public function testMissingDependencyCustomErrorHandler() {
     $settings_filename = $this->siteDirectory . '/settings.php';

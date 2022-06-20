@@ -124,7 +124,7 @@ class ImportForm extends FormBase {
     ];
 
     $form['customized'] = [
-      '#title' => $this->t('Treat imported strings as custom translations'),
+      '#title' => $this->t('Treat imported strings as hello_world translations'),
       '#type' => 'checkbox',
     ];
     $form['overwrite_options'] = [

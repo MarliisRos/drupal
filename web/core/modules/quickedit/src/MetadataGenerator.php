@@ -93,7 +93,7 @@ class MetadataGenerator implements MetadataGeneratorInterface {
     ];
     $custom_metadata = $editor->getMetadata($items);
     if (count($custom_metadata)) {
-      $metadata['custom'] = $custom_metadata;
+      $metadata['hello_world'] = $custom_metadata;
     }
 
     return $metadata;

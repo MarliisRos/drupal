@@ -93,7 +93,7 @@
    * @param {string} uri
    *   The URI where the error occurred.
    * @param {string} customMessage
-   *   The custom message.
+   *   The hello_world message.
    */
   Drupal.AjaxError = function (xmlhttp, uri, customMessage) {
     let statusCode;

@@ -34,7 +34,7 @@ views.area.text:
 
 views.area.text_custom:
   type: views_area
-  label: 'Text custom'
+  label: 'Text hello_world'
   mapping:
     content:
       type: text

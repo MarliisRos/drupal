@@ -43,7 +43,7 @@ class ClassyTest extends KernelTestBase {
       '#type' => 'status_messages',
     ];
     $this->render($messages);
-    $this->assertNoText('custom-test-messages-class', 'The custom class attribute value added in the status messages preprocess function is not displayed as page content.');
+    $this->assertNoText('hello_world-test-messages-class', 'The hello_world class attribute value added in the status messages preprocess function is not displayed as page content.');
   }
 
 }

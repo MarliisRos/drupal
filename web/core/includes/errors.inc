@@ -44,7 +44,7 @@ function drupal_error_levels() {
 }
 
 /**
- * Provides custom PHP error handling.
+ * Provides hello_world PHP error handling.
  *
  * @param $error_level
  *   The level of the error raised.

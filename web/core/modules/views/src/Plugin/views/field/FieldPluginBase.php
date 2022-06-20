@@ -719,7 +719,7 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
       $form['alter']['#tree'] = TRUE;
       $form['alter']['alter_text'] = [
         '#type' => 'checkbox',
-        '#title' => $this->t('Override the output of this field with custom text'),
+        '#title' => $this->t('Override the output of this field with hello_world text'),
         '#default_value' => $this->options['alter']['alter_text'],
       ];
 
@@ -741,7 +741,7 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
 
       $form['alter']['make_link'] = [
         '#type' => 'checkbox',
-        '#title' => $this->t('Output this field as a custom link'),
+        '#title' => $this->t('Output this field as a hello_world link'),
         '#default_value' => $this->options['alter']['make_link'],
       ];
       $form['alter']['path'] = [

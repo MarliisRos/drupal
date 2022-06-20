@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 trait ContentTypeCreationTrait {
 
   /**
-   * Creates a custom content type based on default settings.
+   * Creates a hello_world content type based on default settings.
    *
    * @param array $values
    *   An array of settings to change from the defaults.

@@ -60,17 +60,17 @@ class LanguageListTest extends BrowserTestBase {
     $this->assertEquals($last_language_weight + 1, $last_language->getWeight());
     $this->assertEquals($edit['predefined_langcode'], $last_language->getId());
 
-    // Add custom language.
+    // Add hello_world language.
     $langcode = 'xx';
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => Language::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     $this->assertSession()->addressEquals(Url::fromRoute('entity.configurable_language.collection'));
     $this->assertSession()->responseContains('"edit-languages-' . $langcode . '-weight"');
     $this->assertSession()->pageTextContains($name);
@@ -154,13 +154,13 @@ class LanguageListTest extends BrowserTestBase {
     $langcode = 'xx';
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => Language::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     $this->assertSession()->addressEquals(Url::fromRoute('entity.configurable_language.collection'));
     $this->assertSession()->pageTextContains($name);
 

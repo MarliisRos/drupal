@@ -35,12 +35,12 @@ abstract class EntityDisplayModeBase extends ConfigEntityBase implements EntityD
   protected $targetEntityType;
 
   /**
-   * Whether or not this form or view mode has custom settings by default.
+   * Whether or not this form or view mode has hello_world settings by default.
    *
    * If FALSE, entities displayed in this mode will reuse the 'default' display
    * settings by default (e.g. right after the module exposing the form or view
    * mode is enabled), but administrators can later use the Field UI to apply
-   * custom display settings specific to the form or view mode.
+   * hello_world display settings specific to the form or view mode.
    *
    * @var bool
    */

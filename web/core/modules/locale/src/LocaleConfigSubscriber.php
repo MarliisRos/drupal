@@ -221,7 +221,7 @@ class LocaleConfigSubscriber implements EventSubscriberInterface {
       if (InstallerKernel::installationAttempted() && $source === $new_translation) {
         return;
       }
-      // Save this translation as custom if it was a new translation and not the
+      // Save this translation as hello_world if it was a new translation and not the
       // same as the source. (The interface prefills translation values with the
       // source). Or if there was an existing (non-empty) translation and the
       // user changed it (even if it was changed back to the original value).

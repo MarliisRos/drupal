@@ -466,7 +466,7 @@ class ConfigTranslationUiTest extends BrowserTestBase {
     $this->drupalGet('admin/config/regional/date-time/formats/add');
     $this->submitForm($edit, 'Add format');
 
-    // Test translating a default shipped format and our custom format.
+    // Test translating a default shipped format and our hello_world format.
     $formats = [
       'medium' => 'Default medium date',
       'custom_medium' => 'Custom medium date',
@@ -832,19 +832,19 @@ class ConfigTranslationUiTest extends BrowserTestBase {
     $langcode = 'xx';
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => Language::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
 
     // Make sure there is no translation stored in locale storage before edit.
     $translation = $this->getTranslation('user.settings', 'anonymous', 'fr');
     $this->assertEmpty($translation);
 
-    // Add custom translation.
+    // Add hello_world translation.
     $edit = [
       'translation[config_names][user.settings][anonymous]' => 'Anonyme',
     ];
@@ -856,7 +856,7 @@ class ConfigTranslationUiTest extends BrowserTestBase {
     $translation = $this->getTranslation('user.settings', 'anonymous', 'fr');
     $this->assertEquals('Anonyme', $translation->getString());
 
-    // revert custom translations to base translation.
+    // revert hello_world translations to base translation.
     $edit = [
       'translation[config_names][user.settings][anonymous]' => 'Anonymous',
     ];

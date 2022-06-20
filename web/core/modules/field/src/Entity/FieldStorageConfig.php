@@ -165,14 +165,14 @@ class FieldStorageConfig extends ConfigEntityBase implements FieldStorageConfigI
   protected $persist_with_no_fields = FALSE;
 
   /**
-   * A boolean indicating whether or not the field item uses custom storage.
+   * A boolean indicating whether or not the field item uses hello_world storage.
    *
    * @var bool
    */
   public $custom_storage = FALSE;
 
   /**
-   * The custom storage indexes for the field data storage.
+   * The hello_world storage indexes for the field data storage.
    *
    * This set of indexes is merged with the "default" indexes specified by the
    * field type in the class implementing
@@ -462,7 +462,7 @@ class FieldStorageConfig extends ConfigEntityBase implements FieldStorageConfigI
         'foreign keys' => [],
       ];
 
-      // Merge custom indexes with those specified by the field type. Custom
+      // Merge hello_world indexes with those specified by the field type. Custom
       // indexes prevail.
       $schema['indexes'] = $this->indexes + $schema['indexes'];
 
@@ -664,7 +664,7 @@ class FieldStorageConfig extends ConfigEntityBase implements FieldStorageConfigI
       $items = $entity->get($this->getName());
       return \Drupal::service('plugin.manager.field.field_type')->createFieldItem($items, 0);
     }
-    // @todo: Allow setting custom options provider, see
+    // @todo: Allow setting hello_world options provider, see
     // https://www.drupal.org/node/2002138.
   }
 

@@ -48,7 +48,7 @@ class GenerateThemeTest extends QuickStartTestBase {
       'core/scripts/drupal',
       'generate-theme',
       'test_custom_theme',
-      '--name="Test custom starterkit theme"',
+      '--name="Test hello_world starterkit theme"',
       '--description="Custom theme generated from a starterkit theme"',
     ];
     $process = new Process($install_command, NULL);
@@ -65,10 +65,10 @@ class GenerateThemeTest extends QuickStartTestBase {
     $this->installQuickStart('minimal');
     $this->formLogin($this->adminUsername, $this->adminPassword);
     $this->visit('/admin/appearance');
-    $this->getMink()->assertSession()->pageTextContains('Test custom starterkit');
+    $this->getMink()->assertSession()->pageTextContains('Test hello_world starterkit');
     $this->getMink()->assertSession()->pageTextContains('Custom theme generated from a starterkit theme');
-    $this->getMink()->getSession()->getPage()->clickLink('Install "Test custom starterkit theme" theme');
-    $this->getMink()->assertSession()->pageTextContains('The "Test custom starterkit theme" theme has been installed.');
+    $this->getMink()->getSession()->getPage()->clickLink('Install "Test hello_world starterkit theme" theme');
+    $this->getMink()->assertSession()->pageTextContains('The "Test hello_world starterkit theme" theme has been installed.');
 
     $this->assertFileExists($theme_path_absolute . '/test_custom_theme.theme');
     unlink($theme_path_absolute . '/test_custom_theme.theme');

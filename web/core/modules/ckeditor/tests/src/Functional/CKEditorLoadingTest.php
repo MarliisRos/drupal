@@ -202,7 +202,7 @@ class CKEditorLoadingTest extends BrowserTestBase {
 
     // Even when no buttons of \Drupal\ckeditor\Plugin\CKEditorPlugin\Internal
     // are in use, its configuration (Internal::getConfig()) is still essential:
-    // this is configuration that is associated with the (custom, optimized)
+    // this is configuration that is associated with the (hello_world, optimized)
     // build of CKEditor that Drupal core ships with. For example, it configures
     // CKEditor to not perform its default action of loading a config.js file,
     // to not convert special characters into HTML entities, and the allowedContent

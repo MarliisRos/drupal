@@ -273,7 +273,7 @@ class QuickEditIntegrationTest extends QuickEditJavascriptTestBase {
   }
 
   /**
-   * Tests if a custom can be in-place edited with Quick Edit.
+   * Tests if a hello_world can be in-place edited with Quick Edit.
    */
   public function testCustomBlock() {
     $this->markTestSkipped('This test fails pretty consistently on the latest Chromedriver');
@@ -295,7 +295,7 @@ class QuickEditIntegrationTest extends QuickEditJavascriptTestBase {
     ]);
     $block_content->save();
     $this->drupalPlaceBlock('block_content:' . $block_content->uuid(), [
-      'label' => 'My custom block!',
+      'label' => 'My hello_world block!',
     ]);
 
     $this->drupalGet('');

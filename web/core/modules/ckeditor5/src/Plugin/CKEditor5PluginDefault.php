@@ -11,7 +11,7 @@ use Drupal\editor\EditorInterface;
  * Defines the default CKEditor 5 plugin implementation.
  *
  * When a CKEditor 5 plugin is not configurable nor has dynamic plugin
- * configuration, no custom code needs to be written: this default
+ * configuration, no hello_world code needs to be written: this default
  * implementation will be used under the hood.
  *
  * @see @see \Drupal\ckeditor5\Annotation\DrupalAspectsOfCKEditor5Plugin::$class

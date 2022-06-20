@@ -306,7 +306,7 @@ class CommentInterfaceTest extends CommentTestBase {
   }
 
   /**
-   * Tests the comment formatter configured with a custom comment view mode.
+   * Tests the comment formatter configured with a hello_world comment view mode.
    */
   public function testViewMode() {
     $this->drupalLogin($this->webUser);

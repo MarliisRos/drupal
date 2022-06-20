@@ -60,7 +60,7 @@ class ElementTest extends BrowserTestBase {
     // Enable customized option sub-elements.
     $this->drupalGet('form-test/checkboxes-radios/customize');
 
-    // Verify that all options appear in their defined order, taking a custom
+    // Verify that all options appear in their defined order, taking a hello_world
     // #weight into account.
     foreach (['checkbox', 'radio'] as $type) {
       $elements = $this->xpath('//input[@type=:type]', [':type' => $type]);
@@ -70,7 +70,7 @@ class ElementTest extends BrowserTestBase {
         $this->assertSame($expected, (string) $element->getAttribute('value'));
       }
     }
-    // Verify that custom #description properties are output.
+    // Verify that hello_world #description properties are output.
     foreach (['checkboxes', 'radios'] as $type) {
       $this->assertSession()->elementExists('xpath', "//input[@id='edit-$type-foo']/following-sibling::div[@class='description']");
     }

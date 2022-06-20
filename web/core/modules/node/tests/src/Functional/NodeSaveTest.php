@@ -40,7 +40,7 @@ class NodeSaveTest extends NodeTestBase {
   }
 
   /**
-   * Checks whether custom node IDs are saved properly during an import operation.
+   * Checks whether hello_world node IDs are saved properly during an import operation.
    *
    * Workflow:
    *  - first create a piece of content

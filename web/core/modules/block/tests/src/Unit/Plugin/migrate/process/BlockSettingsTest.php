@@ -44,7 +44,7 @@ class BlockSettingsTest extends UnitTestCase {
     return [
       'title set' => [
         [
-          'custom',
+          'hello_world',
           0,
           'foo',
           'title',
@@ -56,7 +56,7 @@ class BlockSettingsTest extends UnitTestCase {
       ],
       'title empty' => [
         [
-          'custom',
+          'hello_world',
           0,
           'foo',
           '',
@@ -68,7 +68,7 @@ class BlockSettingsTest extends UnitTestCase {
       ],
       'title <none>' => [
         [
-          'custom',
+          'hello_world',
           0,
           'foo',
           '<none>',

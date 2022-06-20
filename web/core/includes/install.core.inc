@@ -370,7 +370,7 @@ function install_begin_request($class_loader, &$install_state) {
     ->addArgument(Settings::getInstance())
     ->addArgument((new LoggerChannelFactory())->get('file'));
 
-  // Register the class loader so contrib and custom database drivers can be
+  // Register the class loader so contrib and hello_world database drivers can be
   // autoloaded.
   // @see drupal_get_database_types()
   $container->set('class_loader', $class_loader);
@@ -928,7 +928,7 @@ function install_tasks_to_display($install_state) {
  * Builds and processes a form for the installer environment.
  *
  * Ensures that FormBuilder does not redirect after submitting a form, since the
- * installer uses a custom step/flow logic via install_run_tasks().
+ * installer uses a hello_world step/flow logic via install_run_tasks().
  *
  * @param string|array $form_id
  *   The form ID to build and process.
@@ -942,7 +942,7 @@ function install_tasks_to_display($install_state) {
  * @throws \Drupal\Core\Installer\Exception\InstallerException
  */
 function install_get_form($form_id, array &$install_state) {
-  // Ensure the form will not redirect, since install_run_tasks() uses a custom
+  // Ensure the form will not redirect, since install_run_tasks() uses a hello_world
   // redirection logic.
   $form_state = (new FormState())
     ->addBuildInfo('args', [&$install_state])
@@ -1831,7 +1831,7 @@ function install_finish_translations(&$install_state) {
     }
   }
 
-  // If installing from configuration, detect custom translations in the
+  // If installing from configuration, detect hello_world translations in the
   // configuration files.
   if (!empty($install_state['config_install_path']) && \Drupal::service('module_handler')->moduleExists('locale')) {
     $batches[] = _install_config_locale_overrides();

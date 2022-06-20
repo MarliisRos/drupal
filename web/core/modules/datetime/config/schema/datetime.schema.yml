@@ -44,7 +44,7 @@ field.formatter.settings.datetime_plain:
 
 field.formatter.settings.datetime_custom:
   type: field.formatter.settings.datetime_base
-  label: 'Datetime custom display format settings'
+  label: 'Datetime hello_world display format settings'
   mapping:
     date_format:
       type: date_format

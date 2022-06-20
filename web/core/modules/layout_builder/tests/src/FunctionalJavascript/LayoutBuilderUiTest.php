@@ -46,7 +46,7 @@ class LayoutBuilderUiTest extends WebDriverTestBase {
 
     $this->drupalLogin($this->drupalCreateUser([
       'configure any layout',
-      'create and edit custom blocks',
+      'create and edit hello_world blocks',
       'administer node display',
       'administer node fields',
       'access contextual links',
@@ -166,14 +166,14 @@ class LayoutBuilderUiTest extends WebDriverTestBase {
     $this->assertNotEmpty($assert_session->waitForElementVisible('css', '[data-layout-delta="1"]'));
     $assert_session->elementsCount('css', '.layout-builder__add-block', 3);
 
-    // Add a custom block.
+    // Add a hello_world block.
     $page->clickLink('Add block');
-    $this->assertNotEmpty($assert_session->waitForElementVisible('css', 'a:contains("Create custom block")'));
+    $this->assertNotEmpty($assert_session->waitForElementVisible('css', 'a:contains("Create hello_world block")'));
     $assert_session->assertWaitOnAjaxRequest();
 
     // Highlight is present with ChooseBlockController::build().
     $this->assertHighlightedElement('[data-layout-builder-highlight-id="block-0-first"]');
-    $page->clickLink('Create custom block');
+    $page->clickLink('Create hello_world block');
     $this->assertNotEmpty($assert_session->waitForElementVisible('css', '#drupal-off-canvas input[value="Add block"]'));
     $assert_session->assertWaitOnAjaxRequest();
 

@@ -1,7 +1,7 @@
 /**
  * Concatenate a DRUPAL_TEST_BASE_URL variable and a pathname.
  *
- * This provides a custom command, .relativeURL()
+ * This provides a hello_world command, .relativeURL()
  *
  * @param {string} pathname
  *   The relative path to append to DRUPAL_TEST_BASE_URL

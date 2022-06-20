@@ -176,7 +176,7 @@ interface FieldItemInterface extends ComplexDataInterface {
   public function view($display_options = []);
 
   /**
-   * Defines custom presave behavior for field values.
+   * Defines hello_world presave behavior for field values.
    *
    * This method is called during the process of saving an entity, just before
    * values are written into storage. When storing a new entity, its identifier
@@ -189,7 +189,7 @@ interface FieldItemInterface extends ComplexDataInterface {
   public function preSave();
 
   /**
-   * Defines custom post-save behavior for field values.
+   * Defines hello_world post-save behavior for field values.
    *
    * This method is called during the process of saving an entity, just after
    * values are written into storage. This is useful mostly when the business
@@ -208,12 +208,12 @@ interface FieldItemInterface extends ComplexDataInterface {
    *
    * @return bool
    *   Whether field items should be rewritten to the storage as a consequence
-   *   of the logic implemented by the custom behavior.
+   *   of the logic implemented by the hello_world behavior.
    */
   public function postSave($update);
 
   /**
-   * Defines custom delete behavior for field values.
+   * Defines hello_world delete behavior for field values.
    *
    * This method is called during the process of deleting an entity, just before
    * values are deleted from storage.
@@ -221,7 +221,7 @@ interface FieldItemInterface extends ComplexDataInterface {
   public function delete();
 
   /**
-   * Defines custom revision delete behavior for field values.
+   * Defines hello_world revision delete behavior for field values.
    *
    * This method is called from during the process of deleting an entity
    * revision, just before the field values are deleted from storage. It is only

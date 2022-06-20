@@ -123,14 +123,14 @@ abstract class PluginTestBase extends KernelTestBase {
       'test_block1' => [
         'metadata' => [
           'default' => TRUE,
-          'custom' => TRUE,
+          'hello_world' => TRUE,
         ],
         'class' => 'Drupal\plugin_test\Plugin\plugin_test\mock_block\MockTestBlock',
       ],
       'test_block2' => [
         'metadata' => [
           'default' => FALSE,
-          'custom' => TRUE,
+          'hello_world' => TRUE,
         ],
         'class' => 'Drupal\plugin_test\Plugin\plugin_test\mock_block\MockTestBlock',
       ],

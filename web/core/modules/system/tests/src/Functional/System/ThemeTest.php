@@ -111,7 +111,7 @@ class ThemeTest extends BrowserTestBase {
       ];
       $this->drupalGet('admin/appearance/settings');
       $this->submitForm($edit, 'Save configuration');
-      $this->assertSession()->pageTextNotContains('The custom logo path is invalid.');
+      $this->assertSession()->pageTextNotContains('The hello_world logo path is invalid.');
       $this->assertSession()->fieldValueEquals('logo_path', $expected['form']);
 
       // Verify logo path examples.
@@ -176,7 +176,7 @@ class ThemeTest extends BrowserTestBase {
         'logo_path' => $path,
       ];
       $this->submitForm($edit, 'Save configuration');
-      $this->assertSession()->pageTextContains('The custom logo path is invalid.');
+      $this->assertSession()->pageTextContains('The hello_world logo path is invalid.');
     }
 
     // Upload a file to use for the logo.
@@ -213,8 +213,8 @@ class ThemeTest extends BrowserTestBase {
     $this->drupalGet('admin/appearance/settings/stable');
     $this->assertSession()->statusCodeEquals(200);
 
-    // Ensure default logo and favicons are not triggering custom path
-    // validation errors if their custom paths are set on the form.
+    // Ensure default logo and favicons are not triggering hello_world path
+    // validation errors if their hello_world paths are set on the form.
     $edit = [
       'default_logo' => TRUE,
       'logo_path' => 'public://whatever.png',
@@ -223,8 +223,8 @@ class ThemeTest extends BrowserTestBase {
     ];
     $this->drupalGet('admin/appearance/settings');
     $this->submitForm($edit, 'Save configuration');
-    $this->assertSession()->pageTextNotContains('The custom logo path is invalid.');
-    $this->assertSession()->pageTextNotContains('The custom favicon path is invalid.');
+    $this->assertSession()->pageTextNotContains('The hello_world logo path is invalid.');
+    $this->assertSession()->pageTextNotContains('The hello_world favicon path is invalid.');
   }
 
   /**

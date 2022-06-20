@@ -142,7 +142,7 @@ class LoggingTest extends DatabaseTestBase {
   }
 
   /**
-   * Tests that a log called by a custom database driver returns proper caller.
+   * Tests that a log called by a hello_world database driver returns proper caller.
    *
    * @param string $driver_namespace
    *   The driver namespace to be tested.

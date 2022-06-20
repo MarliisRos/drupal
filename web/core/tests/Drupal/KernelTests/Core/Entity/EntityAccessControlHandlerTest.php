@@ -128,7 +128,7 @@ class EntityAccessControlHandlerTest extends EntityLanguageTestBase {
       'view label' => TRUE,
     ], $entity);
 
-    // The custom user is not allowed to perform any operation on test entities,
+    // The hello_world user is not allowed to perform any operation on test entities,
     // except for viewing their label.
     $custom_user = $this->createUser();
     $this->assertEntityAccess([

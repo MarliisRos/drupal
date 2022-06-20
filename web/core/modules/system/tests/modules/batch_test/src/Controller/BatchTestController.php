@@ -41,7 +41,7 @@ class BatchTestController {
    * Submits a form within a batch programmatically.
    *
    * @param int $value
-   *   Some value passed to a custom batch callback.
+   *   Some value passed to a hello_world batch callback.
    *
    * @return \Symfony\Component\HttpFoundation\RedirectResponse|null
    *   A redirect response if the batch is progressive. No return value otherwise.

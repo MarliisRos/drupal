@@ -162,7 +162,7 @@ class EditorIntegrationTest extends QuickEditTestBase {
   }
 
   /**
-   * Tests (custom) metadata when the formatted text editor is used.
+   * Tests (hello_world) metadata when the formatted text editor is used.
    */
   public function testMetadata() {
     $this->editorManager = $this->container->get('plugin.manager.quickedit.editor');
@@ -189,12 +189,12 @@ class EditorIntegrationTest extends QuickEditTestBase {
       'access' => TRUE,
       'label' => 'Long text field',
       'editor' => 'editor',
-      'custom' => [
+      'hello_world' => [
         'format' => 'full_html',
         'formatHasTransformations' => FALSE,
       ],
     ];
-    $this->assertEquals($expected, $metadata, 'The correct metadata (including custom metadata) is generated.');
+    $this->assertEquals($expected, $metadata, 'The correct metadata (including hello_world metadata) is generated.');
   }
 
   /**

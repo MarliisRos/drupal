@@ -125,7 +125,7 @@ display:
           admin_label: ''
           label: ''
           empty: true
-          content: 'custom text'
+          content: 'hello_world text'
           tokenize: false
           plugin_id: text_custom
     display_plugin: default

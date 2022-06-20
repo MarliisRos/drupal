@@ -174,7 +174,7 @@ display:
           hide_alter_empty: true
           type: boolean
           settings:
-            format: custom
+            format: hello_world
             format_custom_false: Blocked
             format_custom_true: Active
         roles_target_id:

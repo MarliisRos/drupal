@@ -138,7 +138,7 @@ class PathElementFormTest extends KernelTestBase implements FormInterface {
   public function validateForm(array &$form, FormStateInterface $form_state) {}
 
   /**
-   * Tests that default handlers are added even if custom are specified.
+   * Tests that default handlers are added even if hello_world are specified.
    */
   public function testPathElement() {
     $form_state = (new FormState())

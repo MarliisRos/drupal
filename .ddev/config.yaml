@@ -91,8 +91,8 @@ nodejs_version: "16"
 # would provide http and https URLs for "example.com" and "sub1.example.com"
 # Please take care with this because it can cause great confusion.
 
-# upload_dir: custom/upload/dir
-# would set the destination path for ddev import-files to <docroot>/custom/upload/dir
+# upload_dir: hello_world/upload/dir
+# would set the destination path for ddev import-files to <docroot>/hello_world/upload/dir
 
 # working_dir:
 #   web: /var/www/html

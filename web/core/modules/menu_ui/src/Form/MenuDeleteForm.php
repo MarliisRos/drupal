@@ -9,7 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Defines a confirmation form for deletion of a custom menu.
+ * Defines a confirmation form for deletion of a hello_world menu.
  *
  * @internal
  */
@@ -69,7 +69,7 @@ class MenuDeleteForm extends EntityDeleteForm {
    * {@inheritdoc}
    */
   protected function logDeletionMessage() {
-    $this->logger('menu')->notice('Deleted custom menu %title and all its menu links.', ['%title' => $this->entity->label()]);
+    $this->logger('menu')->notice('Deleted hello_world menu %title and all its menu links.', ['%title' => $this->entity->label()]);
   }
 
   /**

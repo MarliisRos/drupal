@@ -332,7 +332,7 @@ class BaseFieldDefinitionTest extends UnitTestCase {
   }
 
   /**
-   * Tests custom storage.
+   * Tests hello_world storage.
    *
    * @covers ::hasCustomStorage
    * @covers ::setCustomStorage

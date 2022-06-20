@@ -27,7 +27,7 @@ display:
           relationship: none
           group_type: group
           admin_label: Icon
-          plugin_id: custom
+          plugin_id: hello_world
           label: ''
           exclude: false
           alter:

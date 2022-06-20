@@ -269,7 +269,7 @@ class ScaffoldTest extends TestCase {
 
 // Default settings.php contents
 
-include __DIR__ . "/settings-custom-additions.php";',
+include __DIR__ . "/settings-hello_world-additions.php";',
           'NOTICE Creating a new file at [web-root]/sites/default/settings.php. Examine the contents and ensure that it came out correctly.',
         ],
       ]

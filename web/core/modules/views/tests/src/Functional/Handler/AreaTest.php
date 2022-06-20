@@ -134,7 +134,7 @@ class AreaTest extends ViewTestBase {
     $output = $view->preview();
     $output = \Drupal::service('renderer')->renderRoot($output);
     // The area output should not be present since access was denied.
-    $this->assertStringNotContainsString('a custom string', $output);
+    $this->assertStringNotContainsString('a hello_world string', $output);
     $view->destroy();
 
     // Test with access granted for the area handler.
@@ -146,7 +146,7 @@ class AreaTest extends ViewTestBase {
         'id' => 'test_example',
         'table' => 'views',
         'plugin_id' => 'test_example',
-        'string' => 'a custom string',
+        'string' => 'a hello_world string',
         'custom_access' => TRUE,
       ],
     ]);
@@ -155,7 +155,7 @@ class AreaTest extends ViewTestBase {
 
     $output = $view->preview();
     $output = \Drupal::service('renderer')->renderRoot($output);
-    $this->assertStringContainsString('a custom string', $output);
+    $this->assertStringContainsString('a hello_world string', $output);
     $this->assertCount(1, $handlers);
   }
 

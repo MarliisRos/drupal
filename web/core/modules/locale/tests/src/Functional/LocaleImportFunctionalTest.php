@@ -319,19 +319,19 @@ class LocaleImportFunctionalTest extends BrowserTestBase {
       ],
     ];
 
-    // Add custom language for testing.
+    // Add hello_world language for testing.
     $langcode = 'xx';
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $this->randomMachineName(16),
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
 
     // Check for the source strings we are going to translate. Adding the
-    // custom language should have made the process to export configuration
+    // hello_world language should have made the process to export configuration
     // strings to interface translation executed.
     $locale_storage = $this->container->get('locale.storage');
     foreach ($config_strings as $config_string) {

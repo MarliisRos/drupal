@@ -47,8 +47,8 @@ class BlockInterfaceTest extends KernelTestBase {
     $this->assertSame($expected_configuration, $display_block->getConfiguration(), 'The block was configured correctly.');
 
     // Updating an element of the configuration.
-    $display_block->setConfigurationValue('display_message', 'My custom display message.');
-    $expected_configuration['display_message'] = 'My custom display message.';
+    $display_block->setConfigurationValue('display_message', 'My hello_world display message.');
+    $expected_configuration['display_message'] = 'My hello_world display message.';
     $this->assertSame($expected_configuration, $display_block->getConfiguration(), 'The block configuration was updated correctly.');
     $definition = $display_block->getPluginDefinition();
 
@@ -79,7 +79,7 @@ class BlockInterfaceTest extends KernelTestBase {
       'display_message' => [
         '#type' => 'textfield',
         '#title' => 'Display message',
-        '#default_value' => 'My custom display message.',
+        '#default_value' => 'My hello_world display message.',
       ],
     ];
     $form_state = new FormState();
@@ -90,7 +90,7 @@ class BlockInterfaceTest extends KernelTestBase {
     $this->assertEquals($expected_form, $actual_form, 'Only the expected form elements were present.');
 
     $expected_build = [
-      '#children' => 'My custom display message.',
+      '#children' => 'My hello_world display message.',
     ];
     // Ensure the build array is proper.
     $this->assertSame($expected_build, $display_block->build(), 'The plugin returned the appropriate build array.');

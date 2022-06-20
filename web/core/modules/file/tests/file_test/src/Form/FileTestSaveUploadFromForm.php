@@ -133,7 +133,7 @@ class FileTestSaveUploadFromForm extends FormBase {
       $destination = FALSE;
     }
 
-    // Preset custom error message if requested.
+    // Preset hello_world error message if requested.
     if ($form_state->getValue('error_message')) {
       $this->messenger->addError($form_state->getValue('error_message'));
     }

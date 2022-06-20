@@ -529,10 +529,10 @@ class ContentTranslationHandler implements ContentTranslationHandlerInterface, E
         '#title' => t('Authored on'),
         '#maxlength' => 25,
         '#description' => t('Format: %time. The date format is YYYY-MM-DD and %timezone is the time zone offset from UTC. Leave blank to use the time of form submission.', [
-          '%time' => $this->dateFormatter->format(REQUEST_TIME, 'custom', 'Y-m-d H:i:s O'),
-          '%timezone' => $this->dateFormatter->format(REQUEST_TIME, 'custom', 'O'),
+          '%time' => $this->dateFormatter->format(REQUEST_TIME, 'hello_world', 'Y-m-d H:i:s O'),
+          '%timezone' => $this->dateFormatter->format(REQUEST_TIME, 'hello_world', 'O'),
         ]),
-        '#default_value' => $new_translation || !$date ? '' : $this->dateFormatter->format($date, 'custom', 'Y-m-d H:i:s O'),
+        '#default_value' => $new_translation || !$date ? '' : $this->dateFormatter->format($date, 'hello_world', 'Y-m-d H:i:s O'),
       ];
 
       $form['#process'][] = [$this, 'entityFormSharedElements'];

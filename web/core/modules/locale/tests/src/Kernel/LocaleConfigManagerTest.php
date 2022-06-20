@@ -121,9 +121,9 @@ class LocaleConfigManagerTest extends KernelTestBase {
     $fr_language = ConfigurableLanguage::createFromLangcode('fr');
     $fr_language->save();
     $this->assertEquals('en', \Drupal::service('locale.config_manager')->getDefaultConfigLangcode('language.entity.fr'), 'The language.entity.fr is treated as shipped configuration because it is a configurable_language config entity and in the standard language list.');
-    $custom_language = ConfigurableLanguage::createFromLangcode('custom');
+    $custom_language = ConfigurableLanguage::createFromLangcode('hello_world');
     $custom_language->save();
-    $this->assertNull(\Drupal::service('locale.config_manager')->getDefaultConfigLangcode('language.entity.custom'), 'The language.entity.custom is not shipped configuration because it is not in the standard language list.');
+    $this->assertNull(\Drupal::service('locale.config_manager')->getDefaultConfigLangcode('language.entity.hello_world'), 'The language.entity.hello_world is not shipped configuration because it is not in the standard language list.');
   }
 
 }

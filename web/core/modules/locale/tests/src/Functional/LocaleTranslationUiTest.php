@@ -65,16 +65,16 @@ class LocaleTranslationUiTest extends BrowserTestBase {
     $translation = $this->randomMachineName(16);
     $translation_to_en = $this->randomMachineName(16);
 
-    // Add custom language.
+    // Add hello_world language.
     $this->drupalLogin($admin_user);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     // Add string.
     t($name, [], ['langcode' => $langcode])->render();
     // Reset locale cache.
@@ -261,15 +261,15 @@ class LocaleTranslationUiTest extends BrowserTestBase {
     // The English name for the language. This will be translated.
     $name = $this->randomMachineName(16);
 
-    // Add custom language.
+    // Add hello_world language.
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     $this->container->get('language_manager')->reset();
 
     // Build the JavaScript translation file.
@@ -339,15 +339,15 @@ class LocaleTranslationUiTest extends BrowserTestBase {
     $key = $this->randomMachineName(16);
     $bad_translations[$key] = "<BODY ONLOAD=alert('xss')>" . $key;
 
-    // Add custom language.
+    // Add hello_world language.
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     // Add string.
     t($name, [], ['langcode' => $langcode])->render();
     // Reset locale cache.
@@ -397,25 +397,25 @@ class LocaleTranslationUiTest extends BrowserTestBase {
     // This will be the translation of $name.
     $translation = $this->randomMachineName(16);
 
-    // Add custom language.
+    // Add hello_world language.
     $this->drupalLogin($admin_user);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
 
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => 'yy',
       'label' => $this->randomMachineName(16),
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
 
     // Add string.
     t($name, [], ['langcode' => $langcode])->render();
@@ -503,7 +503,7 @@ class LocaleTranslationUiTest extends BrowserTestBase {
     $this->submitForm($search, 'Filter');
     $this->assertSession()->pageTextContains('No strings available.');
 
-    // Ensure translated string does appear if searching on the custom language.
+    // Ensure translated string does appear if searching on the hello_world language.
     $search = [
       'string' => $translation,
       'langcode' => $langcode,

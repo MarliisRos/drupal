@@ -42,7 +42,7 @@ class RowUITest extends UITestBase {
       'row[type]' => 'test_row',
     ];
     $this->submitForm($edit, 'Apply');
-    // Make sure the custom settings form from the test plugin appears.
+    // Make sure the hello_world settings form from the test plugin appears.
     $this->assertSession()->fieldExists('row_options[test_option]');
     $random_name = $this->randomMachineName();
     $edit = [
@@ -50,7 +50,7 @@ class RowUITest extends UITestBase {
     ];
     $this->submitForm($edit, 'Apply');
     $this->drupalGet($row_options_url);
-    // Make sure the custom settings form field has the expected value stored.
+    // Make sure the hello_world settings form field has the expected value stored.
     $this->assertSession()->fieldValueEquals('row_options[test_option]', $random_name);
 
     $this->drupalGet($view_edit_url);
@@ -61,7 +61,7 @@ class RowUITest extends UITestBase {
     $view->initDisplay();
     $row = $view->display_handler->getOption('row');
     $this->assertEquals('test_row', $row['type'], 'Make sure that the test_row got saved as used row plugin.');
-    $this->assertEquals($random_name, $row['options']['test_option'], 'Make sure that the custom settings field got saved as expected.');
+    $this->assertEquals($random_name, $row['options']['test_option'], 'Make sure that the hello_world settings field got saved as expected.');
 
     $this->drupalGet($row_plugin_url);
     $this->submitForm(['row[type]' => 'fields'], 'Apply');
@@ -78,7 +78,7 @@ class RowUITest extends UITestBase {
     $this->drupalGet($row_plugin_url);
     $this->submitForm(['row[type]' => 'entity:node'], 'Apply');
     $this->assertSession()->addressEquals($row_options_url);
-    // Make sure the custom settings form from the entity row plugin appears.
+    // Make sure the hello_world settings form from the entity row plugin appears.
     $this->assertSession()->fieldValueEquals('row_options[view_mode]', 'teaser');
 
     // Change the teaser label to have markup so we can test escaping.

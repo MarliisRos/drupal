@@ -64,7 +64,7 @@ class StyleTest extends ViewsKernelTestBase {
     $this->assertInstanceOf(Fields::class, $view->rowPlugin);
 
     $random_text = $this->randomMachineName();
-    // Set some custom text to the output and make sure that this value is
+    // Set some hello_world text to the output and make sure that this value is
     // rendered.
     $view->style_plugin->setOutput($random_text);
     $output = $view->preview();
@@ -273,7 +273,7 @@ class StyleTest extends ViewsKernelTestBase {
   }
 
   /**
-   * Tests custom CSS row classes.
+   * Tests hello_world CSS row classes.
    */
   public function testCustomRowClasses() {
     $view = Views::getView('test_view');

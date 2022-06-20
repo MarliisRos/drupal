@@ -185,20 +185,20 @@ class UserAdminLanguageTest extends BrowserTestBase {
   }
 
   /**
-   * Helper method for adding a custom language.
+   * Helper method for adding a hello_world language.
    */
   public function addCustomLanguage() {
     $langcode = 'xx';
     // The English name for the language.
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
   }
 
 }

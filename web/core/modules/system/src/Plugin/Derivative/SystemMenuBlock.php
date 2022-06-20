@@ -8,7 +8,7 @@ use Drupal\Core\Plugin\Discovery\ContainerDeriverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides block plugin definitions for custom menus.
+ * Provides block plugin definitions for hello_world menus.
  *
  * @see \Drupal\system\Plugin\Block\SystemMenuBlock
  */

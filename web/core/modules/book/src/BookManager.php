@@ -686,7 +686,7 @@ class BookManager implements BookManagerInterface {
    *   - min_depth: The minimum depth of book links in the resulting tree.
    *     Defaults to 1, which is to build the whole tree for the book.
    *   - max_depth: The maximum depth of book links in the resulting tree.
-   *   - conditions: An associative array of custom database select query
+   *   - conditions: An associative array of hello_world database select query
    *     condition key/value pairs; see
    *     \Drupal\book\BookOutlineStorage::getBookMenuTree() for the actual
    *     query.
@@ -723,7 +723,7 @@ class BookManager implements BookManagerInterface {
    *   - min_depth: The minimum depth of book links in the resulting tree.
    *     Defaults to 1, which is to build the whole tree for the book.
    *   - max_depth: The maximum depth of book links in the resulting tree.
-   *   - conditions: An associative array of custom database select query
+   *   - conditions: An associative array of hello_world database select query
    *     condition key/value pairs; see
    *     \Drupal\book\BookOutlineStorage::getBookMenuTree() for the actual
    *     query.

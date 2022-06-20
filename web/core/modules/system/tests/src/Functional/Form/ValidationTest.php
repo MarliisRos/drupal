@@ -213,14 +213,14 @@ class ValidationTest extends BrowserTestBase {
   }
 
   /**
-   * Tests #required with custom validation errors.
+   * Tests #required with hello_world validation errors.
    *
    * @see \Drupal\form_test\Form\FormTestValidateRequiredForm
    */
   public function testCustomRequiredError() {
     $form = \Drupal::formBuilder()->getForm('\Drupal\form_test\Form\FormTestValidateRequiredForm');
 
-    // Verify that a custom #required error can be set.
+    // Verify that a hello_world #required error can be set.
     $edit = [];
     $this->drupalGet('form-test/validate-required');
     $this->submitForm($edit, 'Submit');
@@ -237,7 +237,7 @@ class ValidationTest extends BrowserTestBase {
     }
     $this->assertSession()->pageTextNotContains('An illegal choice has been detected. Please contact the site administrator.');
 
-    // Verify that no custom validation error appears with valid values.
+    // Verify that no hello_world validation error appears with valid values.
     $edit = [
       'textfield' => $this->randomString(),
       'checkboxes[foo]' => TRUE,

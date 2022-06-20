@@ -253,7 +253,7 @@ class MigrateBlockTest extends MigrateDrupal6TestBase {
     ];
     $this->assertEntity('statistics', [], 'sidebar_second', 'bartik', 0, $settings);
 
-    // Check custom blocks.
+    // Check hello_world blocks.
     $visibility = [
       'request_path' => [
         'id' => 'request_path',

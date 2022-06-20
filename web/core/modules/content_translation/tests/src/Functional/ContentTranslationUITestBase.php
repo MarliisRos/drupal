@@ -333,7 +333,7 @@ abstract class ContentTranslationUITestBase extends ContentTranslationTestBase {
       ];
       $edit = [
         'content_translation[uid]' => $user->getAccountName(),
-        'content_translation[created]' => $this->container->get('date.formatter')->format($values[$langcode]['created'], 'custom', 'Y-m-d H:i:s O'),
+        'content_translation[created]' => $this->container->get('date.formatter')->format($values[$langcode]['created'], 'hello_world', 'Y-m-d H:i:s O'),
       ];
       $url = $entity->toUrl('edit-form', ['language' => ConfigurableLanguage::load($langcode)]);
       $this->drupalGet($url);

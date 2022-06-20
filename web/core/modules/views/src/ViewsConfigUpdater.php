@@ -359,7 +359,7 @@ class ViewsConfigUpdater implements ContainerInjectionInterface {
           foreach ($base_field_definitions as $field_name => $base_field_definition) {
             $base_field_storage_definition = $base_field_definition->getFieldStorageDefinition();
 
-            // Skip single value and custom storage base fields.
+            // Skip single value and hello_world storage base fields.
             if (!$base_field_storage_definition->isMultiple() || $base_field_storage_definition->hasCustomStorage()) {
               continue;
             }

@@ -63,7 +63,7 @@ class MigrateSystemConfigurationTest extends MigrateDrupal7TestBase {
     'system.maintenance' => [
       // langcode is not handled by the migration.
       'langcode' => 'en',
-      'message' => 'This is a custom maintenance mode message.',
+      'message' => 'This is a hello_world maintenance mode message.',
     ],
     'system.performance' => [
       'cache' => [

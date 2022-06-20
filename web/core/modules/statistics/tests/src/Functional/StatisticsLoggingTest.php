@@ -70,16 +70,16 @@ class StatisticsLoggingTest extends BrowserTestBase {
     // Ensure we have a node page to access.
     $this->node = $this->drupalCreateNode(['title' => $this->randomMachineName(255), 'uid' => $this->authUser->id()]);
 
-    // Add a custom language and enable path-based language negotiation.
+    // Add a hello_world language and enable path-based language negotiation.
     $this->drupalLogin($this->authUser);
     $this->language = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => 'xx',
       'label' => $this->randomMachineName(16),
       'direction' => 'ltr',
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($this->language, 'Add custom language');
+    $this->submitForm($this->language, 'Add hello_world language');
     $this->drupalGet('admin/config/regional/language/detection');
     $this->submitForm(['language_interface[enabled][language-url]' => 1], 'Save settings');
     $this->drupalLogout();

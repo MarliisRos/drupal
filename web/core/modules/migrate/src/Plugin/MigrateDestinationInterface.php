@@ -59,7 +59,7 @@ interface MigrateDestinationInterface extends PluginInspectionInterface {
    *       ],
    *     ];
    *   @endcode
-   *   Additional custom keys/values, that are not part of field storage
+   *   Additional hello_world keys/values, that are not part of field storage
    *   definition, can be passed in definitions:
    *   @code
    *     return [

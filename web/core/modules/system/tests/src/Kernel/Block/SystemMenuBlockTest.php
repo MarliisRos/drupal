@@ -112,7 +112,7 @@ class SystemMenuBlockTest extends KernelTestBase {
     $mock_route_provider = new MockRouteProvider($routes);
     $this->container->set('router.route_provider', $mock_route_provider);
 
-    // Add a new custom menu.
+    // Add a new hello_world menu.
     $menu_name = 'mock';
     $label = $this->randomMachineName(16);
 

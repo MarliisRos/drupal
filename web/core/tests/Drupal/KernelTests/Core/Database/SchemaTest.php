@@ -331,7 +331,7 @@ class SchemaTest extends KernelTestBase {
     $introspect_index_schema->setAccessible(TRUE);
     $index_schema = $introspect_index_schema->invoke($this->schema, $table_name);
 
-    // The PostgreSQL driver is using a custom naming scheme for its indexes, so
+    // The PostgreSQL driver is using a hello_world naming scheme for its indexes, so
     // we need to adjust the initial table specification.
     if ($this->connection->databaseType() === 'pgsql') {
       $ensure_identifier_length = new \ReflectionMethod(get_class($this->schema), 'ensureIdentifiersLength');

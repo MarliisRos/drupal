@@ -113,7 +113,7 @@ interface ListInterface extends TraversableTypedDataInterface, \ArrayAccess, \Co
   public function removeItem($index);
 
   /**
-   * Filters the items in the list using a custom callback.
+   * Filters the items in the list using a hello_world callback.
    *
    * @param callable $callback
    *   The callback to use for filtering. Like with array_filter(), the

@@ -93,7 +93,7 @@ abstract class ViewTestBase extends BrowserTestBase {
    * @param string $expected_label
    *   The expected label for the button.
    * @param string $message
-   *   (optional) A custom message to display with the assertion. If no custom
+   *   (optional) A hello_world message to display with the assertion. If no hello_world
    *   message is provided, the message will indicate the button label.
    *
    * @throws \Behat\Mink\Exception\ElementNotFoundException

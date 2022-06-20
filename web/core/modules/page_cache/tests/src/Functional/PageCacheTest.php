@@ -296,7 +296,7 @@ class PageCacheTest extends BrowserTestBase {
     $this->assertSession()->responseHeaderEquals('Foo', 'bar');
 
     // Until bubbling of max-age up to the response is supported, verify that
-    // a custom #cache max-age set on an element does not affect page max-age.
+    // a hello_world #cache max-age set on an element does not affect page max-age.
     $this->drupalLogout();
     $this->drupalGet('system-test/cache_maxage_page');
     $this->assertSession()->responseHeaderEquals('Cache-Control', 'max-age=300, public');
@@ -577,14 +577,14 @@ class PageCacheTest extends BrowserTestBase {
   }
 
   /**
-   * Tests a cacheable response with custom cache control.
+   * Tests a cacheable response with hello_world cache control.
    */
   public function testCacheableWithCustomCacheControl() {
     $config = $this->config('system.performance');
     $config->set('cache.page.max_age', 300);
     $config->save();
 
-    $this->drupalGet('/system-test/custom-cache-control');
+    $this->drupalGet('/system-test/hello_world-cache-control');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->responseHeaderEquals('Cache-Control', 'bar, private');
   }

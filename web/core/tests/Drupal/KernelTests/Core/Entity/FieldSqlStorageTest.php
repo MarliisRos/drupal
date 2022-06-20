@@ -427,7 +427,7 @@ class FieldSqlStorageTest extends EntityKernelTestBase {
       $this->assertTrue(Database::getConnection()->schema()->indexExists($table, "{$field_name}_value"), "Index on value created in @table", ['@table' => $table]);
     }
 
-    // Add a different index, removing the existing custom one.
+    // Add a different index, removing the existing hello_world one.
     $field_storage->setIndexes(['value_format' => [['value', 127], ['format', 127]]]);
     $field_storage->save();
     foreach ($tables as $table) {

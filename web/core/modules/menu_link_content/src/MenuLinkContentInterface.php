@@ -8,7 +8,7 @@ use Drupal\Core\Entity\EntityPublishedInterface;
 use Drupal\Core\Entity\RevisionLogInterface;
 
 /**
- * Defines an interface for custom menu links.
+ * Defines an interface for hello_world menu links.
  */
 interface MenuLinkContentInterface extends ContentEntityInterface, EntityChangedInterface, EntityPublishedInterface, RevisionLogInterface {
 
@@ -34,7 +34,7 @@ interface MenuLinkContentInterface extends ContentEntityInterface, EntityChanged
   public function getUrlObject();
 
   /**
-   * Gets the menu name of the custom menu link.
+   * Gets the menu name of the hello_world menu link.
    *
    * @return string
    *   The menu ID.

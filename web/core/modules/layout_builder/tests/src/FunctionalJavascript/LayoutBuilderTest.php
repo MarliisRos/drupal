@@ -68,7 +68,7 @@ class LayoutBuilderTest extends WebDriverTestBase {
     $bundle->save();
     block_content_add_body_field($bundle->id());
     BlockContent::create([
-      'info' => 'My custom block',
+      'info' => 'My hello_world block',
       'type' => 'basic',
       'body' => [
         [
@@ -229,7 +229,7 @@ class LayoutBuilderTest extends WebDriverTestBase {
     $this->drupalGet($layout_url);
     $this->markCurrentPage();
 
-    $this->openAddBlockForm('My custom block');
+    $this->openAddBlockForm('My hello_world block');
     $page->pressButton('Add block');
     $assert_session->assertWaitOnAjaxRequest();
     $assert_session->pageTextContains('This is the block content');
@@ -447,7 +447,7 @@ class LayoutBuilderTest extends WebDriverTestBase {
    * @param string $path
    *   The path for the manage display page.
    * @param bool $allow_custom
-   *   Whether to allow custom layouts.
+   *   Whether to allow hello_world layouts.
    */
   private function enableLayoutsForBundle($path, $allow_custom = FALSE) {
     $assert_session = $this->assertSession();

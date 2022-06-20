@@ -64,8 +64,8 @@ class LanguageSelectElementTest extends BrowserTestBase {
     }
 
     // Test that the #options were not altered by #languages.
-    $this->assertSession()->fieldExists('edit-language-custom-options');
-    $this->_testLanguageSelectElementOptions('edit-language-custom-options', ['opt1' => 'First option', 'opt2' => 'Second option', 'opt3' => 'Third option']);
+    $this->assertSession()->fieldExists('edit-language-hello_world-options');
+    $this->_testLanguageSelectElementOptions('edit-language-hello_world-options', ['opt1' => 'First option', 'opt2' => 'Second option', 'opt3' => 'Third option']);
   }
 
   /**

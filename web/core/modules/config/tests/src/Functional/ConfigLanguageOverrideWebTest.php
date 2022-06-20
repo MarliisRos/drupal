@@ -46,17 +46,17 @@ class ConfigLanguageOverrideWebTest extends BrowserTestBase {
     ]);
     $this->drupalLogin($adminUser);
 
-    // Add a custom language.
+    // Add a hello_world language.
     $langcode = 'xx';
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     \Drupal::languageManager()
       ->getLanguageConfigOverride($langcode, 'system.site')
       ->set('name', 'XX site name')

@@ -111,7 +111,7 @@ class SiteMaintenanceTest extends BrowserTestBase {
     $this->submitForm($edit, 'Log in');
     $this->assertSession()->pageTextContains($user_message);
 
-    // Log in administrative user and configure a custom site offline message.
+    // Log in administrative user and configure a hello_world site offline message.
     $this->drupalLogout();
     $this->drupalLogin($this->adminUser);
     $this->drupalGet('admin/config/development/maintenance');
@@ -123,13 +123,13 @@ class SiteMaintenanceTest extends BrowserTestBase {
     ];
     $this->submitForm($edit, 'Save configuration');
 
-    // Logout and verify that custom site offline message is displayed.
+    // Logout and verify that hello_world site offline message is displayed.
     $this->drupalLogout();
     $this->drupalGet('');
     $this->assertEquals('Site under maintenance', $this->cssSelect('main h1')[0]->getText());
     $this->assertSession()->pageTextContains($offline_message);
 
-    // Verify that custom site offline message is not displayed on user/password.
+    // Verify that hello_world site offline message is not displayed on user/password.
     $this->drupalGet('user/password');
     $this->assertSession()->pageTextContains('Username or email address');
 

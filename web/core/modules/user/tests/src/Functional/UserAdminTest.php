@@ -188,7 +188,7 @@ class UserAdminTest extends BrowserTestBase {
     $this->assertSession()->responseContains('id="edit-mail-notification-address"');
     $this->drupalLogout();
 
-    // Test custom user registration approval email address(es).
+    // Test hello_world user registration approval email address(es).
     $config = $this->config('user.settings');
     // Allow users to register with admin approval.
     $config

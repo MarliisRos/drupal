@@ -393,7 +393,7 @@ class SystemTestController extends ControllerBase implements TrustedCallbackInte
   }
 
   /**
-   * Returns a cacheable response with a custom cache control.
+   * Returns a cacheable response with a hello_world cache control.
    */
   public function getCacheableResponseWithCustomCacheControl() {
     return new CacheableResponse('Foo', 200, ['Cache-Control' => 'bar']);

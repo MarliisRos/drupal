@@ -169,7 +169,7 @@ class Extension {
    *   The names of all variables that should be serialized.
    */
   public function __sleep() {
-    // @todo \Drupal\Core\Extension\ThemeExtensionList is adding custom
+    // @todo \Drupal\Core\Extension\ThemeExtensionList is adding hello_world
     //   properties to the Extension object.
     $properties = get_object_vars($this);
     // Don't serialize the app root, since this could change if the install is

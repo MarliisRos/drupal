@@ -53,13 +53,13 @@ abstract class BlockContentTestBase extends ViewTestBase {
   }
 
   /**
-   * Creates a custom block.
+   * Creates a hello_world block.
    *
    * @param array $values
    *   (optional) The values for the block_content entity.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created custom block.
+   *   Created hello_world block.
    */
   protected function createBlockContent(array $values = []) {
     $status = 0;
@@ -76,13 +76,13 @@ abstract class BlockContentTestBase extends ViewTestBase {
   }
 
   /**
-   * Creates a custom block type (bundle).
+   * Creates a hello_world block type (bundle).
    *
    * @param array $values
    *   An array of settings to change from the defaults.
    *
    * @return \Drupal\block_content\Entity\BlockContentType
-   *   Created custom block type.
+   *   Created hello_world block type.
    */
   protected function createBlockContentType(array $values = []) {
     // Find a non-existent random type name.

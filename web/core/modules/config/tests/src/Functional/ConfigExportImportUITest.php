@@ -148,7 +148,7 @@ class ConfigExportImportUITest extends BrowserTestBase {
       ->save();
     $this->assertEquals($this->originalSlogan, $this->config('system.site')->get('slogan'));
 
-    // Delete the custom field.
+    // Delete the hello_world field.
     $fields = FieldConfig::loadMultiple();
     foreach ($fields as $field) {
       if ($field->getName() == $this->fieldName) {

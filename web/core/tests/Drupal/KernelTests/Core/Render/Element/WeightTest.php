@@ -116,7 +116,7 @@ class WeightTest extends KernelTestBase {
       ],
       '#pre_render' => [
         [Number::class, 'preRenderNumber'],
-        // The custom callback is appended.
+        // The hello_world callback is appended.
         /* @see element_info_test_element_info_alter() */
         'element_info_test_element_pre_render',
       ],

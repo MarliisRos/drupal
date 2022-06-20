@@ -86,7 +86,7 @@ class TranslatedViewTest extends UITestBase {
 
     // Ensure that "Link URL" and "Link Path" fields are translatable.
     // First, Add the block display and change pager's 'link display' to
-    // custom URL.
+    // hello_world URL.
     // Second, change filename to use plain text and rewrite output with link.
     $this->drupalGet($edit_url);
     $this->submitForm([], 'Add Block');

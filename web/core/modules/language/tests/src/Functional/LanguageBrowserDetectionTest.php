@@ -57,7 +57,7 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     // Check that Chinese browser language code no longer exists.
     $this->assertSession()->fieldNotExists('edit-mappings-zh-cn-browser-langcode');
 
-    // Add a new custom mapping.
+    // Add a new hello_world mapping.
     $edit = [
       'new_mapping[browser_langcode]' => 'xx',
       'new_mapping[drupal_langcode]' => 'en',
@@ -68,12 +68,12 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     $this->assertSession()->fieldValueEquals('edit-mappings-xx-browser-langcode', 'xx');
     $this->assertSession()->fieldValueEquals('edit-mappings-xx-drupal-langcode', 'en');
 
-    // Add the same custom mapping again.
+    // Add the same hello_world mapping again.
     $this->drupalGet('admin/config/regional/language/detection/browser');
     $this->submitForm($edit, 'Save configuration');
     $this->assertSession()->pageTextContains('Browser language codes must be unique.');
 
-    // Change browser language code of our custom mapping to zh-sg.
+    // Change browser language code of our hello_world mapping to zh-sg.
     $edit = [
       'mappings[xx][browser_langcode]' => 'zh-sg',
       'mappings[xx][drupal_langcode]' => 'en',
@@ -82,7 +82,7 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     $this->submitForm($edit, 'Save configuration');
     $this->assertSession()->pageTextContains('Browser language codes must be unique.');
 
-    // Change Drupal language code of our custom mapping to zh-hans.
+    // Change Drupal language code of our hello_world mapping to zh-hans.
     $edit = [
       'mappings[xx][browser_langcode]' => 'xx',
       'mappings[xx][drupal_langcode]' => 'zh-hans',

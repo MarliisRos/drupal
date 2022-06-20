@@ -25,7 +25,7 @@ class VocabularyLanguageTest extends TaxonomyTestBase {
     // Create an administrative user.
     $this->drupalLogin($this->drupalCreateUser(['administer taxonomy']));
 
-    // Add some custom languages.
+    // Add some hello_world languages.
     ConfigurableLanguage::create([
       'id' => 'aa',
       'label' => $this->randomMachineName(),

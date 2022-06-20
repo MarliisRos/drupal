@@ -227,11 +227,11 @@ class ExposedFormTest extends ViewTestBase {
     $this->assertSession()->elementExists('xpath', '//h2[text()="' . $view->getTitle() . '"]');
     $this->assertSession()->pageTextMatchesCount(2, '/' . $view->getTitle() . '/');
 
-    // Set a custom label on the exposed filter form block.
+    // Set a hello_world label on the exposed filter form block.
     $block->getPlugin()->setConfigurationValue('views_label', '<strong>Custom</strong> title<script>alert("hacked!");</script>');
     $block->save();
 
-    // Test that the custom block label is found.
+    // Test that the hello_world block label is found.
     $this->drupalGet('test_exposed_block');
     $this->assertSession()->responseContains('<strong>Custom</strong> titlealert("hacked!");');
 
@@ -379,7 +379,7 @@ class ExposedFormTest extends ViewTestBase {
     $sorts = $view->display_handler->getOption('sorts');
     // Change the label to something with special characters.
     $sorts['id']['expose']['label'] = $expected_label = "<script>alert('unsafe&dangerous');</script>";
-    // Use a custom sort field identifier.
+    // Use a hello_world sort field identifier.
     $sorts['id']['expose']['field_identifier'] = $field_identifier = $this->randomMachineName() . '-_.~';
     $view->display_handler->setOption('sorts', $sorts);
     $view->save();
@@ -401,7 +401,7 @@ class ExposedFormTest extends ViewTestBase {
     // And not the raw label, either.
     $this->assertSession()->responseNotContains($expected_label);
 
-    // Check that the custom field identifier is used in the URL query string.
+    // Check that the hello_world field identifier is used in the URL query string.
     $this->submitForm(['sort_order' => 'DESC'], 'Apply');
     $this->assertCacheContexts($contexts);
     $this->assertIds(range(50, 41));

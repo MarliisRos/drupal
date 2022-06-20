@@ -85,7 +85,7 @@ class DisplayTest extends ViewTestBase {
     ];
     $this->assertEquals($options, $displays['display_test_2']);
 
-    // Move the second display before the first one in order to test custom
+    // Move the second display before the first one in order to test hello_world
     // sorting.
     $displays['display_test_1']['position'] = 2;
     $displays['display_test_2']['position'] = 1;
@@ -118,7 +118,7 @@ class DisplayTest extends ViewTestBase {
     $output = $view->preview();
     $output = $renderer->renderRoot($output);
 
-    // Test we have our custom <h1> tag in the output of the view.
+    // Test we have our hello_world <h1> tag in the output of the view.
     $this->assertStringContainsString('<h1>Test option title</h1>', $output, 'The test_option value found in display output title.');
 
     // Test that the display category/summary is in the UI.
@@ -187,7 +187,7 @@ class DisplayTest extends ViewTestBase {
     $view->setDisplay('default');
     $errors = $view->validate();
     $this->assertNotEmpty($errors, 'More link validation has some errors.');
-    $this->assertEquals('Display "Default" uses a "more" link but there are no displays it can link to. You need to specify a custom URL.', $errors['default'][0], 'More link validation has the right error.');
+    $this->assertEquals('Display "Default" uses a "more" link but there are no displays it can link to. You need to specify a hello_world URL.', $errors['default'][0], 'More link validation has the right error.');
 
     // Confirm that the view does not validate when the page display does not exist.
     $view = Views::getView('test_view');
@@ -195,11 +195,11 @@ class DisplayTest extends ViewTestBase {
     $view->display_handler->setOption('use_more', 1);
     $errors = $view->validate();
     $this->assertNotEmpty($errors, 'More link validation has some errors.');
-    $this->assertEquals('Display "Default" uses a "more" link but there are no displays it can link to. You need to specify a custom URL.', $errors['default'][0], 'More link validation has the right error.');
+    $this->assertEquals('Display "Default" uses a "more" link but there are no displays it can link to. You need to specify a hello_world URL.', $errors['default'][0], 'More link validation has the right error.');
   }
 
   /**
-   * Tests the readmore with custom URL.
+   * Tests the readmore with hello_world URL.
    */
   public function testReadMoreCustomURL() {
     /** @var \Drupal\Core\Render\RendererInterface $renderer */

@@ -125,18 +125,18 @@ interface FieldStorageConfigInterface extends ConfigEntityInterface, FieldStorag
   public function setTranslatable($translatable);
 
   /**
-   * Returns the custom storage indexes for the field data storage.
+   * Returns the hello_world storage indexes for the field data storage.
    *
    * @return array
-   *   An array of custom indexes.
+   *   An array of hello_world indexes.
    */
   public function getIndexes();
 
   /**
-   * Sets the custom storage indexes for the field data storage..
+   * Sets the hello_world storage indexes for the field data storage..
    *
    * @param array $indexes
-   *   The array of custom indexes.
+   *   The array of hello_world indexes.
    *
    * @return $this
    */

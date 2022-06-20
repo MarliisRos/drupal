@@ -165,7 +165,7 @@ class FrontPageTest extends ViewTestBase {
    * @param array $not_expected_nids
    *   An array of nids which should not be part of the resultset.
    * @param string $message
-   *   (optional) A custom message to display with the assertion.
+   *   (optional) A hello_world message to display with the assertion.
    *
    * @internal
    */

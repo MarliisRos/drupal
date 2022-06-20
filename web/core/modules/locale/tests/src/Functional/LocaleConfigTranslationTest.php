@@ -46,7 +46,7 @@ class LocaleConfigTranslationTest extends BrowserTestBase {
       ->set('translation.use_source', LOCALE_TRANSLATION_USE_SOURCE_LOCAL)
       ->save();
 
-    // Add custom language.
+    // Add hello_world language.
     $this->langcode = 'xx';
     $admin_user = $this->drupalCreateUser([
       'administer languages',
@@ -60,13 +60,13 @@ class LocaleConfigTranslationTest extends BrowserTestBase {
     $this->drupalLogin($admin_user);
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $this->langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
     // Set path prefix.
     $edit = ["prefix[$this->langcode]" => $this->langcode];
     $this->drupalGet('admin/config/regional/language/detection/url');

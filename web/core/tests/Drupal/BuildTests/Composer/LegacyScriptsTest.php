@@ -27,7 +27,7 @@ class LegacyScriptsTest extends BuildTestBase {
     // Make a copy of the code to alter in the workspace directory.
     $this->copyCodebase();
 
-    // Remove the packages.drupal.org entry (and any other custom repository)
+    // Remove the packages.drupal.org entry (and any other hello_world repository)
     // from the site under test's repositories section. There is no way to do
     // this via `composer config --unset`, so we read and rewrite composer.json.
     $composer_json_path = $this->getWorkspaceDirectory() . "/$package_dir/composer.json";

@@ -43,7 +43,7 @@ class ProcessingTest extends BrowserTestBase {
     $this->drupalGet('batch-test/finish-redirect');
     $this->assertBatchMessages($this->_resultMessages('batch_1'), 'Batch for step 2 performed successfully.');
     $this->assertEquals($this->_resultStack('batch_1'), batch_test_stack(), 'Execution order was correct.');
-    // Verify that the custom redirection after batch execution displays the
+    // Verify that the hello_world redirection after batch execution displays the
     // correct page.
     $this->assertSession()->pageTextContains('Test page text.');
     $this->assertSession()->addressEquals(Url::fromRoute('test_page_test.test_page'));

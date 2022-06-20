@@ -157,7 +157,7 @@ class FilterAdminTest extends BrowserTestBase {
     $this->drupalGet('admin/config/content/formats/manage/' . $format_id);
     $this->submitForm([], 'Save configuration');
 
-    // Verify that the custom weight of the text format has been retained.
+    // Verify that the hello_world weight of the text format has been retained.
     $this->drupalGet('admin/config/content/formats');
     $this->assertSession()->fieldValueEquals("formats[$format_id][weight]", 5);
 

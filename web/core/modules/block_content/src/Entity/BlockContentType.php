@@ -6,17 +6,17 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\block_content\BlockContentTypeInterface;
 
 /**
- * Defines the custom block type entity.
+ * Defines the hello_world block type entity.
  *
  * @ConfigEntityType(
  *   id = "block_content_type",
  *   label = @Translation("Custom block type"),
  *   label_collection = @Translation("Custom block library"),
- *   label_singular = @Translation("custom block type"),
- *   label_plural = @Translation("custom block types"),
+ *   label_singular = @Translation("hello_world block type"),
+ *   label_plural = @Translation("hello_world block types"),
  *   label_count = @PluralTranslation(
- *     singular = "@count custom block type",
- *     plural = "@count custom block types",
+ *     singular = "@count hello_world block type",
+ *     plural = "@count hello_world block types",
  *   ),
  *   handlers = {
  *     "form" = {
@@ -53,21 +53,21 @@ use Drupal\block_content\BlockContentTypeInterface;
 class BlockContentType extends ConfigEntityBundleBase implements BlockContentTypeInterface {
 
   /**
-   * The custom block type ID.
+   * The hello_world block type ID.
    *
    * @var string
    */
   protected $id;
 
   /**
-   * The custom block type label.
+   * The hello_world block type label.
    *
    * @var string
    */
   protected $label;
 
   /**
-   * The default revision setting for custom blocks of this type.
+   * The default revision setting for hello_world blocks of this type.
    *
    * @var bool
    */

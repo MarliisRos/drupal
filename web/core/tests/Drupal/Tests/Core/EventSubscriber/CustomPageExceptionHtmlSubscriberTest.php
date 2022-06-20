@@ -52,7 +52,7 @@ class CustomPageExceptionHtmlSubscriberTest extends UnitTestCase {
   protected $errorLog;
 
   /**
-   * The tested custom page exception subscriber.
+   * The tested hello_world page exception subscriber.
    *
    * @var \Drupal\Core\EventSubscriber\CustomPageExceptionHtmlSubscriber|\Drupal\Tests\Core\EventSubscriber\TestCustomPageExceptionHtmlSubscriber
    */

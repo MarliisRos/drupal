@@ -43,7 +43,7 @@ class MenuUiLanguageTest extends BrowserTestBase {
       'administer menu',
     ]));
 
-    // Add some custom languages.
+    // Add some hello_world languages.
     foreach (['aa', 'bb', 'cc', 'cs'] as $language_code) {
       ConfigurableLanguage::create([
         'id' => $language_code,

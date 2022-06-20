@@ -47,7 +47,7 @@ class HTMLRestrictionsTest extends UnitTestCase {
       ['🦙' => ''],
       '"🦙" is not a valid HTML tag name.',
     ];
-    yield 'INVALID: invalid custom element name' => [
+    yield 'INVALID: invalid hello_world element name' => [
       ['foo-bar' => '', '1-foo-bar' => ''],
       '"1-foo-bar" is not a valid HTML tag name.',
     ];
@@ -125,7 +125,7 @@ class HTMLRestrictionsTest extends UnitTestCase {
       ['*' => ['foo' => ['a' => TRUE, 'b' => TRUE]]],
       NULL,
     ];
-    // @todo Nothing in Drupal core uses this ability, and no custom/contrib
+    // @todo Nothing in Drupal core uses this ability, and no hello_world/contrib
     //   module is known to use this. Therefore this is left for the future.
     yield 'VALID BUT NOT YET SUPPORTED: global attribute tag with attribute allowed, specific attribute values forbidden' => [
       ['*' => ['foo' => ['a' => FALSE, 'b' => FALSE]]],

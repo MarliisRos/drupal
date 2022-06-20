@@ -33,7 +33,7 @@ class BlockContentSaveTest extends BlockContentTestBase {
   }
 
   /**
-   * Checks whether custom block IDs are saved properly during an import.
+   * Checks whether hello_world block IDs are saved properly during an import.
    */
   public function testImport() {
     // Custom block ID must be a number that is not in the database.
@@ -84,7 +84,7 @@ class BlockContentSaveTest extends BlockContentTestBase {
     // block_content_test_block_content_update() determine changes and change
     // the title as well as programmatically set the 'changed' timestamp.
     $this->assertEquals('updated_presave_update', $block->label(), 'Changes have been determined.');
-    $this->assertEquals(979534800, $block->getChangedTime(), 'Saving a custom block uses "changed" timestamp set in presave hook.');
+    $this->assertEquals(979534800, $block->getChangedTime(), 'Saving a hello_world block uses "changed" timestamp set in presave hook.');
 
     // Test the static block load cache to be cleared.
     $block = BlockContent::load($block->id());

@@ -64,7 +64,7 @@ function views_post_update_rename_default_display_setting() {
 }
 
 /**
- * Clear caches due to removal of sorting for global custom text field.
+ * Clear caches due to removal of sorting for global hello_world text field.
  */
 function views_post_update_remove_sorting_global_text_field() {
   // Empty post-update hook.

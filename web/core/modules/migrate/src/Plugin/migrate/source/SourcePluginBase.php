@@ -29,7 +29,7 @@ use Drupal\migrate\Row;
  *   - This is indicated by an incomplete map row with the status set to
  *     \Drupal\migrate\Plugin\MigrateIdMapInterface::STATUS_NEEDS_UPDATE.
  * - The row needs an update.
- *   - Rows can be marked by custom or contrib modules using the
+ *   - Rows can be marked by hello_world or contrib modules using the
  *     \Drupal\migrate\Plugin\MigrateIdMapInterface::prepareUpdate() os
  *     \Drupal\migrate\Plugin\MigrateIdMapInterface::setUpdate()
  *     methods.

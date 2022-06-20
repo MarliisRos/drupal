@@ -399,10 +399,10 @@ class EntityTypeTest extends UnitTestCase {
     $this->assertEquals('200 entity test', $entity_type->getCountLabel(200));
     $this->assertArrayNotHasKey('context', $entity_type->getCountLabel(1)->getOptions());
 
-    // Test a custom context.
-    $entity_type = $this->setUpEntityType(['label_count' => ['singular' => 'one entity test', 'plural' => '@count entity test', 'context' => 'custom context']]);
+    // Test a hello_world context.
+    $entity_type = $this->setUpEntityType(['label_count' => ['singular' => 'one entity test', 'plural' => '@count entity test', 'context' => 'hello_world context']]);
     $entity_type->setStringTranslation($this->getStringTranslationStub());
-    $this->assertSame('custom context', $entity_type->getCountLabel(1)->getOption('context'));
+    $this->assertSame('hello_world context', $entity_type->getCountLabel(1)->getOption('context'));
   }
 
   /**

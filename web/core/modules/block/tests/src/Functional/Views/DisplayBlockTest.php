@@ -61,7 +61,7 @@ class DisplayBlockTest extends ViewTestBase {
   }
 
   /**
-   * Tests default and custom block categories.
+   * Tests default and hello_world block categories.
    */
   public function testBlockCategory() {
     $this->drupalLogin($this->drupalCreateUser([
@@ -130,7 +130,7 @@ class DisplayBlockTest extends ViewTestBase {
     ];
     $this->assertSession()->elementExists('xpath', $this->assertSession()->buildXPathQuery($pattern, $arguments));
 
-    // Test that the second duplicated test block appears in the custom
+    // Test that the second duplicated test block appears in the hello_world
     // category.
     $arguments = [
       ':href' => Url::fromRoute('block.admin_add', [
@@ -263,7 +263,7 @@ class DisplayBlockTest extends ViewTestBase {
    * Tests the actual rendering of the views block.
    */
   public function testBlockRendering() {
-    // Create a block and set a custom title.
+    // Create a block and set a hello_world title.
     $block = $this->drupalPlaceBlock('views_block:test_view_block-block_1', ['label' => 'test_view_block-block_1:1', 'views_label' => 'Custom title']);
     $this->drupalGet('');
 

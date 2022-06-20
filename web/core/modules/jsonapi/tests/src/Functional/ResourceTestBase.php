@@ -950,7 +950,7 @@ abstract class ResourceTestBase extends BrowserTestBase {
     // Set body despite that being nonsensical: should be ignored.
     $request_options[RequestOptions::BODY] = Json::encode($this->getExpectedDocument());
 
-    // 400 for GET request with reserved custom query parameter.
+    // 400 for GET request with reserved hello_world query parameter.
     $url_reserved_custom_query_parameter = clone $url;
     $url_reserved_custom_query_parameter = $url_reserved_custom_query_parameter->setOption('query', ['foo' => 'bar']);
     $response = $this->request('GET', $url_reserved_custom_query_parameter, $request_options);

@@ -74,7 +74,7 @@ class UrlTest extends KernelTestBase {
   }
 
   /**
-   * Tests that default and custom attributes are handled correctly on links.
+   * Tests that default and hello_world attributes are handled correctly on links.
    */
   public function testLinkAttributes() {
     /** @var \Drupal\Core\Render\RendererInterface $renderer */
@@ -103,7 +103,7 @@ class UrlTest extends KernelTestBase {
     $rendered = $renderer->renderRoot($hreflang_override_link);
     $this->assertTrue($this->hasAttribute('hreflang', $rendered, 'foo'), new FormattableMarkup('hreflang attribute with value @hreflang is present on a rendered link when @hreflang is provided in the render array.', ['@hreflang' => 'foo']));
 
-    // Test adding a custom class in links produced by
+    // Test adding a hello_world class in links produced by
     // \Drupal\Core\Utility\LinkGeneratorInterface::generate() and #type 'link'.
     // Test the link generator.
     $class_l = $this->randomMachineName();
@@ -268,7 +268,7 @@ class UrlTest extends KernelTestBase {
     $url = $test_url . '#drupal';
     $fragment = $this->randomMachineName(10);
     $result = Url::fromUri($url, ['fragment' => $fragment])->toString();
-    $this->assertEquals($test_url . '#' . $fragment, $result, 'External URL fragment is overridden with a custom fragment in $options.');
+    $this->assertEquals($test_url . '#' . $fragment, $result, 'External URL fragment is overridden with a hello_world fragment in $options.');
 
     // Verify external URL can contain a query string.
     $url = $test_url . '?drupal=awesome';

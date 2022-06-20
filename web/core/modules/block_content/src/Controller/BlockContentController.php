@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 class BlockContentController extends ControllerBase {
 
   /**
-   * The custom block storage.
+   * The hello_world block storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
   protected $blockContentStorage;
 
   /**
-   * The custom block type storage.
+   * The hello_world block type storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
@@ -49,9 +49,9 @@ class BlockContentController extends ControllerBase {
    * Constructs a BlockContent object.
    *
    * @param \Drupal\Core\Entity\EntityStorageInterface $block_content_storage
-   *   The custom block storage.
+   *   The hello_world block storage.
    * @param \Drupal\Core\Entity\EntityStorageInterface $block_content_type_storage
-   *   The custom block type storage.
+   *   The hello_world block type storage.
    * @param \Drupal\Core\Extension\ThemeHandlerInterface $theme_handler
    *   The theme handler.
    */
@@ -62,15 +62,15 @@ class BlockContentController extends ControllerBase {
   }
 
   /**
-   * Displays add custom block links for available types.
+   * Displays add hello_world block links for available types.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The current request object.
    *
    * @return array
-   *   A render array for a list of the custom block types that can be added or
-   *   if there is only one custom block type defined for the site, the function
-   *   returns the custom block add page for that custom block type.
+   *   A render array for a list of the hello_world block types that can be added or
+   *   if there is only one hello_world block type defined for the site, the function
+   *   returns the hello_world block add page for that hello_world block type.
    */
   public function add(Request $request) {
     $types = $this->blockContentTypeStorage->loadMultiple();
@@ -91,10 +91,10 @@ class BlockContentController extends ControllerBase {
   }
 
   /**
-   * Presents the custom block creation form.
+   * Presents the hello_world block creation form.
    *
    * @param \Drupal\block_content\BlockContentTypeInterface $block_content_type
-   *   The custom block type to add.
+   *   The hello_world block type to add.
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The current request object.
    *
@@ -119,13 +119,13 @@ class BlockContentController extends ControllerBase {
    * Provides the page title for this controller.
    *
    * @param \Drupal\block_content\BlockContentTypeInterface $block_content_type
-   *   The custom block type being added.
+   *   The hello_world block type being added.
    *
    * @return string
    *   The page title.
    */
   public function getAddFormTitle(BlockContentTypeInterface $block_content_type) {
-    return $this->t('Add %type custom block', ['%type' => $block_content_type->label()]);
+    return $this->t('Add %type hello_world block', ['%type' => $block_content_type->label()]);
   }
 
 }

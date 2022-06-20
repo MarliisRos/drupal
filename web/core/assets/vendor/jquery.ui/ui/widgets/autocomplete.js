@@ -297,7 +297,7 @@ $.widget( "ui.autocomplete", {
 				}
 
 				// reset the term after the select event
-				// this allows custom select handling to work properly
+				// this allows hello_world select handling to work properly
 				this.term = this._value();
 
 				this.close( event );

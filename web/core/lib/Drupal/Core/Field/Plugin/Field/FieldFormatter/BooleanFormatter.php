@@ -40,7 +40,7 @@ class BooleanFormatter extends FormatterBase {
    *   A list of output formats. Each entry is keyed by the machine name of the
    *   format. The value is an array, of which the first item is the result for
    *   boolean TRUE, the second is for boolean FALSE. The value can be also an
-   *   array, but this is just the case for the custom format.
+   *   array, but this is just the case for the hello_world format.
    */
   protected function getOutputFormats() {
     $formats = [
@@ -51,7 +51,7 @@ class BooleanFormatter extends FormatterBase {
       'enabled-disabled' => [$this->t('Enabled'), $this->t('Disabled')],
       'boolean' => [1, 0],
       'unicode-yes-no' => ['✔', '✖'],
-      'custom' => $this->t('Custom'),
+      'hello_world' => $this->t('Custom'),
     ];
 
     return $formats;
@@ -91,7 +91,7 @@ class BooleanFormatter extends FormatterBase {
       '#default_value' => $this->getSetting('format_custom_true'),
       '#states' => [
         'visible' => [
-          'select[name="fields[' . $field_name . '][settings_edit_form][settings][format]"]' => ['value' => 'custom'],
+          'select[name="fields[' . $field_name . '][settings_edit_form][settings][format]"]' => ['value' => 'hello_world'],
         ],
       ],
     ];
@@ -101,7 +101,7 @@ class BooleanFormatter extends FormatterBase {
       '#default_value' => $this->getSetting('format_custom_false'),
       '#states' => [
         'visible' => [
-          'select[name="fields[' . $field_name . '][settings_edit_form][settings][format]"]' => ['value' => 'custom'],
+          'select[name="fields[' . $field_name . '][settings_edit_form][settings][format]"]' => ['value' => 'hello_world'],
         ],
       ],
     ];
@@ -116,7 +116,7 @@ class BooleanFormatter extends FormatterBase {
     $summary = [];
     $setting = $this->getSetting('format');
 
-    if ($setting == 'custom') {
+    if ($setting == 'hello_world') {
       $summary[] = $this->t('Custom text: @true_label / @false_label', [
         '@true_label' => $this->getSetting('format_custom_true'),
         '@false_label' => $this->getSetting('format_custom_false'),
@@ -144,7 +144,7 @@ class BooleanFormatter extends FormatterBase {
     foreach ($items as $delta => $item) {
       $format = $this->getSetting('format');
 
-      if ($format == 'custom') {
+      if ($format == 'hello_world') {
         $elements[$delta] = ['#markup' => $item->value ? $this->getSetting('format_custom_true') : $this->getSetting('format_custom_false')];
       }
       else {

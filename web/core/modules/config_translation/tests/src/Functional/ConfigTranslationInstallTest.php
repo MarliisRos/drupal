@@ -25,7 +25,7 @@ class ConfigTranslationInstallTest extends InstallerTestBase {
    * {@inheritdoc}
    */
   protected function setUpLanguage() {
-    // Place custom local translations in the translations directory.
+    // Place hello_world local translations in the translations directory.
     mkdir(DRUPAL_ROOT . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     file_put_contents(DRUPAL_ROOT . '/' . $this->siteDirectory . '/files/translations/drupal-8.0.0.eo.po', $this->getPo('eo'));
 
@@ -61,9 +61,9 @@ ENDPO;
 
   public function testConfigTranslation() {
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm(['predefined_langcode' => 'en'], 'Add custom language');
+    $this->submitForm(['predefined_langcode' => 'en'], 'Add hello_world language');
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm(['predefined_langcode' => 'fr'], 'Add custom language');
+    $this->submitForm(['predefined_langcode' => 'fr'], 'Add hello_world language');
 
     $edit = [
       'modules[config_translation][enable]' => TRUE,

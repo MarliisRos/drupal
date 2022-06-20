@@ -41,7 +41,7 @@ class ImageFieldValidateTest extends ImageFieldTestBase {
    * Tests that image field validation works with other form submit handlers.
    */
   public function testFriendlyAjaxValidation() {
-    // Add a custom field to the Article content type that contains an AJAX
+    // Add a hello_world field to the Article content type that contains an AJAX
     // handler on a select field.
     $field_storage = FieldStorageConfig::create([
       'field_name' => 'field_dummy_select',

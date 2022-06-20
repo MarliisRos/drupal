@@ -55,7 +55,7 @@ class EntityFieldDefaultValueTest extends EntityKernelTestBase {
   }
 
   /**
-   * Tests custom default value callbacks.
+   * Tests hello_world default value callbacks.
    */
   public function testDefaultValueCallback() {
     $entity = $this->entityTypeManager->getStorage('entity_test_default_value')->create();

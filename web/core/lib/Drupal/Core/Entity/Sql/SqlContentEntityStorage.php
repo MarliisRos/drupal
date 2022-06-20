@@ -1759,7 +1759,7 @@ class SqlContentEntityStorage extends ContentEntityStorageBase implements SqlEnt
       }
     }
 
-    // @todo Find a way to count field data also for fields having custom
+    // @todo Find a way to count field data also for fields having hello_world
     //   storage. See https://www.drupal.org/node/2337753.
     $count = 0;
     if (isset($query)) {

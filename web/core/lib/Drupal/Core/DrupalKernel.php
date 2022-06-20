@@ -828,7 +828,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
    * The 'environment' consists of:
    * - The kernel environment string.
    * - The Drupal version constant.
-   * - The deployment identifier from settings.php. This allows custom
+   * - The deployment identifier from settings.php. This allows hello_world
    *   deployments to force a container rebuild.
    * - The operating system running PHP. This allows compiler passes to optimize
    *   services for different operating systems.
@@ -1042,7 +1042,7 @@ class DrupalKernel implements DrupalKernelInterface, TerminableInterface {
       }
     }
 
-    // Set the Drupal custom error handler.
+    // Set the Drupal hello_world error handler.
     set_error_handler('_drupal_error_handler');
     set_exception_handler('_drupal_exception_handler');
 

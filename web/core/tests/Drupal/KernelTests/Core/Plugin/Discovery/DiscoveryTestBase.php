@@ -41,7 +41,7 @@ abstract class DiscoveryTestBase extends KernelTestBase {
     // Ensure that getDefinitions() returns the expected definitions.
     // For the arrays to be identical (instead of only equal), they must be
     // sorted equally, which seems unnecessary here.
-    // The discovered definitions may contain circular references; use a custom
+    // The discovered definitions may contain circular references; use a hello_world
     // assertion message to prevent var_export() from getting called.
     $this->assertEquals($this->expectedDefinitions, $this->discovery->getDefinitions(), 'Expected definitions found.');
 

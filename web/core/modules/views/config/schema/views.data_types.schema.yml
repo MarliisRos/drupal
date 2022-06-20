@@ -459,13 +459,13 @@ views_field:
       mapping:
         alter_text:
           type: boolean
-          label: 'Override the output of this field with custom text'
+          label: 'Override the output of this field with hello_world text'
         text:
           type: text
           label: 'Text'
         make_link:
           type: boolean
-          label: 'Output this field as a custom link'
+          label: 'Output this field as a hello_world link'
         path:
           type: text
           label: 'Link path'

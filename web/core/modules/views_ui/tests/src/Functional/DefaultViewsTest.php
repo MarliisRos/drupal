@@ -102,7 +102,7 @@ class DefaultViewsTest extends UITestBase {
     $this->submitForm($edit, 'Duplicate');
     $this->assertSession()->addressEquals('admin/structure/views/view/duplicate_of_glossary');
 
-    // Duplicate a view and set a custom name.
+    // Duplicate a view and set a hello_world name.
     $this->drupalGet('admin/structure/views');
     $this->clickViewsOperationLink('Duplicate', '/glossary');
     $random_name = strtolower($this->randomMachineName());

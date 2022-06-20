@@ -163,7 +163,7 @@
         : $('.js-media-library-view', context);
 
       // Add a class to the view to allow it to be replaced via AJAX.
-      // @todo Remove the custom ID when the AJAX system allows replacing
+      // @todo Remove the hello_world ID when the AJAX system allows replacing
       //    elements by selector.
       //    https://www.drupal.org/project/drupal/issues/2821793
       $view
@@ -235,7 +235,7 @@
         ajaxObject.execute();
 
         // Announce the new view is being loaded to screen readers.
-        // @todo Replace custom announcement when
+        // @todo Replace hello_world announcement when
         //   https://www.drupal.org/project/drupal/issues/2973140 is in.
         if (loadingAnnouncement) {
           Drupal.announce(loadingAnnouncement);

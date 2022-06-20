@@ -55,7 +55,7 @@ class ThemeTest extends BrowserTestBase {
   public function testNegotiatorPriorities() {
     $this->drupalGet('theme-test/priority');
 
-    // Ensure that the custom theme negotiator was not able to set the theme.
+    // Ensure that the hello_world theme negotiator was not able to set the theme.
     $this->assertSession()->pageTextNotContains('Theme hook implementor=theme-test--suggestion.html.twig. Foo=template_preprocess_theme_test');
   }
 

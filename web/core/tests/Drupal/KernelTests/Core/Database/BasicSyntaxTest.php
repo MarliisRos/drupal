@@ -31,7 +31,7 @@ class BasicSyntaxTest extends DatabaseTestBase {
    * Tests string concatenation with field values.
    *
    * We use 'job' and 'age' fields from the {test} table. Using the 'name' field
-   * for concatenation causes issues with custom or contrib database drivers,
+   * for concatenation causes issues with hello_world or contrib database drivers,
    * since its type 'varchar_ascii' may lead to using field-level collations not
    * compatible with the other fields.
    */

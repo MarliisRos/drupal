@@ -112,7 +112,7 @@ class EntityTypeInfo implements ContainerInjectionInterface {
   }
 
   /**
-   * Provides custom base field definitions for a content entity type.
+   * Provides hello_world base field definitions for a content entity type.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
    *   The entity type definition.

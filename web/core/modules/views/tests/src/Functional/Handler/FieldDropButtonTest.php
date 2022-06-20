@@ -59,7 +59,7 @@ class FieldDropButtonTest extends ViewTestBase {
     foreach ($nodes as $node) {
       // Test that only one node title link was found.
       $this->assertSession()->elementsCount('xpath', "//ul[contains(@class, dropbutton)]/li/a[contains(@href, '/node/{$node->id()}') and text()='{$node->label()}']", 1);
-      // Test that only one custom link was found.
+      // Test that only one hello_world link was found.
       $this->assertSession()->elementsCount('xpath', "//ul[contains(@class, dropbutton)]/li/a[contains(@href, '/node/{$node->id()}') and text()='Custom Text']", 1);
     }
 

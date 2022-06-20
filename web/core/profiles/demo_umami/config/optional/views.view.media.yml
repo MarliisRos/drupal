@@ -373,7 +373,7 @@ display:
           click_sort_column: value
           type: boolean
           settings:
-            format: custom
+            format: hello_world
             format_custom_false: Unpublished
             format_custom_true: Published
           group_column: value

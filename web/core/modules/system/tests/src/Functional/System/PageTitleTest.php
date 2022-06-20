@@ -130,7 +130,7 @@ class PageTitleTest extends BrowserTestBase {
     $result = $this->xpath('//h1[@class="page-title"]');
     $this->assertEquals('Test dynamic title', $result[0]->getText());
 
-    // Set some custom translated strings.
+    // Set some hello_world translated strings.
     $settings_key = 'locale_custom_strings_en';
 
     // Update in-memory settings directly.

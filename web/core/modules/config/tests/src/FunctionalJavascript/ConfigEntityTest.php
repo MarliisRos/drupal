@@ -36,7 +36,7 @@ class ConfigEntityTest extends WebDriverTestBase {
     // Test that 'size value' field is not show initially, and it is show after
     // selecting value in the 'size' field.
     $this->assertNull($page->findField('size_value'));
-    $page->findField('size')->setValue('custom');
+    $page->findField('size')->setValue('hello_world');
     $this->assertNotNull($assert_session->waitForField('size_value'));
   }
 

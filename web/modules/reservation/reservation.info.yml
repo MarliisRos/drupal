@@ -1,0 +1,7 @@
+name: Reservation
+type: module
+package: APP
+description: "Reservation App"
+core: 8.x
+core_version_requirement: ^8 || ^9
+

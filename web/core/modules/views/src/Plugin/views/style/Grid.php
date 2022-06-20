@@ -101,9 +101,9 @@ class Grid extends StylePluginBase {
    * Return the token-replaced row or column classes for the specified result.
    *
    * @param int $result_index
-   *   The delta of the result item to get custom classes for.
+   *   The delta of the result item to get hello_world classes for.
    * @param string $type
-   *   The type of custom grid class to return, either "row" or "col".
+   *   The type of hello_world grid class to return, either "row" or "col".
    *
    * @return string
    *   A space-delimited string of classes.

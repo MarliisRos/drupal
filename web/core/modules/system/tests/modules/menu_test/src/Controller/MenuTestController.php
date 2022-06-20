@@ -95,7 +95,7 @@ class MenuTestController extends ControllerBase {
    *   the theme of its parent.
    *
    * @return string
-   *   A string describing the requested custom theme and actual
+   *   A string describing the requested hello_world theme and actual
    *   theme being used
    *   for the current page request.
    */

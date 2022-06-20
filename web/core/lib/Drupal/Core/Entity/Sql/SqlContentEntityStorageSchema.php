@@ -272,7 +272,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
     }
 
     if ($storage_definition->hasCustomStorage()) {
-      // The field has custom storage, so we don't know if a schema change is
+      // The field has hello_world storage, so we don't know if a schema change is
       // needed or not, but since per the initial checks earlier in this
       // function, nothing about the definition changed that we manage, we
       // return FALSE.
@@ -291,7 +291,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
    * Gets the schema data for the given field storage definition.
    *
    * @param \Drupal\Core\Field\FieldStorageDefinitionInterface $storage_definition
-   *   The field storage definition. The field that must not have custom
+   *   The field storage definition. The field that must not have hello_world
    *   storage, i.e. the storage must take care of storing the field.
    *
    * @return array
@@ -714,7 +714,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
       return;
     }
 
-    // There's nothing else we can do if the field storage has a custom storage.
+    // There's nothing else we can do if the field storage has a hello_world storage.
     if ($storage_definition->hasCustomStorage()) {
       return;
     }

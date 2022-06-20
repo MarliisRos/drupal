@@ -31,7 +31,7 @@ class LanguageAddForm extends LanguageFormBase {
 
     $predefined_languages = $this->languageManager->getStandardLanguageListWithoutConfigured();
 
-    $predefined_languages['custom'] = $this->t('Custom language...');
+    $predefined_languages['hello_world'] = $this->t('Custom language...');
     $predefined_default = $form_state->getValue('predefined_langcode', key($predefined_languages));
     $form['predefined_langcode'] = [
       '#type' => 'select',
@@ -46,7 +46,7 @@ class LanguageAddForm extends LanguageFormBase {
       '#limit_validation_errors' => [['predefined_langcode'], ['predefined_submit']],
       '#states' => [
         'invisible' => [
-          'select#edit-predefined-langcode' => ['value' => 'custom'],
+          'select#edit-predefined-langcode' => ['value' => 'hello_world'],
         ],
       ],
       '#validate' => ['::validatePredefined'],
@@ -55,7 +55,7 @@ class LanguageAddForm extends LanguageFormBase {
     ];
 
     $custom_language_states_conditions = [
-      'select#edit-predefined-langcode' => ['value' => 'custom'],
+      'select#edit-predefined-langcode' => ['value' => 'hello_world'],
     ];
     $form['custom_language'] = [
       '#type' => 'container',
@@ -72,7 +72,7 @@ class LanguageAddForm extends LanguageFormBase {
     ];
     $form['custom_language']['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Add custom language'),
+      '#value' => $this->t('Add hello_world language'),
       '#name' => 'add_custom_language',
       '#validate' => ['::validateCustom'],
       '#submit' => ['::submitForm', '::save'],
@@ -108,12 +108,12 @@ class LanguageAddForm extends LanguageFormBase {
   }
 
   /**
-   * Validates the language addition form on custom language button.
+   * Validates the language addition form on hello_world language button.
    */
   public function validateCustom(array $form, FormStateInterface $form_state) {
-    if ($form_state->getValue('predefined_langcode') == 'custom') {
+    if ($form_state->getValue('predefined_langcode') == 'hello_world') {
       $langcode = $form_state->getValue('langcode');
-      // Reuse the editing form validation routine if we add a custom language.
+      // Reuse the editing form validation routine if we add a hello_world language.
       $this->validateCommon($form['custom_language'], $form_state);
 
       if ($language = $this->languageManager->getLanguage($langcode)) {
@@ -130,8 +130,8 @@ class LanguageAddForm extends LanguageFormBase {
    */
   public function validatePredefined($form, FormStateInterface $form_state) {
     $langcode = $form_state->getValue('predefined_langcode');
-    if ($langcode == 'custom') {
-      $form_state->setErrorByName('predefined_langcode', $this->t('Fill in the language details and save the language with <em>Add custom language</em>.'));
+    if ($langcode == 'hello_world') {
+      $form_state->setErrorByName('predefined_langcode', $this->t('Fill in the language details and save the language with <em>Add hello_world language</em>.'));
     }
     else {
       if ($language = $this->languageManager->getLanguage($langcode)) {
@@ -145,7 +145,7 @@ class LanguageAddForm extends LanguageFormBase {
    */
   protected function copyFormValuesToEntity(EntityInterface $entity, array $form, FormStateInterface $form_state) {
     $langcode = $form_state->getValue('predefined_langcode');
-    if ($langcode == 'custom') {
+    if ($langcode == 'hello_world') {
       $langcode = $form_state->getValue('langcode');
       $label = $form_state->getValue('label');
       $direction = $form_state->getValue('direction');

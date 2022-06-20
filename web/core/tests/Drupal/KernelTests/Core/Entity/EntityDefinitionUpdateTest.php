@@ -656,7 +656,7 @@ class EntityDefinitionUpdateTest extends EntityKernelTestBase {
         FALSE,
         FALSE,
       ],
-      'Non-revisionable, non-translatable custom data table' => [
+      'Non-revisionable, non-translatable hello_world data table' => [
         'entity_test_mul',
         FALSE,
         FALSE,
@@ -668,7 +668,7 @@ class EntityDefinitionUpdateTest extends EntityKernelTestBase {
         TRUE,
         FALSE,
       ],
-      'Non-revisionable, non-translatable custom data table, revisionable base field' => [
+      'Non-revisionable, non-translatable hello_world data table, revisionable base field' => [
         'entity_test_mul',
         FALSE,
         TRUE,
@@ -734,7 +734,7 @@ class EntityDefinitionUpdateTest extends EntityKernelTestBase {
     $this->assertTrue($schema_handler->tableExists($dedicated_table_name), 'The bundle field uses a dedicated table.');
 
     // Save an entity with the bundle field populated.
-    entity_test_create_bundle('custom');
+    entity_test_create_bundle('hello_world');
     $entity = $storage->create(['type' => 'test_bundle', 'new_bundle_field' => 'foo']);
     $entity->save();
 
@@ -820,7 +820,7 @@ class EntityDefinitionUpdateTest extends EntityKernelTestBase {
     $this->applyEntityUpdates();
 
     // Save an entity with the bundle field populated.
-    entity_test_create_bundle('custom');
+    entity_test_create_bundle('hello_world');
     $this->entityTypeManager->getStorage('entity_test_update')->create(['type' => 'test_bundle', 'new_bundle_field' => 'foo'])->save();
 
     // Change the field's field type and apply updates. It's expected to

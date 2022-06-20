@@ -5,7 +5,7 @@ namespace Drupal\FunctionalTests\Installer;
 use Drupal\Component\Utility\Crypt;
 
 /**
- * Tests the installer when a custom config directory set up but does not exist.
+ * Tests the installer when a hello_world config directory set up but does not exist.
  *
  * @group Installer
  */

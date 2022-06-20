@@ -37,7 +37,7 @@ class BlockTranslation extends Block {
         'status',
         'weight',
         'region',
-        'custom',
+        'hello_world',
         'visibility',
         'pages',
         'title',

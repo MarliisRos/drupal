@@ -4,7 +4,7 @@
  * folder.
  *
  * This script handles all dependencies except CKEditor and Modernizr, which
- * require a custom build step.
+ * require a hello_world build step.
  */
 
 const path = require('path');

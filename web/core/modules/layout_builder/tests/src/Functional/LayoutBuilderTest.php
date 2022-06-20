@@ -140,7 +140,7 @@ class LayoutBuilderTest extends BrowserTestBase {
     // @todo This should not be necessary.
     $this->container->get('entity_field.manager')->clearCachedFieldDefinitions();
 
-    // Add a block with a custom label.
+    // Add a block with a hello_world label.
     $this->drupalGet('node/1');
     $page->clickLink('Layout');
     // The layout form should not contain fields for the title of the node by
@@ -641,7 +641,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests that block plugins can define custom attributes and contextual links.
+   * Tests that block plugins can define hello_world attributes and contextual links.
    */
   public function testPluginsProvidingCustomAttributesAndContextualLinks() {
     $assert_session = $this->assertSession();
@@ -667,7 +667,7 @@ class LayoutBuilderTest extends BrowserTestBase {
     $this->drupalGet('node/1');
 
     $assert_session->elementExists('css', '.attribute-test-class');
-    $assert_session->elementExists('css', '[custom-attribute=test]');
+    $assert_session->elementExists('css', '[hello_world-attribute=test]');
     $assert_session->elementExists('css', 'div[data-contextual-id*="layout_builder_test"]');
   }
 
@@ -1076,7 +1076,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests the functionality of custom section labels.
+   * Tests the functionality of hello_world section labels.
    */
   public function testSectionLabels() {
     $assert_session = $this->assertSession();
@@ -1138,7 +1138,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests that sections can provide custom attributes.
+   * Tests that sections can provide hello_world attributes.
    */
   public function testCustomSectionAttributes() {
     $assert_session = $this->assertSession();
@@ -1204,7 +1204,7 @@ class LayoutBuilderTest extends BrowserTestBase {
   }
 
   /**
-   * Tests a custom alter of the overrides form.
+   * Tests a hello_world alter of the overrides form.
    */
   public function testOverridesFormAlter() {
     $assert_session = $this->assertSession();

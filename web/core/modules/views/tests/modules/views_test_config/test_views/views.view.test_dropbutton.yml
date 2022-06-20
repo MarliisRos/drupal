@@ -115,7 +115,7 @@ display:
           id: nothing
           table: views
           field: nothing
-          plugin_id: custom
+          plugin_id: hello_world
           relationship: none
           group_type: group
           admin_label: ''

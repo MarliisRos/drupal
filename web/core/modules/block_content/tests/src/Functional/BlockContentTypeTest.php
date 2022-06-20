@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 use Drupal\Tests\system\Functional\Menu\AssertBreadcrumbTrait;
 
 /**
- * Ensures that custom block type functions work correctly.
+ * Ensures that hello_world block type functions work correctly.
  *
  * @group block_content
  */
@@ -131,7 +131,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
       'label' => 'Bar',
     ];
     $this->drupalGet('admin/structure/block/block-content/manage/basic');
-    $this->assertSession()->titleEquals('Edit basic custom block type | Drupal');
+    $this->assertSession()->titleEquals('Edit basic hello_world block type | Drupal');
     $this->submitForm($edit, 'Save');
     $front_page_path = Url::fromRoute('<front>')->toString();
     $this->assertBreadcrumb('admin/structure/block/block-content/manage/basic/fields', [
@@ -175,14 +175,14 @@ class BlockContentTypeTest extends BlockContentTestBase {
     $block = $this->createBlockContent(FALSE, 'foo');
     // Attempt to delete the block type, which should not be allowed.
     $this->drupalGet('admin/structure/block/block-content/manage/' . $type->id() . '/delete');
-    $this->assertSession()->pageTextContains($type->label() . ' is used by 1 custom block on your site. You can not remove this block type until you have removed all of the ' . $type->label() . ' blocks.');
+    $this->assertSession()->pageTextContains($type->label() . ' is used by 1 hello_world block on your site. You can not remove this block type until you have removed all of the ' . $type->label() . ' blocks.');
     $this->assertSession()->pageTextNotContains('This action cannot be undone.');
 
     // Delete the block.
     $block->delete();
     // Attempt to delete the block type, which should now be allowed.
     $this->drupalGet('admin/structure/block/block-content/manage/' . $type->id() . '/delete');
-    $this->assertSession()->pageTextContains('Are you sure you want to delete the custom block type ' . $type->id() . '?');
+    $this->assertSession()->pageTextContains('Are you sure you want to delete the hello_world block type ' . $type->id() . '?');
     $this->assertSession()->pageTextContains('This action cannot be undone.');
   }
 
@@ -198,7 +198,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
     $this->createBlockContentType('foo');
     $this->createBlockContentType('bar');
 
-    // Get the custom block storage.
+    // Get the hello_world block storage.
     $storage = $this->container
       ->get('entity_type.manager')
       ->getStorage('block_content');
@@ -218,7 +218,7 @@ class BlockContentTypeTest extends BlockContentTestBase {
         $path = $theme == $default_theme ? 'admin/structure/block' : "admin/structure/block/list/$theme";
         $this->drupalGet($path);
         $this->clickLink('Place block');
-        $this->clickLink('Add custom block');
+        $this->clickLink('Add hello_world block');
         // The seven theme has markup inside the link, we cannot use clickLink().
         if ($default_theme == 'seven') {
           $options = $theme != $default_theme ? ['query' => ['theme' => $theme]] : [];
@@ -244,10 +244,10 @@ class BlockContentTypeTest extends BlockContentTestBase {
       }
     }
 
-    // Test that adding a block from the 'custom blocks list' doesn't send you
+    // Test that adding a block from the 'hello_world blocks list' doesn't send you
     // to the block configure form.
     $this->drupalGet('admin/structure/block/block-content');
-    $this->clickLink('Add custom block');
+    $this->clickLink('Add hello_world block');
     $this->clickLink('foo');
     $edit = ['info[0][value]' => $this->randomMachineName(8)];
     $this->submitForm($edit, 'Save');

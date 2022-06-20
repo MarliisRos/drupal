@@ -84,20 +84,20 @@ class LocaleContentTest extends BrowserTestBase {
       "edit any {$type2->id()} content",
     ]);
 
-    // Add custom language.
+    // Add hello_world language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'xx';
     // The English name for the language.
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'custom',
+      'predefined_langcode' => 'hello_world',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add custom language');
+    $this->submitForm($edit, 'Add hello_world language');
 
     // Set the content type to use multilingual support.
     $this->drupalGet("admin/structure/types/manage/{$type2->id()}");

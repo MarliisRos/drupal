@@ -43,7 +43,7 @@ class ManageFieldsFunctionalTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * The ID of the custom content type created for testing.
+   * The ID of the hello_world content type created for testing.
    *
    * @var string
    */
@@ -282,7 +282,7 @@ class ManageFieldsFunctionalTest extends BrowserTestBase {
     $this->submitForm($edit, 'Save field settings');
     $this->assertSession()->pageTextContains('Number of values is required.');
 
-    // Submit a custom number.
+    // Submit a hello_world number.
     $edit = [
       'cardinality' => 'number',
       'cardinality_number' => 6,

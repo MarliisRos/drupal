@@ -152,7 +152,7 @@ class DenormalizeTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing invalid custom serialized fields.
+   * Tests normalizing/denormalizing invalid hello_world serialized fields.
    */
   public function testDenormalizeInvalidCustomSerializedField() {
     $entity = EntitySerializedField::create(['serialized_long' => serialize(['Hello world!'])]);
@@ -166,7 +166,7 @@ class DenormalizeTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing empty custom serialized fields.
+   * Tests normalizing/denormalizing empty hello_world serialized fields.
    */
   public function testDenormalizeEmptyCustomSerializedField() {
     $entity = EntitySerializedField::create(['serialized_long' => serialize([])]);
@@ -178,7 +178,7 @@ class DenormalizeTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing valid custom serialized fields.
+   * Tests normalizing/denormalizing valid hello_world serialized fields.
    */
   public function testDenormalizeValidCustomSerializedField() {
     $entity = EntitySerializedField::create(['serialized_long' => serialize(['key' => 'value'])]);

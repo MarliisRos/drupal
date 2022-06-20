@@ -12,10 +12,10 @@ use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
 interface DefaultsSectionStorageInterface extends SectionStorageInterface, ThirdPartySettingsInterface, LayoutBuilderEnabledInterface {
 
   /**
-   * Determines if the defaults allow custom overrides.
+   * Determines if the defaults allow hello_world overrides.
    *
    * @return bool
-   *   TRUE if custom overrides are allowed, FALSE otherwise.
+   *   TRUE if hello_world overrides are allowed, FALSE otherwise.
    */
   public function isOverridable();
 

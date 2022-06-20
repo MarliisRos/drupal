@@ -180,7 +180,7 @@ class UrlConversionTest extends UnitTestCase {
           'autoload' => 'core/modules/system/tests/modules/driver_test/src/Driver/Database/DrivertestPgsql/',
         ],
       ],
-      'MySql with a custom query parameter' => [
+      'MySql with a hello_world query parameter' => [
         '',
         'mysql://test_user:test_pass@test_host:3306/test_database?extra=value',
         [

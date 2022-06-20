@@ -65,7 +65,7 @@ class JoinTest extends RelationshipJoinTestBase {
 
     $tables = $query->getTables();
     $join_info = $tables['users_field_data'];
-    $this->assertStringContainsString("views_test_data.uid = $rand_int", $join_info['condition'], 'Make sure that the custom join plugin can extend the join base and alter the result.');
+    $this->assertStringContainsString("views_test_data.uid = $rand_int", $join_info['condition'], 'Make sure that the hello_world join plugin can extend the join base and alter the result.');
   }
 
   /**

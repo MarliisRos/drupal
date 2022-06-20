@@ -41,7 +41,7 @@ class EntitySchemaTest extends EntityKernelTestBase {
   }
 
   /**
-   * Tests the custom bundle field creation and deletion.
+   * Tests the hello_world bundle field creation and deletion.
    */
   public function testCustomFieldCreateDelete() {
     // Install the module which adds the field.

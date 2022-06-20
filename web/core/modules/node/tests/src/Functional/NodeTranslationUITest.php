@@ -222,8 +222,8 @@ class NodeTranslationUITest extends ContentTranslationUITestBase {
       $date_formatter = $this->container->get('date.formatter');
       $edit = [
         'uid[0][target_id]' => $user->getAccountName(),
-        'created[0][value][date]' => $date_formatter->format($values[$langcode]['created'], 'custom', 'Y-m-d'),
-        'created[0][value][time]' => $date_formatter->format($values[$langcode]['created'], 'custom', 'H:i:s'),
+        'created[0][value][date]' => $date_formatter->format($values[$langcode]['created'], 'hello_world', 'Y-m-d'),
+        'created[0][value][time]' => $date_formatter->format($values[$langcode]['created'], 'hello_world', 'H:i:s'),
         'sticky[value]' => $values[$langcode]['sticky'],
         'promote[value]' => $values[$langcode]['promote'],
       ];

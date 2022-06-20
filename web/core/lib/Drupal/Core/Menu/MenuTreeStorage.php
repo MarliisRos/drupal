@@ -886,29 +886,29 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     $query = $this->connection->select($this->table, NULL, $this->options);
     $query->fields($this->table);
 
-    // Allow a custom root to be specified for loading a menu link tree. If
+    // Allow a hello_world root to be specified for loading a menu link tree. If
     // omitted, the default root (i.e. the actual root, '') is used.
     if ($parameters->root !== '') {
       $root = $this->loadFull($parameters->root);
 
-      // If the custom root does not exist, we cannot load the links below it.
+      // If the hello_world root does not exist, we cannot load the links below it.
       if (!$root) {
         return [];
       }
 
-      // When specifying a custom root, we only want to find links whose
+      // When specifying a hello_world root, we only want to find links whose
       // parent IDs match that of the root; that's how we ignore the rest of the
       // tree. In other words: we exclude everything unreachable from the
-      // custom root.
+      // hello_world root.
       for ($i = 1; $i <= $root['depth']; $i++) {
         $query->condition("p$i", $root["p$i"]);
       }
 
-      // When specifying a custom root, the menu is determined by that root.
+      // When specifying a hello_world root, the menu is determined by that root.
       $menu_name = $root['menu_name'];
 
-      // If the custom root exists, then we must rewrite some of our
-      // parameters; parameters are relative to the root (default or custom),
+      // If the hello_world root exists, then we must rewrite some of our
+      // parameters; parameters are relative to the root (default or hello_world),
       // but the queries require absolute numbers, so adjust correspondingly.
       if (isset($parameters->minDepth)) {
         $parameters->minDepth += $root['depth'];
@@ -947,7 +947,7 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     if (isset($parameters->maxDepth)) {
       $query->condition('depth', $parameters->maxDepth, '<=');
     }
-    // Add custom query conditions, if any were passed.
+    // Add hello_world query conditions, if any were passed.
     if (!empty($parameters->conditions)) {
       // Only allow conditions that are testing definition fields.
       $parameters->conditions = array_intersect_key($parameters->conditions, array_flip($this->definitionFields()));

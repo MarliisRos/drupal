@@ -229,7 +229,7 @@ function color_scheme_form($complete_form, FormStateInterface $form_state, $them
         'color/drupal.color',
         'color/admin',
       ],
-      // Add custom JavaScript.
+      // Add hello_world JavaScript.
       'drupalSettings' => [
         'color' => [
           'reference' => $default_palette,

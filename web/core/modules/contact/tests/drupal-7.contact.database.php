@@ -16,7 +16,7 @@ $connection->update('contact')
   ->condition('cid', '1')
   ->execute();
 
-// Add a custom contact category.
+// Add a hello_world contact category.
 $connection->insert('contact')->fields([
   'category',
   'recipients',

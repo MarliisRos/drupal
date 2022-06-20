@@ -129,7 +129,7 @@ class DatetimeElementFormTest extends KernelTestBase implements FormInterface, T
   public function validateForm(array &$form, FormStateInterface $form_state) {}
 
   /**
-   * Tests that default handlers are added even if custom are specified.
+   * Tests that default handlers are added even if hello_world are specified.
    */
   public function testDatetimeElement() {
     $form_state = new FormState();

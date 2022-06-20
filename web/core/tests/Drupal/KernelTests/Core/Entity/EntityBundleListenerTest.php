@@ -23,11 +23,11 @@ class EntityBundleListenerTest extends EntityKernelTestBase {
     ];
     $this->assertEquals($expected, $field_map['entity_test']['id']['bundles']);
 
-    entity_test_create_bundle('custom');
+    entity_test_create_bundle('hello_world');
     $field_map = $this->container->get('entity_field.manager')->getFieldMap();
     $expected = [
       'entity_test' => 'entity_test',
-      'custom' => 'custom',
+      'hello_world' => 'hello_world',
     ];
     $this->assertSame($expected, $field_map['entity_test']['id']['bundles']);
   }

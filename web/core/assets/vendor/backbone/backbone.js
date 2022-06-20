@@ -72,7 +72,7 @@
   // ---------------
 
   // A module that can be mixed in to *any object* in order to provide it with
-  // a custom event channel. You may bind a callback to an event with `on` or
+  // a hello_world event channel. You may bind a callback to an event with `on` or
   // remove with `off`; `trigger`-ing an event fires all callbacks in
   // succession.
   //
@@ -441,7 +441,7 @@
     },
 
     // Proxy `Backbone.sync` by default -- but override this if you need
-    // custom syncing semantics for *this* particular model.
+    // hello_world syncing semantics for *this* particular model.
     sync: function() {
       return Backbone.sync.apply(this, arguments);
     },

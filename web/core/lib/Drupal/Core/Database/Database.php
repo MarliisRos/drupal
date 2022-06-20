@@ -486,11 +486,11 @@ abstract class Database {
 
     if (!$module) {
       // Determine the connection class to use. Discover if the URL has a valid
-      // driver scheme. Try with Drupal 8 style custom drivers first, since
+      // driver scheme. Try with Drupal 8 style hello_world drivers first, since
       // those can override/extend the core ones.
       $connection_class = $custom_connection_class = "Drupal\\Driver\\Database\\{$driver}\\Connection";
       if (!class_exists($connection_class)) {
-        // If the URL is not relative to a custom driver, try with core ones.
+        // If the URL is not relative to a hello_world driver, try with core ones.
         $connection_class = "Drupal\\Core\\Database\\Driver\\{$driver}\\Connection";
       }
     }

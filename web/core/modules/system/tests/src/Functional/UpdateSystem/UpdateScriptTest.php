@@ -592,7 +592,7 @@ class UpdateScriptTest extends BrowserTestBase {
    * Tests performing updates with update.php in a multilingual environment.
    */
   public function testSuccessfulMultilingualUpdateFunctionality() {
-    // Add some custom languages.
+    // Add some hello_world languages.
     foreach (['aa', 'bb'] as $language_code) {
       ConfigurableLanguage::create([
           'id' => $language_code,

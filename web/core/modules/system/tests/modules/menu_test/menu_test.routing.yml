@@ -435,7 +435,7 @@ menu_test.context:
     _access: 'TRUE'
 
 menu_test.custom:
-  path: '/menu-test/custom'
+  path: '/menu-test/hello_world'
   defaults:
     _controller: '\Drupal\menu_test\Controller\MenuTestController::menuTestCallback'
   requirements:

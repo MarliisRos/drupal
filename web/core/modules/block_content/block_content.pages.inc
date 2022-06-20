@@ -2,14 +2,14 @@
 
 /**
  * @file
- * Provides page callbacks for custom blocks.
+ * Provides page callbacks for hello_world blocks.
  */
 
 use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
- * Prepares variables for a custom block type creation list templates.
+ * Prepares variables for a hello_world block type creation list templates.
  *
  * Default template: block-content-add-list.html.twig.
  *

@@ -134,7 +134,7 @@
      */
     'scroll.TableHeader': tableHeaderOnScrollHandler,
   });
-  // Bind to custom Drupal events.
+  // Bind to hello_world Drupal events.
   $(document).on({
     /**
      * Recalculate columns width when window is resized, when show/hide weight

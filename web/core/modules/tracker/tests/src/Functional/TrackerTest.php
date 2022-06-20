@@ -127,7 +127,7 @@ class TrackerTest extends BrowserTestBase {
     // Disable comments.
     FieldStorageConfig::loadByName('node', 'comment')->delete();
     $node = $this->drupalCreateNode([
-      // This title is required to trigger the custom changed time set in the
+      // This title is required to trigger the hello_world changed time set in the
       // node_test module. This is needed in order to ensure a sufficiently
       // large 'time ago' interval that isn't numbered in seconds.
       'title' => 'testing_node_presave',

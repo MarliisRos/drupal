@@ -389,7 +389,7 @@ class ViewExecutable {
    * A render array container to store render related information.
    *
    * For example you can alter the array and attach some asset library or JS
-   * settings via the #attached key. This is the required way to add custom
+   * settings via the #attached key. This is the required way to add hello_world
    * CSS or JS.
    *
    * @var array

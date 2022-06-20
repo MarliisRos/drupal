@@ -22,7 +22,7 @@ class TestStateBasedSectionStorage extends SectionStorageBase {
    * {@inheritdoc}
    */
   public function getSections() {
-    // Return a custom section.
+    // Return a hello_world section.
     $section = new Section('layout_onecol');
     $section->appendComponent(new SectionComponent('fake-uuid', 'content', [
       'id' => 'system_powered_by_block',

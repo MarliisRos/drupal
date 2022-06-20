@@ -36,7 +36,7 @@ trait BlockCreationTrait {
    *   The block entity.
    *
    * @todo
-   *   Add support for creating custom block instances.
+   *   Add support for creating hello_world block instances.
    */
   protected function placeBlock($plugin_id, array $settings = []) {
     $config = \Drupal::configFactory();

@@ -330,7 +330,7 @@ class ConfigEntityTest extends BrowserTestBase {
     $edit = [
       'id' => $id,
       'label' => $this->randomString(),
-      'size' => 'custom',
+      'size' => 'hello_world',
     ];
 
     $this->assertSession()->fieldExists('size');
@@ -346,7 +346,7 @@ class ConfigEntityTest extends BrowserTestBase {
     $this->submitForm($edit, 'Save');
 
     $entity = $storage->load($id);
-    $this->assertEquals('custom', $entity->get('size'));
+    $this->assertEquals('hello_world', $entity->get('size'));
     $this->assertEquals('medium', $entity->get('size_value'));
   }
 

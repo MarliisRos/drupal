@@ -210,7 +210,7 @@ class BlockTest extends BlockTestBase {
     $block['theme'] = $this->config('system.theme')->get('default');
     $block['region'] = 'header';
 
-    // Set block title to confirm that interface works and override any custom titles.
+    // Set block title to confirm that interface works and override any hello_world titles.
     $this->drupalGet('admin/structure/block/add/' . $block['id'] . '/' . $block['theme']);
     $this->submitForm([
       'settings[label]' => $block['settings[label]'],
@@ -371,7 +371,7 @@ class BlockTest extends BlockTestBase {
     $this->drupalGet('');
     $this->assertSession()->pageTextContains($block['settings[label]']);
 
-    // Confirm that the custom block was found at the proper region.
+    // Confirm that the hello_world block was found at the proper region.
     $xpath = $this->assertSession()->buildXPathQuery('//div[@class=:region-class]//div[@id=:block-id]/*', [
       ':region-class' => 'region region-' . Html::getClass($region),
       ':block-id' => 'block-' . str_replace('_', '-', strtolower($block['id'])),

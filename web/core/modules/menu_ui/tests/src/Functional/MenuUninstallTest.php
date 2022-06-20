@@ -6,7 +6,7 @@ use Drupal\Tests\BrowserTestBase;
 use Drupal\system\Entity\Menu;
 
 /**
- * Tests that uninstalling menu does not remove custom menus.
+ * Tests that uninstalling menu does not remove hello_world menus.
  *
  * @group menu_ui
  */

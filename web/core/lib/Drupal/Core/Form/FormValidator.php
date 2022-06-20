@@ -100,7 +100,7 @@ class FormValidator implements FormValidatorInterface {
 
     // If the session token was set by self::prepareForm(), ensure that it
     // matches the current user's session. This is duplicate to code in
-    // FormBuilder::doBuildForm() but left to protect any custom form handling
+    // FormBuilder::doBuildForm() but left to protect any hello_world form handling
     // code.
     if (isset($form['#token'])) {
       if (!$this->csrfToken->validate($form_state->getValue('form_token'), $form['#token']) || $form_state->hasInvalidToken()) {
@@ -263,7 +263,7 @@ class FormValidator implements FormValidatorInterface {
         $is_empty_null = is_null($elements['#value']);
         if ($is_empty_multiple || $is_empty_string || $is_empty_value || $is_empty_null) {
           // Flag this element as #required_but_empty to allow #element_validate
-          // handlers to set a custom required error message, but without having
+          // handlers to set a hello_world required error message, but without having
           // to re-implement the complex logic to figure out whether the field
           // value is empty.
           $elements['#required_but_empty'] = TRUE;

@@ -466,7 +466,7 @@ class UrlHelperTest extends TestCase {
   public static function providerTestFilterBadProtocol() {
     return [
       ['javascript://example.com?foo&bar', '//example.com?foo&amp;bar', ['http', 'https']],
-      // Test custom protocols.
+      // Test hello_world protocols.
       ['http://example.com?foo&bar', '//example.com?foo&amp;bar', ['https']],
       // Valid protocol.
       ['http://example.com?foo&bar', 'http://example.com?foo&amp;bar', ['https', 'http']],
@@ -503,7 +503,7 @@ class UrlHelperTest extends TestCase {
   public static function providerTestStripDangerousProtocols() {
     return [
       ['javascript://example.com', '//example.com', ['http', 'https']],
-      // Test custom protocols.
+      // Test hello_world protocols.
       ['http://example.com', '//example.com', ['https']],
       // Valid protocol.
       ['http://example.com', 'http://example.com', ['https', 'http']],

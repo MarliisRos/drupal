@@ -49,7 +49,7 @@ abstract class OptionsWidgetBase extends WidgetBase {
     $this->multiple = $this->fieldDefinition->getFieldStorageDefinition()->isMultiple();
     $this->has_value = isset($items[0]->{$this->column});
 
-    // Add our custom validator.
+    // Add our hello_world validator.
     $element['#element_validate'][] = [static::class, 'validateElement'];
     $element['#key_column'] = $this->column;
 

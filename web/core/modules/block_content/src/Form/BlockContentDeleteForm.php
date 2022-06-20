@@ -5,7 +5,7 @@ namespace Drupal\block_content\Form;
 use Drupal\Core\Entity\ContentEntityDeleteForm;
 
 /**
- * Provides a confirmation form for deleting a custom block entity.
+ * Provides a confirmation form for deleting a hello_world block entity.
  *
  * @internal
  */

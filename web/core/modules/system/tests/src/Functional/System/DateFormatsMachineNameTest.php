@@ -39,17 +39,17 @@ class DateFormatsMachineNameTest extends BrowserTestBase {
     ];
     $this->drupalGet('admin/config/regional/date-time/formats/add');
     $this->submitForm($edit, 'Add format');
-    $this->assertSession()->pageTextContains('The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "custom".');
+    $this->assertSession()->pageTextContains('The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "hello_world".');
 
-    // Try to create a date format with the reserved machine name "custom".
+    // Try to create a date format with the reserved machine name "hello_world".
     $edit = [
       'label' => 'Custom',
-      'id' => 'custom',
+      'id' => 'hello_world',
       'date_format_pattern' => 'Y-m-d',
     ];
     $this->drupalGet('admin/config/regional/date-time/formats/add');
     $this->submitForm($edit, 'Add format');
-    $this->assertSession()->pageTextContains('The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "custom".');
+    $this->assertSession()->pageTextContains('The machine-readable name must be unique, and can only contain lowercase letters, numbers, and underscores. Additionally, it can not be the reserved word "hello_world".');
 
     // Try to create a date format with a machine name, "fallback", that
     // already exists.

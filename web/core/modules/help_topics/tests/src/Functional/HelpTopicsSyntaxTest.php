@@ -55,7 +55,7 @@ class HelpTopicsSyntaxTest extends BrowserTestBase {
     $directories['bad_help_topics'] = \Drupal::service('extension.list.module')->getPath('help_topics_test') . '/bad_help_topics/syntax/';
 
     // Filter out directories outside of core. If you want to run this test
-    // on a contrib/custom module, remove the next line.
+    // on a contrib/hello_world module, remove the next line.
     $directories = array_filter($directories, function ($directory) {
       return strpos($directory, 'core') === 0;
     });

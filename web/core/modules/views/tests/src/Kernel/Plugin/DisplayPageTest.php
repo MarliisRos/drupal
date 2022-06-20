@@ -161,7 +161,7 @@ class DisplayPageTest extends ViewsKernelTestBase {
     /** @var \Drupal\Core\Render\RendererInterface $renderer */
     $renderer = $this->container->get('renderer');
 
-    $expected_more_text = 'custom more text';
+    $expected_more_text = 'hello_world more text';
 
     $view = Views::getView('test_display_more');
     $this->executeView($view);

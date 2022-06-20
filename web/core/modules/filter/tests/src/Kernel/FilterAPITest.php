@@ -410,7 +410,7 @@ class FilterAPITest extends EntityKernelTestBase {
     $filters = $this->config('filter.format.crazy')->get('filters');
     $this->assertEquals(['filter_html_escape', 'filter_html'], array_keys($filters));
 
-    // Disable a plugin to ensure that disabled plugins with custom settings are
+    // Disable a plugin to ensure that disabled plugins with hello_world settings are
     // stored in configuration.
     $crazy_format->setFilterConfig('filter_html_escape', ['status' => FALSE]);
     $crazy_format->save();
@@ -462,7 +462,7 @@ class FilterAPITest extends EntityKernelTestBase {
     $filter_format = FilterFormat::load('filtered_html');
 
     // Disable the filter_test_restrict_tags_and_attributes filter plugin but
-    // have custom configuration so that the filter plugin is still configured
+    // have hello_world configuration so that the filter plugin is still configured
     // in filtered_html the filter format.
     $filter_config = [
       'weight' => 20,

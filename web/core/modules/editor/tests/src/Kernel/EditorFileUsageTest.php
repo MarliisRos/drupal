@@ -268,7 +268,7 @@ class EditorFileUsageTest extends EntityKernelTestBase {
       $this->assertSame(['editor' => ['node' => [1 => '1']]], $file_usage->listUsage($image_entity), 'The image ' . $image_paths[$key] . ' has 1 usage.');
     }
 
-    // Set the field of a custom field type that is a subclass of
+    // Set the field of a hello_world field type that is a subclass of
     // Drupal\text\Plugin\Field\FieldType\TextItemBase. The number of usages
     // should increase by one.
     foreach ($original_values as $key => $original_value) {

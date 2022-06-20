@@ -127,7 +127,7 @@ class MetadataGeneratorTest extends QuickEditTestBase {
   }
 
   /**
-   * Tests a field whose associated in-place editor generates custom metadata.
+   * Tests a field whose associated in-place editor generates hello_world metadata.
    */
   public function testEditorWithCustomMetadata() {
     $this->editorManager = $this->container->get('plugin.manager.quickedit.editor');
@@ -183,11 +183,11 @@ class MetadataGeneratorTest extends QuickEditTestBase {
       'access' => TRUE,
       'label' => 'Rich text field',
       'editor' => 'wysiwyg',
-      'custom' => [
+      'hello_world' => [
         'format' => 'full_html',
       ],
     ];
-    $this->assertEquals($expected, $metadata, 'The correct metadata (including custom metadata) is generated.');
+    $this->assertEquals($expected, $metadata, 'The correct metadata (including hello_world metadata) is generated.');
   }
 
 }

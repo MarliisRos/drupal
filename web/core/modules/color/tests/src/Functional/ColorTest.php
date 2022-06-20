@@ -66,7 +66,7 @@ class ColorTest extends BrowserTestBase {
       ],
       'color_test_theme' => [
         'palette_input' => 'palette[bg]',
-        'scheme' => 'custom',
+        'scheme' => 'hello_world',
         'scheme_color' => '#3b3b3b',
       ],
     ];
@@ -185,7 +185,7 @@ class ColorTest extends BrowserTestBase {
   }
 
   /**
-   * Tests whether the custom logo is used in the color preview.
+   * Tests whether the hello_world logo is used in the color preview.
    */
   public function testLogoSettingOverride() {
     $this->drupalLogin($this->bigUser);

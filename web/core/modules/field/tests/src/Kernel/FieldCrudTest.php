@@ -195,7 +195,7 @@ class FieldCrudTest extends FieldKernelTestBase {
   }
 
   /**
-   * Tests creating a field with custom storage set.
+   * Tests creating a field with hello_world storage set.
    */
   public function testCreateFieldCustomStorage() {
     $field_name = mb_strtolower($this->randomMachineName());
@@ -221,7 +221,7 @@ class FieldCrudTest extends FieldKernelTestBase {
     // Check that no table has been created for the field.
     $this->assertFalse(\Drupal::database()->schema()->tableExists('entity_test__' . $field_storage->getName()));
 
-    // Save an entity with a value in the custom storage field and verify no
+    // Save an entity with a value in the hello_world storage field and verify no
     // data is retrieved on load.
     $entity = EntityTest::create(['name' => $this->randomString(), $field_name => 'Test value']);
     $this->assertSame('Test value', $entity->{$field_name}->value, 'The test value is set on the field.');

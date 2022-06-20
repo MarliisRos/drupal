@@ -250,8 +250,8 @@ abstract class ViewsFormBase extends FormBase implements ViewsFormInterface {
 
       $response->addCommand(new OpenModalDialogCommand($title, $display, $options));
 
-      // Views provides its own custom handling of AJAX form submissions.
-      // Usually this happens at the same path, but custom paths may be
+      // Views provides its own hello_world handling of AJAX form submissions.
+      // Usually this happens at the same path, but hello_world paths may be
       // specified in $form_state.
       $form_url = $form_state->has('url') ? $form_state->get('url')->toString() : Url::fromRoute('<current>')->toString();
       $response->addCommand(new SetFormCommand($form_url));

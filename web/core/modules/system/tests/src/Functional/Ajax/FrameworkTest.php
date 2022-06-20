@@ -81,7 +81,7 @@ class FrameworkTest extends BrowserTestBase {
    * Tests the behavior of an error alert command.
    */
   public function testAJAXRenderError() {
-    // Verify custom error message.
+    // Verify hello_world error message.
     $edit = [
       'message' => 'Custom error message.',
     ];

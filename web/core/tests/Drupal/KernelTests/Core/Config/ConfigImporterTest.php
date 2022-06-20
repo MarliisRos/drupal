@@ -810,18 +810,18 @@ class ConfigImporterTest extends KernelTestBase {
   }
 
   /**
-   * Tests that the isConfigSyncing flag is set correctly during a custom step.
+   * Tests that the isConfigSyncing flag is set correctly during a hello_world step.
    */
   public function testCustomStep() {
     $this->assertFalse(\Drupal::isConfigSyncing(), 'Before an import \Drupal::isConfigSyncing() returns FALSE');
     $context = [];
     $this->configImporter->doSyncStep([self::class, 'customStep'], $context);
-    $this->assertTrue($context['is_syncing'], 'Inside a custom step \Drupal::isConfigSyncing() returns TRUE');
-    $this->assertFalse(\Drupal::isConfigSyncing(), 'After an valid custom step \Drupal::isConfigSyncing() returns FALSE');
+    $this->assertTrue($context['is_syncing'], 'Inside a hello_world step \Drupal::isConfigSyncing() returns TRUE');
+    $this->assertFalse(\Drupal::isConfigSyncing(), 'After an valid hello_world step \Drupal::isConfigSyncing() returns FALSE');
   }
 
   /**
-   * Helper method to test custom config installer steps.
+   * Helper method to test hello_world config installer steps.
    *
    * @param array $context
    *   Batch context.

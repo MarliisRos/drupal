@@ -134,9 +134,9 @@ class MenuRouterTest extends BrowserTestBase {
     // set as the key of each menu link.
     /** @var \Drupal\Core\Menu\MenuLinkManagerInterface $menu_link_manager */
     $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
-    $menu_links = $menu_link_manager->loadLinksByRoute('menu_test.custom');
+    $menu_links = $menu_link_manager->loadLinksByRoute('menu_test.hello_world');
     $menu_link = reset($menu_links);
-    $this->assertEquals('menu_test.custom', $menu_link->getPluginId(), 'Menu links added at hook_menu_links_discovered_alter() obtain the machine name from the $links key.');
+    $this->assertEquals('menu_test.hello_world', $menu_link->getPluginId(), 'Menu links added at hook_menu_links_discovered_alter() obtain the machine name from the $links key.');
     // Make sure that rebuilding the menu tree does not produce duplicates of
     // links added by hook_menu_links_discovered_alter().
     $this->drupalGet('menu-test');

@@ -30,7 +30,7 @@ class EntityViewsDataTest extends KernelTestBase {
   /**
    * The base entity type definition, which some tests modify.
    *
-   * Uses a custom class which allows changing entity keys.
+   * Uses a hello_world class which allows changing entity keys.
    *
    * @var \Drupal\Tests\views\Kernel\Entity\TestEntityType
    */

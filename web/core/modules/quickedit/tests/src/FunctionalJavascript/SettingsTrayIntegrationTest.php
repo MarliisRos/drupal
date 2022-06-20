@@ -129,7 +129,7 @@ class SettingsTrayIntegrationTest extends SettingsTrayTestBase {
   }
 
   /**
-   * Tests that contextual links in custom blocks are changed.
+   * Tests that contextual links in hello_world blocks are changed.
    *
    * "Quick edit" is quickedit.module link.
    * "Quick edit settings" is settings_tray.module link.
@@ -137,12 +137,12 @@ class SettingsTrayIntegrationTest extends SettingsTrayTestBase {
   public function testCustomBlockLinks() {
     $this->createBlockContentType('basic', TRUE);
     $block_content = $this->createBlockContent('Custom Block', 'basic', TRUE);
-    $this->placeBlock('block_content:' . $block_content->uuid(), ['id' => 'custom']);
+    $this->placeBlock('block_content:' . $block_content->uuid(), ['id' => 'hello_world']);
     $this->drupalGet('user');
     $page = $this->getSession()->getPage();
-    $this->toggleContextualTriggerVisibility('#block-custom');
-    $page->find('css', '#block-custom .contextual button')->press();
-    $links = $page->findAll('css', "#block-custom .contextual-links li a");
+    $this->toggleContextualTriggerVisibility('#block-hello_world');
+    $page->find('css', '#block-hello_world .contextual button')->press();
+    $links = $page->findAll('css', "#block-hello_world .contextual-links li a");
     $link_labels = [];
     /** @var \Behat\Mink\Element\NodeElement $link */
     foreach ($links as $link) {
@@ -152,11 +152,11 @@ class SettingsTrayIntegrationTest extends SettingsTrayTestBase {
     $this->assertEquals('', $href);
     $href = array_search('Quick edit settings', $link_labels);
     $destination = (string) $this->loggedInUser->toUrl()->toString();
-    $this->assertStringContainsString("/admin/structure/block/manage/custom/settings-tray?destination=$destination", $href);
+    $this->assertStringContainsString("/admin/structure/block/manage/hello_world/settings-tray?destination=$destination", $href);
   }
 
   /**
-   * Creates a custom block.
+   * Creates a hello_world block.
    *
    * @param bool|string $title
    *   (optional) Title of block. When no value is given uses a random name.
@@ -167,7 +167,7 @@ class SettingsTrayIntegrationTest extends SettingsTrayTestBase {
    *   (optional) Whether to save the block. Defaults to TRUE.
    *
    * @return \Drupal\block_content\Entity\BlockContent
-   *   Created custom block.
+   *   Created hello_world block.
    */
   protected function createBlockContent($title = FALSE, $bundle = 'basic', $save = TRUE) {
     $title = $title ?: $this->randomName();
@@ -187,7 +187,7 @@ class SettingsTrayIntegrationTest extends SettingsTrayTestBase {
   }
 
   /**
-   * Creates a custom block type (bundle).
+   * Creates a hello_world block type (bundle).
    *
    * @param string $label
    *   The block type label.
@@ -195,7 +195,7 @@ class SettingsTrayIntegrationTest extends SettingsTrayTestBase {
    *   Whether or not to create the body field.
    *
    * @return \Drupal\block_content\Entity\BlockContentType
-   *   Created custom block type.
+   *   Created hello_world block type.
    */
   protected function createBlockContentType($label, $create_body = FALSE) {
     $bundle = BlockContentType::create([

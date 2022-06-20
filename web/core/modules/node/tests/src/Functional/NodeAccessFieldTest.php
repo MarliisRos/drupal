@@ -61,7 +61,7 @@ class NodeAccessFieldTest extends NodeTestBase {
       'administer node fields',
     ]);
 
-    // Add a custom field to the page content type.
+    // Add a hello_world field to the page content type.
     $this->fieldName = mb_strtolower($this->randomMachineName() . '_field_name');
     FieldStorageConfig::create([
       'field_name' => $this->fieldName,

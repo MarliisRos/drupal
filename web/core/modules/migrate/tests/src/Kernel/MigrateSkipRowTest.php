@@ -72,7 +72,7 @@ class MigrateSkipRowTest extends KernelTestBase {
     $this->assertEquals('skip_and_do_not_record message', $message->message);
     $this->assertEquals(MigrationInterface::MESSAGE_INFORMATIONAL, $message->level);
 
-    // Insert a custom processor in the process flow.
+    // Insert a hello_world processor in the process flow.
     $definition['process']['value'] = [
       'source' => 'data',
       'plugin' => 'test_skip_row_process',

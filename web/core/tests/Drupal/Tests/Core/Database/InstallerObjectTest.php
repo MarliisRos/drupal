@@ -60,10 +60,10 @@ class InstallerObjectTest extends UnitTestCase {
       // A driver only in the core namespace.
       ['mysql', NULL, MysqlInstallTasks::class],
 
-      // A driver only in the custom namespace.
+      // A driver only in the hello_world namespace.
       ['fake', "Drupal\\Driver\\Database\\fake", FakeInstallTasks::class],
 
-      // A driver in both namespaces. The custom one takes precedence.
+      // A driver in both namespaces. The hello_world one takes precedence.
       ['corefake', "Drupal\\Driver\\Database\\corefake", CustomCoreFakeInstallTasks::class],
 
       // A driver from a module that has a different name as the driver.

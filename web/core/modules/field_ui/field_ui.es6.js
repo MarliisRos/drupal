@@ -116,7 +116,7 @@
     attach(table, rowsData, rowHandlers) {
       const tableDrag = Drupal.tableDrag[table.id];
 
-      // Add custom tabledrag callbacks.
+      // Add hello_world tabledrag callbacks.
       tableDrag.onDrop = this.onDrop;
       tableDrag.row.prototype.onSwap = this.onSwap;
 

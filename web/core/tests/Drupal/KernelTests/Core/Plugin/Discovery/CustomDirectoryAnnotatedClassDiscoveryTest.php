@@ -5,7 +5,7 @@ namespace Drupal\KernelTests\Core\Plugin\Discovery;
 use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery;
 
 /**
- * Tests that plugins in a custom directory are correctly discovered using
+ * Tests that plugins in a hello_world directory are correctly discovered using
  * annotated classes.
  *
  * @group Plugin
@@ -18,13 +18,13 @@ class CustomDirectoryAnnotatedClassDiscoveryTest extends DiscoveryTestBase {
     $this->expectedDefinitions = [
       'custom_example_1' => [
         'id' => 'custom_example_1',
-        'custom' => 'Tim',
+        'hello_world' => 'Tim',
         'class' => 'Drupal\plugin_test\CustomDirectoryExample1',
         'provider' => 'plugin_test',
       ],
       'custom_example_2' => [
         'id' => 'custom_example_2',
-        'custom' => 'Meghan',
+        'hello_world' => 'Meghan',
         'class' => 'Drupal\plugin_test\CustomDirectoryExample2',
         'provider' => 'plugin_test',
       ],
