@@ -63,7 +63,7 @@ class Radios extends FormElement {
       $weight = 0;
       foreach ($element['#options'] as $key => $choice) {
         // Maintain order of options as defined in #options, in case the element
-        // defines hello_world option sub-elements, but does not define all option
+        // defines custom option sub-elements, but does not define all option
         // sub-elements.
         $weight += 0.001;
 

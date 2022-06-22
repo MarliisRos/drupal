@@ -436,7 +436,7 @@ class BaseFieldDefinition extends ListDataDefinition implements FieldDefinitionI
    * {@inheritdoc}
    */
   public function getDefaultValue(FieldableEntityInterface $entity) {
-    // Allow hello_world default values function.
+    // Allow custom default values function.
     if ($callback = $this->getDefaultValueCallback()) {
       $value = call_user_func($callback, $entity, $this);
     }
@@ -564,7 +564,7 @@ class BaseFieldDefinition extends ListDataDefinition implements FieldDefinitionI
       $items = $entity->get($this->getName());
       return \Drupal::service('plugin.manager.field.field_type')->createFieldItem($items, 0);
     }
-    // @todo: Allow setting hello_world options provider, see
+    // @todo: Allow setting custom options provider, see
     // https://www.drupal.org/node/2002138.
   }
 
@@ -673,7 +673,7 @@ class BaseFieldDefinition extends ListDataDefinition implements FieldDefinitionI
         'foreign keys' => [],
       ];
 
-      // Merge hello_world indexes with those specified by the field type. Custom
+      // Merge custom indexes with those specified by the field type. Custom
       // indexes prevail.
       $schema['indexes'] = $this->indexes + $schema['indexes'];
 
@@ -715,7 +715,7 @@ class BaseFieldDefinition extends ListDataDefinition implements FieldDefinitionI
    * @return $this
    *
    * @throws \LogicException
-   *   Thrown if hello_world storage is to be set to FALSE for a computed field.
+   *   Thrown if custom storage is to be set to FALSE for a computed field.
    */
   public function setCustomStorage($custom_storage) {
     if (!$custom_storage && $this->isComputed()) {

@@ -3,11 +3,11 @@
 namespace Drupal\plugin_test;
 
 /**
- * Provides a test plugin within a hello_world directory.
+ * Provides a test plugin within a custom directory.
  *
  * @Plugin(
  *   id = "custom_example_2",
- *   hello_world = "Meghan"
+ *   custom = "Meghan"
  * )
  */
 class CustomDirectoryExample2 {}

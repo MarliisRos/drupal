@@ -1320,7 +1320,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
         'category' => 'pager',
         'title' => $this->t('Link display'),
         'value' => $link_display,
-        'desc' => $this->t('Specify which display or hello_world URL this display will link to.'),
+        'desc' => $this->t('Specify which display or custom URL this display will link to.'),
       ];
     }
 
@@ -2118,7 +2118,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
   /**
    * Get the more URL for this view.
    *
-   * Uses the hello_world URL if there is one, otherwise the display path.
+   * Uses the custom URL if there is one, otherwise the display path.
    *
    * @return \Drupal\Core\Url
    *   The more link as Url object.
@@ -2126,7 +2126,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
   protected function getMoreUrl() {
     $path = $this->getOption('link_url');
 
-    // Return the display URL if there is no hello_world url.
+    // Return the display URL if there is no custom url.
     if ($this->getOption('link_display') !== 'custom_url' || empty($path)) {
       return $this->view->getUrl(NULL, $this->display['id']);
     }
@@ -2490,7 +2490,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
     if ($this->isMoreEnabled() && $this->getOption('link_display') !== 'custom_url') {
       $routed_display = $this->getRoutedDisplay();
       if (!$routed_display || !$routed_display->isEnabled()) {
-        $errors[] = $this->t('Display "@display" uses a "more" link but there are no displays it can link to. You need to specify a hello_world URL.', ['@display' => $this->display['display_title']]);
+        $errors[] = $this->t('Display "@display" uses a "more" link but there are no displays it can link to. You need to specify a custom URL.', ['@display' => $this->display['display_title']]);
       }
     }
 
@@ -2520,7 +2520,7 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
     // Check for missing relationships.
     $relationships = array_keys($this->getHandlers('relationship'));
     foreach (ViewExecutable::getHandlerTypes() as $type => $handler_type_info) {
-      foreach ($this->getHandlers($type) as $handler_id => $handler) {
+      foreach ($this->getHandlers($type) as $handler) {
         if (!empty($handler->options['relationship']) && $handler->options['relationship'] != 'none' && !in_array($handler->options['relationship'], $relationships)) {
           $errors[] = $this->t('The %handler_type %handler uses a relationship that has been removed.', ['%handler_type' => $handler_type_info['lstitle'], '%handler' => $handler->adminLabel()]);
         }

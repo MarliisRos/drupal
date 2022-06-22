@@ -3,7 +3,7 @@
 namespace Drupal\KernelTests\Core\Entity;
 
 /**
- * Tests adding a hello_world bundle field.
+ * Tests adding a custom bundle field.
  *
  * @group Entity
  */
@@ -42,12 +42,12 @@ class EntityBundleFieldTest extends EntityKernelTestBase {
   }
 
   /**
-   * Tests making use of a hello_world bundle field.
+   * Tests making use of a custom bundle field.
    */
   public function testCustomBundleFieldUsage() {
-    entity_test_create_bundle('hello_world', NULL, 'entity_test_update');
+    entity_test_create_bundle('custom', NULL, 'entity_test_update');
 
-    // Check that an entity with bundle entity_test does not have the hello_world
+    // Check that an entity with bundle entity_test does not have the custom
     // field.
     $storage = $this->entityTypeManager->getStorage('entity_test_update');
     $entity = $storage->create([
@@ -55,16 +55,16 @@ class EntityBundleFieldTest extends EntityKernelTestBase {
     ]);
     $this->assertFalse($entity->hasField('custom_bundle_field'));
 
-    // Check that the hello_world bundle has the defined hello_world field and check
-    // saving and deleting of hello_world field data.
+    // Check that the custom bundle has the defined custom field and check
+    // saving and deleting of custom field data.
     $entity = $storage->create([
-      'type' => 'hello_world',
+      'type' => 'custom',
     ]);
     $this->assertTrue($entity->hasField('custom_bundle_field'));
 
     // Ensure that the field exists in the field map.
     $field_map = \Drupal::service('entity_field.manager')->getFieldMap();
-    $this->assertEquals(['type' => 'string', 'bundles' => ['hello_world' => 'hello_world']], $field_map['entity_test_update']['custom_bundle_field']);
+    $this->assertEquals(['type' => 'string', 'bundles' => ['custom' => 'custom']], $field_map['entity_test_update']['custom_bundle_field']);
 
     $entity->custom_bundle_field->value = 'swanky';
     $entity->save();
@@ -90,9 +90,9 @@ class EntityBundleFieldTest extends EntityKernelTestBase {
 
     // Create another entity to test that values are marked as deleted when a
     // bundle is deleted.
-    $entity = $storage->create(['type' => 'hello_world', 'custom_bundle_field' => 'new']);
+    $entity = $storage->create(['type' => 'custom', 'custom_bundle_field' => 'new']);
     $entity->save();
-    entity_test_delete_bundle('hello_world', 'entity_test_update');
+    entity_test_delete_bundle('custom', 'entity_test_update');
 
     $table = $table_mapping->getDedicatedDataTableName($entity->getFieldDefinition('custom_bundle_field')->getFieldStorageDefinition(), TRUE);
     $result = $this->database->select($table, 'f')

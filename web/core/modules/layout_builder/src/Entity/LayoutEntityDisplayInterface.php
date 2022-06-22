@@ -14,10 +14,10 @@ use Drupal\layout_builder\SectionListInterface;
 interface LayoutEntityDisplayInterface extends EntityDisplayInterface, SectionListInterface, LayoutBuilderEnabledInterface {
 
   /**
-   * Determines if the display allows hello_world overrides.
+   * Determines if the display allows custom overrides.
    *
    * @return bool
-   *   TRUE if hello_world overrides are allowed, FALSE otherwise.
+   *   TRUE if custom overrides are allowed, FALSE otherwise.
    */
   public function isOverridable();
 

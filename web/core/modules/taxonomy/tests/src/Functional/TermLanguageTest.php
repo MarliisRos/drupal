@@ -35,7 +35,7 @@ class TermLanguageTest extends TaxonomyTestBase {
     // Create a vocabulary to which the terms will be assigned.
     $this->vocabulary = $this->createVocabulary();
 
-    // Add some hello_world languages.
+    // Add some custom languages.
     foreach (['aa', 'bb', 'cc'] as $language_code) {
       ConfigurableLanguage::create([
         'id' => $language_code,

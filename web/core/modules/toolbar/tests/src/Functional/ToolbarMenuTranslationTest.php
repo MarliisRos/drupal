@@ -100,7 +100,7 @@ class ToolbarMenuTranslationTest extends BrowserTestBase {
     // Make sure the menu item string was translated.
     $this->assertSession()->pageTextContains($menu_item_translated);
 
-    // Go to another page in the hello_world language and make sure the menu item
+    // Go to another page in the custom language and make sure the menu item
     // was translated.
     $this->drupalGet($langcode . '/admin/structure');
     $this->assertSession()->pageTextContains($menu_item_translated);

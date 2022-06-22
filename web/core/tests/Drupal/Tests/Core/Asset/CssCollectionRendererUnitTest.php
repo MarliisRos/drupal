@@ -121,7 +121,7 @@ class CssCollectionRendererUnitTest extends UnitTestCase {
           0 => $create_link_element('generated-relative-url:public://css/file-all' . '?', 'all'),
         ],
       ],
-      // Single file CSS asset with hello_world attributes.
+      // Single file CSS asset with custom attributes.
       2 => [
         [
           0 => ['group' => 0, 'type' => 'file', 'media' => 'all', 'preprocess' => TRUE, 'data' => 'public://css/file-all', 'browsers' => [], 'attributes' => $custom_attributes],

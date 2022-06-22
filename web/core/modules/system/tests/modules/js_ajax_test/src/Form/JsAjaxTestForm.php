@@ -26,8 +26,8 @@ class JsAjaxTestForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['#attached']['library'][] = 'js_ajax_test/ajax';
-    $form['hello_world']['#prefix'] = '<div id="js_ajax_test_form_wrapper">';
-    $form['hello_world']['#suffix'] = '</div>';
+    $form['custom']['#prefix'] = '<div id="js_ajax_test_form_wrapper">';
+    $form['custom']['#suffix'] = '</div>';
 
     // Button to test for the waitForButton() assertion.
     $form['test_button'] = [

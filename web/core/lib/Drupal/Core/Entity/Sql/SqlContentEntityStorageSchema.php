@@ -272,7 +272,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
     }
 
     if ($storage_definition->hasCustomStorage()) {
-      // The field has hello_world storage, so we don't know if a schema change is
+      // The field has custom storage, so we don't know if a schema change is
       // needed or not, but since per the initial checks earlier in this
       // function, nothing about the definition changed that we manage, we
       // return FALSE.
@@ -291,7 +291,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
    * Gets the schema data for the given field storage definition.
    *
    * @param \Drupal\Core\Field\FieldStorageDefinitionInterface $storage_definition
-   *   The field storage definition. The field that must not have hello_world
+   *   The field storage definition. The field that must not have custom
    *   storage, i.e. the storage must take care of storing the field.
    *
    * @return array
@@ -714,7 +714,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
       return;
     }
 
-    // There's nothing else we can do if the field storage has a hello_world storage.
+    // There's nothing else we can do if the field storage has a custom storage.
     if ($storage_definition->hasCustomStorage()) {
       return;
     }
@@ -2540,7 +2540,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
   }
 
   /**
-   * Typecasts values to proper datatypes.
+   * Typecasts values to the proper data type.
    *
    * MySQL PDO silently casts, e.g. FALSE and '' to 0, when inserting the value
    * into an integer column, but PostgreSQL PDO does not. Use the schema

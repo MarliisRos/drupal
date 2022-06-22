@@ -17,6 +17,8 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Theme\ThemeManagerInterface;
 use Symfony\Component\Mime\MimeTypeGuesserInterface;
 
+// cspell:ignore apng
+
 /**
  * Displays theme configuration for entire site and individual themes.
  *
@@ -227,7 +229,7 @@ class ThemeSettingsForm extends ConfigFormBase {
       ];
       $form['logo']['settings']['logo_path'] = [
         '#type' => 'textfield',
-        '#title' => $this->t('Path to hello_world logo'),
+        '#title' => $this->t('Path to custom logo'),
         '#default_value' => theme_get_setting('logo.path', $theme),
       ];
       $form['logo']['settings']['logo_upload'] = [
@@ -271,7 +273,7 @@ class ThemeSettingsForm extends ConfigFormBase {
       ];
       $form['favicon']['settings']['favicon_path'] = [
         '#type' => 'textfield',
-        '#title' => $this->t('Path to hello_world icon'),
+        '#title' => $this->t('Path to custom icon'),
         '#default_value' => theme_get_setting('favicon.path', $theme),
       ];
       $form['favicon']['settings']['favicon_upload'] = [
@@ -432,13 +434,13 @@ class ThemeSettingsForm extends ConfigFormBase {
       if ($form_state->getValue('logo_path')) {
         $path = $this->validatePath($form_state->getValue('logo_path'));
         if (!$path) {
-          $form_state->setErrorByName('logo_path', $this->t('The hello_world logo path is invalid.'));
+          $form_state->setErrorByName('logo_path', $this->t('The custom logo path is invalid.'));
         }
       }
       if ($form_state->getValue('favicon_path')) {
         $path = $this->validatePath($form_state->getValue('favicon_path'));
         if (!$path) {
-          $form_state->setErrorByName('favicon_path', $this->t('The hello_world favicon path is invalid.'));
+          $form_state->setErrorByName('favicon_path', $this->t('The custom favicon path is invalid.'));
         }
       }
     }

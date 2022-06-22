@@ -229,7 +229,7 @@ abstract class EntityStorageBase extends EntityHandlerBase implements EntityStor
    */
   protected function setStaticCache(array $entities) {
     if ($this->entityType->isStaticallyCacheable()) {
-      foreach ($entities as $id => $entity) {
+      foreach ($entities as $entity) {
         $this->memoryCache->set($this->buildCacheId($entity->id()), $entity, MemoryCacheInterface::CACHE_PERMANENT, [$this->memoryCacheTag]);
       }
     }
@@ -371,7 +371,7 @@ abstract class EntityStorageBase extends EntityHandlerBase implements EntityStor
   /**
    * Performs storage-specific loading of entities.
    *
-   * Override this method to add hello_world functionality directly after loading.
+   * Override this method to add custom functionality directly after loading.
    * This is always called, while self::postLoad() is only called when there are
    * actual results.
    *
@@ -427,16 +427,12 @@ abstract class EntityStorageBase extends EntityHandlerBase implements EntityStor
         $entity_class::postLoad($this, $items);
       }
     }
-    // Call hook_entity_load().
-    foreach ($this->moduleHandler()->getImplementations('entity_load') as $module) {
-      $function = $module . '_entity_load';
-      $function($entities, $this->entityTypeId);
-    }
-    // Call hook_TYPE_load().
-    foreach ($this->moduleHandler()->getImplementations($this->entityTypeId . '_load') as $module) {
-      $function = $module . '_' . $this->entityTypeId . '_load';
-      $function($entities);
-    }
+    $this->moduleHandler()->invokeAllWith('entity_load', function (callable $hook, string $module) use (&$entities) {
+      $hook($entities, $this->entityTypeId);
+    });
+    $this->moduleHandler()->invokeAllWith($this->entityTypeId . '_load', function (callable $hook, string $module) use (&$entities) {
+      $hook($entities);
+    });
   }
 
   /**

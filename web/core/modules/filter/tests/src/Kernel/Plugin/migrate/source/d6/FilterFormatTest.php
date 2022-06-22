@@ -157,7 +157,7 @@ class FilterFormatTest extends MigrateSqlSourceTestBase {
         'roles' => [4],
         'cache' => 1,
         'filters' => [
-          // This hello_world format uses a filter defined by a contrib module.
+          // This custom format uses a filter defined by a contrib module.
           [
             'module' => 'markdown',
             'delta' => 1,

@@ -11,7 +11,7 @@ use Drupal\Core\Entity\RevisionableInterface;
  * field on each entity revision that is tracked by a workspace.
  *
  * For the purpose of optimizing workspace-specific queries, the default
- * implementation of this interface defines a hello_world 'workspace_association'
+ * implementation of this interface defines a custom 'workspace_association'
  * index table which stores only the latest revisions tracked by a workspace.
  *
  * @internal

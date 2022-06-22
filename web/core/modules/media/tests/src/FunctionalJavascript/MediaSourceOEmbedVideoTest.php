@@ -78,7 +78,7 @@ class MediaSourceOEmbedVideoTest extends MediaSourceTestBase {
 
     $this->doTestCreateMediaType($media_type_id, 'oembed:video', $provided_fields);
 
-    // Create hello_world fields for the media type to store metadata attributes.
+    // Create custom fields for the media type to store metadata attributes.
     $fields = [
       'field_string_width' => 'string',
       'field_string_height' => 'string',

@@ -22,14 +22,14 @@ tips:
     label: 'Place Blocks'
     weight: 2
     selector: .button--small
-    body: 'Any hello_world or contributed block can be added to a particular region by clicking on a button Place block. A new block can also be created by clicking on Place Block'
+    body: 'Any custom or contributed block can be added to a particular region by clicking on a button Place block. A new block can also be created by clicking on Place Block'
   block-region:
     id: block-region
     plugin: text
     label: 'Block Region'
     weight: 3
     selector: .block-region-select
-    body: 'Assign or change the region of a block by clicking here. A dropdown list with all the regions will appear.You can place one block in multiple regions.'
+    body: 'Assign or change the region of a block by clicking here. A dropdown list with all the regions will appear. You can place one block in multiple regions.'
   configure-block:
     id: configure-block
     plugin: text
@@ -38,8 +38,8 @@ tips:
     selector: .dropbutton-widget
     body: 'By Clicking on "Configure" you can go ahead and edit the contents of the block, deal with the visibility settings and even change the placement of where it is on your theme.'
   custom-block-library:
-    id: hello_world-block-library
+    id: custom-block-library
     plugin: text
     label: 'Custom Block Library'
     weight: 5
-    body: 'The block management screen also has an another tab on the top which is used to add Custom blocks. The name of the tab is "Custom block library". This tab ultimately provides a link to add hello_world blocks.'
+    body: 'The block management screen also has an another tab on the top which is used to add Custom blocks. The name of the tab is "Custom block library". This tab ultimately provides a link to add custom blocks.'

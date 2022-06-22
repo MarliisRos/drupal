@@ -42,7 +42,7 @@ class NodeRSSContentTest extends NodeTestBase {
   }
 
   /**
-   * Ensures that a new node includes the hello_world data when added to an RSS feed.
+   * Ensures that a new node includes the custom data when added to an RSS feed.
    */
   public function testNodeRSSContent() {
     // Create a node.

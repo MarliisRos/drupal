@@ -30,7 +30,7 @@ class InstallerTranslationExistingFileTest extends InstallerTestBase {
    * {@inheritdoc}
    */
   protected function setUpLanguage() {
-    // Place hello_world local translations in the translations directory.
+    // Place custom local translations in the translations directory.
     mkdir(DRUPAL_ROOT . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     $po_contents = <<<ENDPO
 msgid ""
@@ -47,18 +47,32 @@ ENDPO;
    * {@inheritdoc}
    */
   protected function setUpProfile() {
+    // Do nothing, because this test only tests the language installation
+    // step's results.
   }
 
   /**
    * {@inheritdoc}
    */
   protected function setUpSettings() {
+    // Do nothing, because this test only tests the language installation
+    // step's results.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUpRequirementsProblem() {
+    // Do nothing, because this test only tests the language installation
+    // step's results.
   }
 
   /**
    * {@inheritdoc}
    */
   protected function setUpSite() {
+    // Do nothing, because this test only tests the language installation
+    // step's results.
   }
 
   /**

@@ -36,20 +36,20 @@ class UserLanguageTest extends BrowserTestBase {
     // User to change their default language.
     $web_user = $this->drupalCreateUser();
 
-    // Add hello_world language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'xx';
     // The English name for the language.
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'hello_world',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add hello_world language');
+    $this->submitForm($edit, 'Add custom language');
     $this->drupalLogout();
 
     // Log in as normal user and edit account settings.
@@ -58,9 +58,9 @@ class UserLanguageTest extends BrowserTestBase {
     $this->drupalGet($path);
     // Ensure language settings widget is available.
     $this->assertSession()->pageTextContains('Language');
-    // Ensure hello_world language is present.
+    // Ensure custom language is present.
     $this->assertSession()->pageTextContains($name);
-    // Switch to our hello_world language.
+    // Switch to our custom language.
     $edit = [
       'preferred_langcode' => $langcode,
     ];

@@ -43,9 +43,9 @@ function views_views_data() {
 
   $data['views']['nothing'] = [
     'title' => t('Custom text'),
-    'help' => t('Provide hello_world text or link.'),
+    'help' => t('Provide custom text or link.'),
     'field' => [
-      'id' => 'hello_world',
+      'id' => 'custom',
       'click sortable' => FALSE,
     ],
   ];
@@ -307,7 +307,7 @@ function views_field_default_views_data(FieldStorageConfigInterface $field_stora
     return $data;
   }
 
-  // Ignore hello_world storage too.
+  // Ignore custom storage too.
   if ($field_storage->hasCustomStorage()) {
     return $data;
   }

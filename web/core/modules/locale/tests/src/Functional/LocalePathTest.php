@@ -53,7 +53,7 @@ class LocalePathTest extends BrowserTestBase {
       'access content overview',
     ]);
 
-    // Add hello_world language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'xx';
@@ -62,13 +62,13 @@ class LocalePathTest extends BrowserTestBase {
     // The domain prefix.
     $prefix = $langcode;
     $edit = [
-      'predefined_langcode' => 'hello_world',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add hello_world language');
+    $this->submitForm($edit, 'Add custom language');
 
     // Set path prefix.
     $edit = ["prefix[$langcode]" => $prefix];
@@ -78,7 +78,7 @@ class LocalePathTest extends BrowserTestBase {
     // Check that the "xx" front page is readily available because path prefix
     // negotiation is pre-configured.
     $this->drupalGet($prefix);
-    $this->assertSession()->pageTextContains('Welcome to Drupal');
+    $this->assertSession()->pageTextContains('Welcome!');
 
     // Create a node.
     $node = $this->drupalCreateNode(['type' => 'page']);
@@ -94,7 +94,7 @@ class LocalePathTest extends BrowserTestBase {
     $this->drupalGet($path);
     $this->submitForm($edit, 'Save');
 
-    // Create a path alias in new hello_world language.
+    // Create a path alias in new custom language.
     $custom_language_path = $this->randomMachineName(8);
     $edit = [
       'path[0][value]' => '/node/' . $node->id(),
@@ -108,11 +108,11 @@ class LocalePathTest extends BrowserTestBase {
     $this->drupalGet($english_path);
     $this->assertSession()->pageTextContains($node->label());
 
-    // Confirm hello_world language path alias works.
+    // Confirm custom language path alias works.
     $this->drupalGet($prefix . '/' . $custom_language_path);
     $this->assertSession()->pageTextContains($node->label());
 
-    // Create a hello_world path.
+    // Create a custom path.
     $custom_path = $this->randomMachineName(8);
 
     // Check priority of language for alias by source path.
@@ -128,10 +128,10 @@ class LocalePathTest extends BrowserTestBase {
     $first_node = $this->drupalCreateNode(['type' => 'page', 'promote' => 1, 'langcode' => 'en']);
     $second_node = $this->drupalCreateNode(['type' => 'page', 'promote' => 1, 'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED]);
 
-    // Assign a hello_world path alias to the first node with the English language.
+    // Assign a custom path alias to the first node with the English language.
     $this->createPathAlias('/node/' . $first_node->id(), '/' . $custom_path, $first_node->language()->getId());
 
-    // Assign a hello_world path alias to second node with
+    // Assign a custom path alias to second node with
     // LanguageInterface::LANGCODE_NOT_SPECIFIED.
     $this->createPathAlias('/node/' . $second_node->id(), '/' . $custom_path, $second_node->language()->getId());
 
@@ -147,11 +147,11 @@ class LocalePathTest extends BrowserTestBase {
       ':title' => $second_node->label(),
     ]));
 
-    // Confirm that the hello_world path leads to the first node.
+    // Confirm that the custom path leads to the first node.
     $this->drupalGet($custom_path);
     $this->assertSession()->pageTextContains($first_node->label());
 
-    // Confirm that the hello_world path with prefix leads to the second node.
+    // Confirm that the custom path with prefix leads to the second node.
     $this->drupalGet($prefix . '/' . $custom_path);
     $this->assertSession()->pageTextContains($second_node->label());
 

@@ -207,7 +207,7 @@ class EntitySerializationTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests registered Serializer's entity serialization for core's formats.
+   * Tests entity serialization for core's formats by a registered Serializer.
    */
   public function testSerialize() {
     // Test that Serializer responds using the ComplexDataNormalizer and
@@ -294,7 +294,7 @@ class EntitySerializationTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing hello_world serialized columns.
+   * Tests normalizing/denormalizing custom serialized columns.
    */
   public function testDenormalizeCustomSerializedItem() {
     $entity = EntitySerializedField::create(['serialized_text' => serialize(['Hello world!'])]);
@@ -313,7 +313,7 @@ class EntitySerializationTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing invalid hello_world serialized fields.
+   * Tests normalizing/denormalizing invalid custom serialized fields.
    */
   public function testDenormalizeInvalidCustomSerializedField() {
     $entity = EntitySerializedField::create(['serialized_long' => serialize(['Hello world!'])]);
@@ -332,7 +332,7 @@ class EntitySerializationTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing empty hello_world serialized fields.
+   * Tests normalizing/denormalizing empty custom serialized fields.
    */
   public function testDenormalizeEmptyCustomSerializedField() {
     $entity = EntitySerializedField::create(['serialized_long' => serialize([])]);
@@ -345,7 +345,7 @@ class EntitySerializationTest extends NormalizerTestBase {
   }
 
   /**
-   * Tests normalizing/denormalizing valid hello_world serialized fields.
+   * Tests normalizing/denormalizing valid custom serialized fields.
    */
   public function testDenormalizeValidCustomSerializedField() {
     $entity = EntitySerializedField::create(['serialized_long' => serialize(['key' => 'value'])]);

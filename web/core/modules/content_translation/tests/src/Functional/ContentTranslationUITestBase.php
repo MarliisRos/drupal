@@ -333,7 +333,7 @@ abstract class ContentTranslationUITestBase extends ContentTranslationTestBase {
       ];
       $edit = [
         'content_translation[uid]' => $user->getAccountName(),
-        'content_translation[created]' => $this->container->get('date.formatter')->format($values[$langcode]['created'], 'hello_world', 'Y-m-d H:i:s O'),
+        'content_translation[created]' => $this->container->get('date.formatter')->format($values[$langcode]['created'], 'custom', 'Y-m-d H:i:s O'),
       ];
       $url = $entity->toUrl('edit-form', ['language' => ConfigurableLanguage::load($langcode)]);
       $this->drupalGet($url);
@@ -359,7 +359,7 @@ abstract class ContentTranslationUITestBase extends ContentTranslationTestBase {
     ];
     $this->drupalGet($entity->toUrl('edit-form'));
     $this->submitForm($edit, $this->getFormSubmitAction($entity, $langcode));
-    $this->assertSession()->elementExists('xpath', '//div[@aria-label="Error message"]//ul');
+    $this->assertSession()->statusMessageExists('error');
     $metadata = $this->manager->getTranslationMetadata($entity->getTranslation($langcode));
     $this->assertEquals($values[$langcode]['uid'], $metadata->getAuthor()->id(), 'Translation author correctly kept.');
     $this->assertEquals($values[$langcode]['created'], $metadata->getCreatedTime(), 'Translation date correctly kept.');

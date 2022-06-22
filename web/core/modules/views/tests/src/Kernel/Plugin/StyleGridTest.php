@@ -92,7 +92,7 @@ class StyleGridTest extends PluginKernelTestBase {
     // Ensure no extra columns were generated.
     $result = $this->xpath('//div[contains(@class, "views-col") and contains(@class, :columns)]', [':columns' => 'col-' . ($columns + 1)]);
     $this->assertEmpty($result, ucfirst($alignment) . " $columns column grid: no extraneous columns exist.");
-    // Ensure tokens are being replaced in hello_world row/column classes.
+    // Ensure tokens are being replaced in custom row/column classes.
     $result = $this->xpath('//div[contains(@class, "views-col") and contains(@class, "name-John")]');
     $this->assertGreaterThan(0, count($result), ucfirst($alignment) . " $columns column grid: Token replacement verified in custom column classes.");
     $result = $this->xpath('//div[contains(@class, "views-row") and contains(@class, "age-25")]');

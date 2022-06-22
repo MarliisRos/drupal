@@ -3,7 +3,7 @@
 namespace com\example\PluginNamespace;
 
 /**
- * Provides a hello_world test plugin.
+ * Provides a custom test plugin.
  *
  * @Plugin(
  *   id = "discovery_test_1"

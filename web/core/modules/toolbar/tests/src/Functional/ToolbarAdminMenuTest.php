@@ -291,16 +291,16 @@ class ToolbarAdminMenuTest extends BrowserTestBase {
     // This will be the translation of $name.
     $translation = $this->randomMachineName(16);
 
-    // Add hello_world language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     $edit = [
-      'predefined_langcode' => 'hello_world',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add hello_world language');
+    $this->submitForm($edit, 'Add custom language');
     t($name, [], ['langcode' => $langcode]);
     // Reset locale cache.
     $this->container->get('string_translation')->reset();

@@ -188,12 +188,12 @@ class TwigTransTest extends BrowserTestBase {
   protected function installLanguages() {
     $file_system = \Drupal::service('file_system');
     foreach ($this->languages as $langcode => $name) {
-      // Generate hello_world .po contents for the language.
+      // Generate custom .po contents for the language.
       $contents = $this->poFileContents($langcode);
       if ($contents) {
         // Add test language for translation testing.
         $edit = [
-          'predefined_langcode' => 'hello_world',
+          'predefined_langcode' => 'custom',
           'langcode' => $langcode,
           'label' => $name,
           'direction' => LanguageInterface::DIRECTION_LTR,
@@ -201,10 +201,10 @@ class TwigTransTest extends BrowserTestBase {
 
         // Install the language in Drupal.
         $this->drupalGet('admin/config/regional/language/add');
-        $this->submitForm($edit, 'Add hello_world language');
+        $this->submitForm($edit, 'Add custom language');
         $this->assertSession()->responseContains('"edit-languages-' . $langcode . '-weight"');
 
-        // Import the hello_world .po contents for the language.
+        // Import the custom .po contents for the language.
         $filename = $file_system->tempnam('temporary://', "po_") . '.po';
         file_put_contents($filename, $contents);
         $options = [
@@ -221,7 +221,7 @@ class TwigTransTest extends BrowserTestBase {
   }
 
   /**
-   * Generate a hello_world .po file for a specific test language.
+   * Generate a custom .po file for a specific test language.
    *
    * @param string $langcode
    *   The langcode of the specified language.

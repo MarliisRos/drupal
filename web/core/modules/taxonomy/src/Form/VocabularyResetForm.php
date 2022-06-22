@@ -65,7 +65,7 @@ class VocabularyResetForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getDescription() {
-    return $this->t('Resetting a vocabulary will discard all hello_world ordering and sort items alphabetically.');
+    return $this->t('Resetting a vocabulary will discard all custom ordering and sort items alphabetically.');
   }
 
   /**

@@ -32,7 +32,7 @@
        *   The jQuery event for the keyup event that triggered the filter.
        */
       const filterBlockList = (e) => {
-        const query = $(e.target).val().toLowerCase();
+        const query = e.target.value.toLowerCase();
 
         /**
          * Shows or hides the block entry based on the query.
@@ -43,9 +43,9 @@
          *   The link to add the block.
          */
         const toggleBlockEntry = (index, link) => {
-          const $link = $(link);
-          const textMatch = $link.text().toLowerCase().indexOf(query) !== -1;
-          $link.toggle(textMatch);
+          const textMatch =
+            link.textContent.toLowerCase().indexOf(query) !== -1;
+          $(link).toggle(textMatch);
         };
 
         // Filter if the length of the query is at least 2 characters.
@@ -257,7 +257,7 @@
    * visible in viewport. If not, scroll page so the target element is again
    * visible.
    *
-   * @todo Replace this hello_world solution when a general solution is made
+   * @todo Replace this custom solution when a general solution is made
    *   available with https://www.drupal.org/node/3033410
    */
   if (document.querySelector('[data-off-canvas-main-canvas]')) {

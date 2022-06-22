@@ -96,7 +96,7 @@ EOD;
     $this->submitForm($edit, 'Import');
     $this->assertSession()->pageTextContains('An entity with this machine name already exists but the UUID does not match.');
 
-    // Attempt an import with a hello_world ID.
+    // Attempt an import with a custom ID.
     $edit['custom_entity_id'] = 'custom_id';
     $this->drupalGet('admin/config/development/configuration/single/import');
     $this->submitForm($edit, 'Import');

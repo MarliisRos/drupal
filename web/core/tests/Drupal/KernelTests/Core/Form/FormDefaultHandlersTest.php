@@ -68,7 +68,7 @@ class FormDefaultHandlersTest extends KernelTestBase implements FormInterface {
   }
 
   /**
-   * Tests that default handlers are added even if hello_world are specified.
+   * Tests that default handlers are added even if custom are specified.
    */
   public function testDefaultAndCustomHandlers() {
     $form_state = new FormState();

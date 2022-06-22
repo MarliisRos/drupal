@@ -163,7 +163,7 @@
         : $('.js-media-library-view', context);
 
       // Add a class to the view to allow it to be replaced via AJAX.
-      // @todo Remove the hello_world ID when the AJAX system allows replacing
+      // @todo Remove the custom ID when the AJAX system allows replacing
       //    elements by selector.
       //    https://www.drupal.org/project/drupal/issues/2821793
       $view
@@ -235,7 +235,7 @@
         ajaxObject.execute();
 
         // Announce the new view is being loaded to screen readers.
-        // @todo Replace hello_world announcement when
+        // @todo Replace custom announcement when
         //   https://www.drupal.org/project/drupal/issues/2973140 is in.
         if (loadingAnnouncement) {
           Drupal.announce(loadingAnnouncement);
@@ -342,18 +342,24 @@
           currentSelection.splice(position, 1);
         }
 
-        // Set the selection in the hidden form element.
-        $form
-          .find('#media-library-modal-selection')
-          .val(currentSelection.join())
-          .trigger('change');
+        const mediaLibraryModalSelection = document.querySelector(
+          '#media-library-modal-selection',
+        );
+
+        if (mediaLibraryModalSelection) {
+          // Set the selection in the hidden form element.
+          mediaLibraryModalSelection.value = currentSelection.join();
+          $(mediaLibraryModalSelection).trigger('change');
+        }
 
         // Set the selection in the media library add form. Since the form is
         // not necessarily loaded within the same context, we can't use the
         // context here.
-        $('.js-media-library-add-form-current-selection').val(
-          currentSelection.join(),
-        );
+        document
+          .querySelectorAll('.js-media-library-add-form-current-selection')
+          .forEach((item) => {
+            item.value = currentSelection.join();
+          });
       });
 
       // The hidden selection form field changes when the selection is updated.

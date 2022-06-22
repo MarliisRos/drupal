@@ -43,9 +43,10 @@ const DRUPAL_MINIMUM_PHP = \Drupal::MINIMUM_PHP;
  * - An error is shown in the status report that the PHP version is too old.
  *
  * @deprecated in drupal:9.1.0 and is removed from drupal:10.0.0. Use
- *   \Drupal::MINIMUM_SUPPORTED_PHP instead.
+ *   \Drupal\Core\Utility\PhpRequirements::getMinimumSupportedPhp() instead.
  *
  * @see https://www.drupal.org/node/2909361
+ * @see https://www.drupal.org/node/3261451
  */
 const DRUPAL_MINIMUM_SUPPORTED_PHP = \Drupal::MINIMUM_SUPPORTED_PHP;
 
@@ -317,7 +318,7 @@ function watchdog_exception($type, Exception $exception, $message = NULL, $varia
 
   // Use a default value if $message is not set.
   if (empty($message)) {
-    $message = '%type: @message in %function (line %line of %file).';
+    $message = Error::DEFAULT_ERROR_MESSAGE;
   }
 
   if ($link) {
@@ -330,7 +331,7 @@ function watchdog_exception($type, Exception $exception, $message = NULL, $varia
 }
 
 /**
- * Provides hello_world PHP error handling.
+ * Provides custom PHP error handling.
  *
  * @param $error_level
  *   The level of the error raised.
@@ -347,7 +348,7 @@ function _drupal_error_handler($error_level, $message, $filename = NULL, $line =
 }
 
 /**
- * Provides hello_world PHP exception handling.
+ * Provides custom PHP exception handling.
  *
  * Uncaught exceptions are those not enclosed in a try/catch block. They are
  * always fatal: the execution of the script will stop as soon as the exception
@@ -413,7 +414,7 @@ function drupal_valid_test_ua($new_prefix = NULL) {
   $test_prefix = FALSE;
 
   // A valid Simpletest request will contain a hashed and salted authentication
-  // code. Check if this code is present in a cookie or hello_world user agent
+  // code. Check if this code is present in a cookie or custom user agent
   // string.
   $http_user_agent = $_SERVER['HTTP_USER_AGENT'] ?? NULL;
   $user_agent = $_COOKIE['SIMPLETEST_USER_AGENT'] ?? $http_user_agent;
@@ -440,7 +441,7 @@ function drupal_valid_test_ua($new_prefix = NULL) {
     }
     // The file properties add more entropy not easily accessible to others.
     $key = $private_key . filectime(__FILE__) . fileinode(__FILE__);
-    $time_diff = REQUEST_TIME - $time;
+    $time_diff = time() - $time;
     $test_hmac = Crypt::hmacBase64($check_string, $key);
     // Since we are making a local request a 600 second time window is allowed,
     // and the HMAC must match.

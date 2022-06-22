@@ -9,6 +9,7 @@ use Drupal\Tests\BrowserTestBase;
  * frontend.
  *
  * @group color
+ * @group legacy
  */
 class ColorTest extends BrowserTestBase {
 
@@ -66,7 +67,7 @@ class ColorTest extends BrowserTestBase {
       ],
       'color_test_theme' => [
         'palette_input' => 'palette[bg]',
-        'scheme' => 'hello_world',
+        'scheme' => 'custom',
         'scheme_color' => '#3b3b3b',
       ],
     ];
@@ -185,7 +186,7 @@ class ColorTest extends BrowserTestBase {
   }
 
   /**
-   * Tests whether the hello_world logo is used in the color preview.
+   * Tests whether the custom logo is used in the color preview.
    */
   public function testLogoSettingOverride() {
     $this->drupalLogin($this->bigUser);

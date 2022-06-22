@@ -410,7 +410,7 @@ class FilterAPITest extends EntityKernelTestBase {
     $filters = $this->config('filter.format.crazy')->get('filters');
     $this->assertEquals(['filter_html_escape', 'filter_html'], array_keys($filters));
 
-    // Disable a plugin to ensure that disabled plugins with hello_world settings are
+    // Disable a plugin to ensure that disabled plugins with custom settings are
     // stored in configuration.
     $crazy_format->setFilterConfig('filter_html_escape', ['status' => FALSE]);
     $crazy_format->save();
@@ -462,7 +462,7 @@ class FilterAPITest extends EntityKernelTestBase {
     $filter_format = FilterFormat::load('filtered_html');
 
     // Disable the filter_test_restrict_tags_and_attributes filter plugin but
-    // have hello_world configuration so that the filter plugin is still configured
+    // have custom configuration so that the filter plugin is still configured
     // in filtered_html the filter format.
     $filter_config = [
       'weight' => 20,
@@ -507,6 +507,30 @@ class FilterAPITest extends EntityKernelTestBase {
     $vars = $filter_format->__sleep();
     $this->assertContains('filters', $vars);
     $this->assertNotContains('filterCollection', $vars);
+  }
+
+  /**
+   * Tests deprecated "forbidden tags" functionality.
+   *
+   * @group legacy
+   */
+  public function testForbiddenTagsDeprecated(): void {
+    $this->expectDeprecation('forbidden_tags for FilterInterface::getHTMLRestrictions() is deprecated in drupal:9.4.0 and is removed from drupal:10.0.0');
+    FilterFormat::create([
+      'format' => 'forbidden_tags_deprecation_test',
+      'name' => 'Forbidden tags deprecation test',
+      'filters' => [
+        'filter_test_restrict_tags_and_attributes' => [
+          'status' => TRUE,
+          'settings' => [
+            'restrictions' => [
+              'forbidden_tags' => ['p' => FALSE],
+            ],
+          ],
+        ],
+      ],
+    ])->save();
+    FilterFormat::load('forbidden_tags_deprecation_test')->getHtmlRestrictions();
   }
 
 }

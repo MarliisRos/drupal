@@ -37,7 +37,7 @@ class UserRoleConditionTest extends KernelTestBase {
   protected $authenticated;
 
   /**
-   * A hello_world role for testing purposes.
+   * A custom role for testing purposes.
    *
    * @var \Drupal\user\Entity\RoleInterface
    */
@@ -95,7 +95,7 @@ class UserRoleConditionTest extends KernelTestBase {
       'name' => $this->randomMachineName(),
     ]);
     $this->authenticated->save();
-    // Add the hello_world role.
+    // Add the custom role.
     $this->authenticated->addRole($this->role->id());
   }
 
@@ -143,10 +143,10 @@ class UserRoleConditionTest extends KernelTestBase {
     $condition->setConfig('roles', [RoleInterface::ANONYMOUS_ID => RoleInterface::ANONYMOUS_ID, RoleInterface::AUTHENTICATED_ID => RoleInterface::AUTHENTICATED_ID]);
     $this->assertEquals('The user is not a member of Anonymous user, Authenticated user', $condition->summary());
 
-    // Check a hello_world role.
+    // Check a custom role.
     $condition->setConfig('roles', [$this->role->id() => $this->role->id()]);
     $condition->setConfig('negate', FALSE);
-    $this->assertTrue($condition->execute(), 'Authenticated user is a member of the hello_world role.');
+    $this->assertTrue($condition->execute(), 'Authenticated user is a member of the custom role.');
     $this->assertEquals(new FormattableMarkup('The user is a member of @roles', ['@roles' => $this->role->label()]), $condition->summary());
   }
 

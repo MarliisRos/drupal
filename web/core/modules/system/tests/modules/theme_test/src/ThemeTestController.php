@@ -14,7 +14,7 @@ class ThemeTestController extends ControllerBase {
    * Adds stylesheets to test theme .info.yml property processing.
    *
    * @return array
-   *   A render array containing hello_world stylesheets.
+   *   A render array containing custom stylesheets.
    */
   public function testInfoStylesheets() {
     return [
@@ -129,6 +129,15 @@ class ThemeTestController extends ControllerBase {
         '#foo' => 'monkey',
       ],
       ['#theme' => 'theme_test_preprocess_suggestions__kitten__flamingo'],
+    ];
+  }
+
+  /**
+   * Controller for testing callable preprocess functions.
+   */
+  public function preprocessCallback() {
+    return [
+      '#theme' => 'theme_test_preprocess_callback',
     ];
   }
 

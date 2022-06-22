@@ -122,7 +122,7 @@ class LocaleJavascriptTranslationTest extends BrowserTestBase {
       'translate interface',
     ]);
 
-    // Add hello_world language.
+    // Add custom language.
     $this->drupalLogin($admin_user);
     // Code for the language.
     $langcode = 'es';
@@ -131,13 +131,13 @@ class LocaleJavascriptTranslationTest extends BrowserTestBase {
     // The domain prefix.
     $prefix = $langcode;
     $edit = [
-      'predefined_langcode' => 'hello_world',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add hello_world language');
+    $this->submitForm($edit, 'Add custom language');
 
     // Set path prefix.
     $edit = ["prefix[$langcode]" => $prefix];

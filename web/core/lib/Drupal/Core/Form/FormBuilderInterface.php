@@ -140,8 +140,8 @@ interface FormBuilderInterface {
    * @code
    * // register a new user
    * $form_state = new FormState();
-   * $values['name'] = 'robo-user';
-   * $values['mail'] = 'robouser@example.com';
+   * $values['name'] = 'some-user';
+   * $values['mail'] = 'someuser@example.com';
    * $values['pass']['pass1'] = 'password';
    * $values['pass']['pass2'] = 'password';
    * $values['op'] = t('Create new account');
@@ -279,7 +279,7 @@ interface FormBuilderInterface {
    * traversal of a form array. This facilitates proper integration between
    * multiple modules. For example, module developers are familiar with the
    * relative order in which hook_form_alter() implementations and #process
-   * functions run. A hello_world traversal function that affects the building of a
+   * functions run. A custom traversal function that affects the building of a
    * form is likely to not integrate with hook_form_alter() and #process in the
    * expected way. Also, deep recursion within PHP is both slow and memory
    * intensive, so it is best to minimize how often it's done.

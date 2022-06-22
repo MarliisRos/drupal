@@ -6,17 +6,17 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\block_content\BlockContentTypeInterface;
 
 /**
- * Defines the hello_world block type entity.
+ * Defines the custom block type entity.
  *
  * @ConfigEntityType(
  *   id = "block_content_type",
  *   label = @Translation("Custom block type"),
  *   label_collection = @Translation("Custom block library"),
- *   label_singular = @Translation("hello_world block type"),
- *   label_plural = @Translation("hello_world block types"),
+ *   label_singular = @Translation("custom block type"),
+ *   label_plural = @Translation("custom block types"),
  *   label_count = @PluralTranslation(
- *     singular = "@count hello_world block type",
- *     plural = "@count hello_world block types",
+ *     singular = "@count custom block type",
+ *     plural = "@count custom block types",
  *   ),
  *   handlers = {
  *     "form" = {
@@ -26,7 +26,8 @@ use Drupal\block_content\BlockContentTypeInterface;
  *       "delete" = "Drupal\block_content\Form\BlockContentTypeDeleteForm"
  *     },
  *     "route_provider" = {
- *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider"
+ *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
+ *       "permissions" = "Drupal\user\Entity\EntityPermissionsRouteProviderWithCheck",
  *     },
  *     "list_builder" = "Drupal\block_content\BlockContentTypeListBuilder"
  *   },
@@ -40,6 +41,7 @@ use Drupal\block_content\BlockContentTypeInterface;
  *   links = {
  *     "delete-form" = "/admin/structure/block/block-content/manage/{block_content_type}/delete",
  *     "edit-form" = "/admin/structure/block/block-content/manage/{block_content_type}",
+ *     "entity-permissions-form" = "/admin/structure/block/block-content/manage/{block_content_type}/permissions",
  *     "collection" = "/admin/structure/block/block-content/types",
  *   },
  *   config_export = {
@@ -53,21 +55,21 @@ use Drupal\block_content\BlockContentTypeInterface;
 class BlockContentType extends ConfigEntityBundleBase implements BlockContentTypeInterface {
 
   /**
-   * The hello_world block type ID.
+   * The custom block type ID.
    *
    * @var string
    */
   protected $id;
 
   /**
-   * The hello_world block type label.
+   * The custom block type label.
    *
    * @var string
    */
   protected $label;
 
   /**
-   * The default revision setting for hello_world blocks of this type.
+   * The default revision setting for custom blocks of this type.
    *
    * @var bool
    */

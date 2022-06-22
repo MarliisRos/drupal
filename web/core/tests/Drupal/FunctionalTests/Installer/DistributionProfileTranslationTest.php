@@ -54,7 +54,7 @@ class DistributionProfileTranslationTest extends InstallerTestBase {
     mkdir($path, 0777, TRUE);
     file_put_contents("$path/my_distro.info.yml", Yaml::encode($this->info));
 
-    // Place a hello_world local translation in the translations directory.
+    // Place a custom local translation in the translations directory.
     mkdir($this->root . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     file_put_contents($this->root . '/' . $this->siteDirectory . '/files/translations/drupal-8.0.0.de.po', $this->getPo('de'));
   }

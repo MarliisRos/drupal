@@ -40,7 +40,7 @@ class BundleClassTest extends EntityKernelTestBase {
   }
 
   /**
-   * Tests making use of a hello_world bundle class.
+   * Tests making use of a custom bundle class.
    */
   public function testEntitySubclass() {
     entity_test_create_bundle('bundle_class');
@@ -67,7 +67,7 @@ class BundleClassTest extends EntityKernelTestBase {
 
     // Verify statically created entity with bundle class returns correct
     // bundle.
-    $entity = EntityTestBundleClass::create(['type' => 'hello_world']);
+    $entity = EntityTestBundleClass::create(['type' => 'custom']);
     $this->assertInstanceOf(EntityTestBundleClass::class, $entity);
     $this->assertEquals('bundle_class', $entity->bundle());
 
@@ -150,7 +150,7 @@ class BundleClassTest extends EntityKernelTestBase {
 
     // Only 3 of the 5 entities we just loaded use the bundle class. However,
     // one of them has already been loaded and we're getting the cached entity
-    // without re-invoking postLoad(). So the hello_world postLoad() method should
+    // without re-invoking postLoad(). So the custom postLoad() method should
     // only have been invoked with 2 entities.
     $this->assertEquals(2, EntityTestBundleClass::$postLoadEntitiesCount[1]);
 
@@ -191,12 +191,12 @@ class BundleClassTest extends EntityKernelTestBase {
 
     // Verify that getEntityClass with a non-existing bundle returns the entity
     // class.
-    $entity_class = $this->storage->getEntityClass('hello_world');
+    $entity_class = $this->storage->getEntityClass('custom');
     $this->assertEquals(EntityTest::class, $entity_class);
   }
 
   /**
-   * Tests making use of a hello_world bundle class for an entity without bundles.
+   * Tests making use of a custom bundle class for an entity without bundles.
    */
   public function testEntityNoBundleSubclass() {
     $this->container->get('state')->set('entity_test_bundle_class_enable_user_class', TRUE);

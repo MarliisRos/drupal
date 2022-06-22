@@ -20,7 +20,7 @@ class InstallerLanguagePageTest extends InstallerTestBase {
    * Installer step: Select language.
    */
   protected function setUpLanguage() {
-    // Place a hello_world local translation in the translations directory.
+    // Place a custom local translation in the translations directory.
     mkdir($this->root . '/' . $this->siteDirectory . '/files/translations', 0777, TRUE);
     touch($this->root . '/' . $this->siteDirectory . '/files/translations/drupal-8.0.0.xoxo.po');
 
@@ -31,7 +31,7 @@ class InstallerLanguagePageTest extends InstallerTestBase {
       $this->assertSession()->responseContains('>' . $names[1] . '<');
     }
 
-    // Check that our hello_world one shows up with the file name indicated language.
+    // Check that our custom one shows up with the file name indicated language.
     $this->assertSession()->optionExists('edit-langcode', 'xoxo');
     $this->assertSession()->responseContains('>xoxo<');
 

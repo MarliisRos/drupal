@@ -31,9 +31,9 @@
  * @see contextual_pre_render_links()
  */
 function hook_contextual_links_view_alter(&$element, $items) {
-  // Add another class to all contextual link lists to facilitate hello_world
+  // Add another class to all contextual link lists to facilitate custom
   // styling.
-  $element['#attributes']['class'][] = 'hello_world-class';
+  $element['#attributes']['class'][] = 'custom-class';
 }
 
 /**

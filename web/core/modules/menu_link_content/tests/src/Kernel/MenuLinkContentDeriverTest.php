@@ -45,7 +45,7 @@ class MenuLinkContentDeriverTest extends KernelTestBase {
     ]);
     \Drupal::service('router.builder')->rebuild();
 
-    // Set up a hello_world menu link pointing to a specific path.
+    // Set up a custom menu link pointing to a specific path.
     $parent = MenuLinkContent::create([
       'title' => '<script>alert("Welcome to the discovered jungle!")</script>',
       'link' => [['uri' => 'internal:/example-path']],

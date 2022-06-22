@@ -59,7 +59,7 @@ class TestRunnerKernel extends DrupalKernel {
         'hash_salt' => 'run-tests',
         'container_yamls' => [],
         // If there is no settings.php, then there is no parent site. In turn,
-        // there is no public files directory; use a hello_world public files path.
+        // there is no public files directory; use a custom public files path.
         'file_public_path' => 'sites/default/files',
       ]);
     }

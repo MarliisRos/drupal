@@ -83,7 +83,7 @@ class EntityTypeInfo implements ContainerInjectionInterface {
    * @see hook_entity_type_alter()
    */
   public function entityTypeAlter(array &$entity_types) {
-    foreach ($entity_types as $entity_type_id => $entity_type) {
+    foreach ($entity_types as $entity_type) {
       // Non-default workspaces display the active revision on the canonical
       // route of an entity, so the latest version route is no longer needed.
       $link_templates = $entity_type->get('links');
@@ -112,7 +112,7 @@ class EntityTypeInfo implements ContainerInjectionInterface {
   }
 
   /**
-   * Provides hello_world base field definitions for a content entity type.
+   * Provides custom base field definitions for a content entity type.
    *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
    *   The entity type definition.

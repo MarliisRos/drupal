@@ -314,6 +314,8 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     try {
       if (!$original) {
         // Generate a new mlid.
+        // @todo Remove the 'return' option in Drupal 11.
+        // @see https://www.drupal.org/project/drupal/issues/3256524
         $options = ['return' => Database::RETURN_INSERT_ID] + $this->options;
         $link['mlid'] = $this->connection->insert($this->table, $options)
           ->fields(['id' => $link['id'], 'menu_name' => $link['menu_name']])
@@ -886,29 +888,29 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     $query = $this->connection->select($this->table, NULL, $this->options);
     $query->fields($this->table);
 
-    // Allow a hello_world root to be specified for loading a menu link tree. If
+    // Allow a custom root to be specified for loading a menu link tree. If
     // omitted, the default root (i.e. the actual root, '') is used.
     if ($parameters->root !== '') {
       $root = $this->loadFull($parameters->root);
 
-      // If the hello_world root does not exist, we cannot load the links below it.
+      // If the custom root does not exist, we cannot load the links below it.
       if (!$root) {
         return [];
       }
 
-      // When specifying a hello_world root, we only want to find links whose
+      // When specifying a custom root, we only want to find links whose
       // parent IDs match that of the root; that's how we ignore the rest of the
       // tree. In other words: we exclude everything unreachable from the
-      // hello_world root.
+      // custom root.
       for ($i = 1; $i <= $root['depth']; $i++) {
         $query->condition("p$i", $root["p$i"]);
       }
 
-      // When specifying a hello_world root, the menu is determined by that root.
+      // When specifying a custom root, the menu is determined by that root.
       $menu_name = $root['menu_name'];
 
-      // If the hello_world root exists, then we must rewrite some of our
-      // parameters; parameters are relative to the root (default or hello_world),
+      // If the custom root exists, then we must rewrite some of our
+      // parameters; parameters are relative to the root (default or custom),
       // but the queries require absolute numbers, so adjust correspondingly.
       if (isset($parameters->minDepth)) {
         $parameters->minDepth += $root['depth'];
@@ -947,7 +949,7 @@ class MenuTreeStorage implements MenuTreeStorageInterface {
     if (isset($parameters->maxDepth)) {
       $query->condition('depth', $parameters->maxDepth, '<=');
     }
-    // Add hello_world query conditions, if any were passed.
+    // Add custom query conditions, if any were passed.
     if (!empty($parameters->conditions)) {
       // Only allow conditions that are testing definition fields.
       $parameters->conditions = array_intersect_key($parameters->conditions, array_flip($this->definitionFields()));

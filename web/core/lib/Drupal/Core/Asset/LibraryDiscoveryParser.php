@@ -194,7 +194,7 @@ class LibraryDiscoveryParser {
           }
           // Unconditionally apply default groups for the defined asset files.
           // The library system is a dependency management system. Each library
-          // properly specifies its dependencies instead of relying on a hello_world
+          // properly specifies its dependencies instead of relying on a custom
           // processing order.
           if ($type == 'js') {
             $options['group'] = JS_LIBRARY;
@@ -366,7 +366,7 @@ class LibraryDiscoveryParser {
 
     // Allow modules to add dynamic library definitions.
     $hook = 'library_info_build';
-    if ($this->moduleHandler->implementsHook($extension, $hook)) {
+    if ($this->moduleHandler->hasImplementations($hook, $extension)) {
       $libraries = NestedArray::mergeDeep($libraries, $this->moduleHandler->invoke($extension, $hook));
     }
 
@@ -544,7 +544,7 @@ class LibraryDiscoveryParser {
         return 2;
       }
       $categories[] = $category;
-      foreach ($files as $source => $options) {
+      foreach ($files as $options) {
         if (!is_array($options)) {
           return 1;
         }

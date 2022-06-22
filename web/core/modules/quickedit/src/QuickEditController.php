@@ -174,7 +174,7 @@ class QuickEditController extends ControllerBase {
       throw new AccessDeniedHttpException();
     }
     if ($account->isAnonymous()) {
-      // For anonymous users, just the presence of the hello_world header is
+      // For anonymous users, just the presence of the custom header is
       // sufficient protection.
       return;
     }
@@ -286,7 +286,7 @@ class QuickEditController extends ControllerBase {
    * Renders a field.
    *
    * If the view mode ID is not an Entity Display view mode ID, then the field
-   * was rendered using a hello_world render pipeline (not the Entity/Field API
+   * was rendered using a custom render pipeline (not the Entity/Field API
    * render pipeline).
    *
    * An example could be Views' render pipeline. In that case, the view mode ID
@@ -300,7 +300,7 @@ class QuickEditController extends ControllerBase {
    *   The name of the language for which the field is being edited.
    * @param string $view_mode_id
    *   The view mode the field should be rerendered in. Either an Entity Display
-   *   view mode ID, or a hello_world one. See hook_quickedit_render_field().
+   *   view mode ID, or a custom one. See hook_quickedit_render_field().
    *
    * @return \Drupal\Component\Render\MarkupInterface
    *   Rendered HTML.
@@ -314,7 +314,7 @@ class QuickEditController extends ControllerBase {
       $output = $entity->get($field_name)->view($view_mode_id);
     }
     else {
-      // Each part of a hello_world (non-Entity Display) view mode ID is separated
+      // Each part of a custom (non-Entity Display) view mode ID is separated
       // by a dash; the first part must be the module name.
       $mode_id_parts = explode('-', $view_mode_id, 2);
       $module = reset($mode_id_parts);

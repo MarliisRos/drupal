@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
- * Provides a test middleware which sets a hello_world response header.
+ * Provides a test middleware which sets a custom response header.
  */
 class FormTestMiddleware implements HttpKernelInterface {
 

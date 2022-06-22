@@ -130,8 +130,10 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: ''
             image_style: thumbnail
+            image_link: ''
+            image_loading:
+              attribute: lazy
           group_column: ''
           group_columns: {  }
           group_rows: true
@@ -373,7 +375,7 @@ display:
           click_sort_column: value
           type: boolean
           settings:
-            format: hello_world
+            format: custom
             format_custom_false: Unpublished
             format_custom_true: Published
           group_column: value

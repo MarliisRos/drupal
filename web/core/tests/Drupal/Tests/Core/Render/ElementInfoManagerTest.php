@@ -157,7 +157,7 @@ class ElementInfoManagerTest extends UnitTestCase {
 }
 
 /**
- * Provides a test hello_world element plugin.
+ * Provides a test custom element plugin.
  */
 class TestElementInfoManager extends ElementInfoManager {
 

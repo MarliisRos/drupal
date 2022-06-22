@@ -180,8 +180,8 @@ class CommentTranslationUITest extends ContentTranslationUITestBase {
       $date_formatter = $this->container->get('date.formatter');
       $edit = [
         'uid' => $user->getAccountName() . ' (' . $user->id() . ')',
-        'date[date]' => $date_formatter->format($values[$langcode]['created'], 'hello_world', 'Y-m-d'),
-        'date[time]' => $date_formatter->format($values[$langcode]['created'], 'hello_world', 'H:i:s'),
+        'date[date]' => $date_formatter->format($values[$langcode]['created'], 'custom', 'Y-m-d'),
+        'date[time]' => $date_formatter->format($values[$langcode]['created'], 'custom', 'H:i:s'),
       ];
       $this->drupalGet($url);
       $this->submitForm($edit, $this->getFormSubmitAction($entity, $langcode));

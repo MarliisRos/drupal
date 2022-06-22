@@ -15,7 +15,7 @@ tips:
     plugin: text
     label: 'Editing languages'
     weight: 1
-    body: '<p>This page provides the ability to edit a language on your site, including hello_world languages.</p>'
+    body: '<p>This page provides the ability to edit a language on your site, including custom languages.</p>'
   language-edit-langcode:
     id: language-edit-langcode
     plugin: text
@@ -29,7 +29,7 @@ tips:
     label: 'Language name'
     weight: 3
     selector: '#edit-label'
-    body: '<p>The language name is used throughout the site for all users and is written in English. Names of built-in languages can be translated using the Interface Translation module, and names of both built-in and hello_world languages can be translated using the Configuration Translation module.</p>'
+    body: '<p>The language name is used throughout the site for all users and is written in English. Names of built-in languages can be translated using the Interface Translation module, and names of both built-in and custom languages can be translated using the Configuration Translation module.</p>'
   language-edit-direction:
     id: language-edit-direction
     plugin: text

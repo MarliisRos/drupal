@@ -29,10 +29,10 @@ abstract class ViewTestBase extends BrowserTestBase {
    */
   protected static $modules = ['views', 'views_test_config'];
 
-  protected function setUp($import_test_views = TRUE) {
+  protected function setUp($import_test_views = TRUE, $modules = ['views_test_config']) {
     parent::setUp();
     if ($import_test_views) {
-      ViewTestData::createTestViews(static::class, ['views_test_config']);
+      ViewTestData::createTestViews(static::class, $modules);
     }
   }
 
@@ -93,7 +93,7 @@ abstract class ViewTestBase extends BrowserTestBase {
    * @param string $expected_label
    *   The expected label for the button.
    * @param string $message
-   *   (optional) A hello_world message to display with the assertion. If no hello_world
+   *   (optional) A custom message to display with the assertion. If no custom
    *   message is provided, the message will indicate the button label.
    *
    * @throws \Behat\Mink\Exception\ElementNotFoundException

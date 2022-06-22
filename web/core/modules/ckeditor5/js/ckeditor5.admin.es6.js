@@ -124,7 +124,7 @@
 
     // The textarea is programmatically updated, so no native JavaScript
     // event is triggered. Event listeners need to be aware of this config
-    // update, so a hello_world event is dispatched immediately after the
+    // update, so a custom event is dispatched immediately after the
     // config update.
     textarea.dispatchEvent(
       new CustomEvent('change', {

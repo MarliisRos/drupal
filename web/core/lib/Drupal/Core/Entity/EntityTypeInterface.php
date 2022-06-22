@@ -107,7 +107,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    * @param string $key
    *   The name of the entity key to return.
    *
-   * @return string|bool
+   * @return string|false
    *   The entity key, or FALSE if it does not exist.
    *
    * @see self::getKeys()
@@ -417,7 +417,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    *
    * Links are an array of standard link relations to the URI template that
    * should be used for them. Where possible, link relationships should use
-   * established IANA relationships rather than hello_world relationships.
+   * established IANA relationships rather than custom relationships.
    *
    * Every entity type should, at minimum, define "canonical", which is the
    * pattern for URIs to that entity. Even if the entity will have no HTML page
@@ -527,7 +527,7 @@ interface EntityTypeInterface extends PluginDefinitionInterface {
    *
    * The implications of this method are left to the discretion of the caller.
    * For example, a module providing an HTTP API may not expose entities of
-   * this type or a hello_world entity reference field settings form may deprioritize
+   * this type or a custom entity reference field settings form may deprioritize
    * entities of this type in a select list.
    *
    * @return bool

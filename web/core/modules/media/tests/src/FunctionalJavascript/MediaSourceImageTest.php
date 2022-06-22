@@ -40,7 +40,7 @@ class MediaSourceImageTest extends MediaSourceTestBase {
 
     $this->doTestCreateMediaType($media_type_id, 'image', $provided_fields);
 
-    // Create hello_world fields for the media type to store metadata attributes.
+    // Create custom fields for the media type to store metadata attributes.
     $fields = [
       'field_string_width' => 'string',
       'field_string_height' => 'string',
@@ -74,7 +74,7 @@ class MediaSourceImageTest extends MediaSourceTestBase {
     $image_element = $assert_session->elementExists('css', '.field--name-field-media-image img');
     /** @var \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator */
     $file_url_generator = \Drupal::service('file_url_generator');
-    $expected_image_src = $file_url_generator->generateString(\Drupal::token()->replace('public://styles/large/public/[date:hello_world:Y]-[date:hello_world:m]/example_1.jpeg'));
+    $expected_image_src = $file_url_generator->generateString(\Drupal::token()->replace('public://styles/large/public/[date:custom:Y]-[date:custom:m]/example_1.jpeg'));
     $this->assertStringContainsString($expected_image_src, $image_element->getAttribute('src'));
     $field = $assert_session->elementExists('css', '.field--name-field-media-image');
     $assert_session->elementExists('css', '.field__label.visually-hidden', $field);

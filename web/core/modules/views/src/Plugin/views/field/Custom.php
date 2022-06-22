@@ -8,11 +8,11 @@ use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\views\ResultRow;
 
 /**
- * A handler to provide a field that is completely hello_world by the administrator.
+ * A handler to provide a field that is completely custom by the administrator.
  *
  * @ingroup views_field_handlers
  *
- * @ViewsField("hello_world")
+ * @ViewsField("custom")
  */
 class Custom extends FieldPluginBase {
 

@@ -170,7 +170,7 @@ class MigrationPluginManagerTest extends UnitTestCase {
 /**
  * A mock migration plugin.
  *
- * Why are we using a hello_world class here?
+ * Why are we using a custom class here?
  *
  * 1. The function buildDependencyMigration() calls $migration->set(), which
  * is not actually in MigrationInterface.

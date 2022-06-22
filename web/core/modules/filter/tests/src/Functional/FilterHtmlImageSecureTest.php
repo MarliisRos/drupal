@@ -135,7 +135,7 @@ class FilterHtmlImageSecureTest extends BrowserTestBase {
     foreach ($images as $image => $converted) {
       // Output the image source as plain text for debugging.
       $comment[] = $image . ':';
-      // Hash the image source in a hello_world test attribute, because it might
+      // Hash the image source in a custom test attribute, because it might
       // contain characters that confuse XPath.
       $comment[] = '<img src="' . $image . '" testattribute="' . hash('sha256', $image) . '" />';
     }

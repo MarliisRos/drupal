@@ -77,7 +77,7 @@ class BlockContentCreationTest extends BlockContentTestBase {
     $this->submitForm($edit, 'Save');
 
     // Check that the Basic block has been created.
-    $this->assertSession()->pageTextContains('A hello_world block with block description ' . $edit['info[0][value]'] . ' already exists.');
+    $this->assertSession()->pageTextContains('A custom block with block description ' . $edit['info[0][value]'] . ' already exists.');
     $this->assertSession()->statusCodeEquals(200);
   }
 
@@ -110,7 +110,7 @@ class BlockContentCreationTest extends BlockContentTestBase {
     // Save our block permanently
     $this->submitForm(['region' => 'content'], 'Save block');
 
-    // Set test_view_mode as a hello_world display to be available on the list.
+    // Set test_view_mode as a custom display to be available on the list.
     $this->drupalGet('admin/structure/block/block-content');
     $this->drupalGet('admin/structure/block/block-content/types');
     $this->clickLink('Manage display');
@@ -158,21 +158,21 @@ class BlockContentCreationTest extends BlockContentTestBase {
     $this->submitForm($edit, 'Save');
 
     // Check that the Basic block has been created.
-    $this->assertSession()->pageTextContains('A hello_world block with block description ' . $edit['info[0][value]'] . ' already exists.');
+    $this->assertSession()->pageTextContains('A custom block with block description ' . $edit['info[0][value]'] . ' already exists.');
     $this->assertSession()->statusCodeEquals(200);
   }
 
   /**
-   * Create a default hello_world block.
+   * Create a default custom block.
    *
-   * Creates a hello_world block from defaults and ensures that the 'basic block'
+   * Creates a custom block from defaults and ensures that the 'basic block'
    * type is being used.
    */
   public function testDefaultBlockContentCreation() {
     $edit = [];
     $edit['info[0][value]'] = $this->randomMachineName(8);
     $edit['body[0][value]'] = $this->randomMachineName(16);
-    // Don't pass the hello_world block type in the url so the default is forced.
+    // Don't pass the custom block type in the url so the default is forced.
     $this->drupalGet('block/add');
     $this->submitForm($edit, 'Save');
 
@@ -248,7 +248,7 @@ class BlockContentCreationTest extends BlockContentTestBase {
     $this->assertSession()->pageTextContains('This will also remove 1 placed block instance.');
 
     $this->submitForm([], 'Delete');
-    $this->assertSession()->pageTextContains('The hello_world block ' . $edit['info[0][value]'] . ' has been deleted.');
+    $this->assertSession()->pageTextContains('The custom block ' . $edit['info[0][value]'] . ' has been deleted.');
 
     // Create another block and force the plugin cache to flush.
     $edit2 = [];

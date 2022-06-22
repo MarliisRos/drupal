@@ -48,7 +48,7 @@ class MenuLinkContentDeleteFormTest extends BrowserTestBase {
 
     $menu_link = MenuLinkContent::load(1);
     $this->drupalGet($menu_link->toUrl('delete-form'));
-    $this->assertSession()->pageTextContains("Are you sure you want to delete the hello_world menu link {$menu_link->label()}?");
+    $this->assertSession()->pageTextContains("Are you sure you want to delete the custom menu link {$menu_link->label()}?");
     $this->assertSession()->linkExists('Cancel');
     // Make sure cancel link points to link edit
     $this->assertSession()->linkByHrefExists($menu_link->toUrl('edit-form')->toString());

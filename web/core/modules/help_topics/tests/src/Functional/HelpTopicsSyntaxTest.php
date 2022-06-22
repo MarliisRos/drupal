@@ -33,7 +33,7 @@ class HelpTopicsSyntaxTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $defaultTheme = 'classy';
+  protected $defaultTheme = 'stark';
 
   /**
    * Tests that all Core help topics can be rendered and have good syntax.
@@ -55,7 +55,7 @@ class HelpTopicsSyntaxTest extends BrowserTestBase {
     $directories['bad_help_topics'] = \Drupal::service('extension.list.module')->getPath('help_topics_test') . '/bad_help_topics/syntax/';
 
     // Filter out directories outside of core. If you want to run this test
-    // on a contrib/hello_world module, remove the next line.
+    // on a contrib/custom module, remove the next line.
     $directories = array_filter($directories, function ($directory) {
       return strpos($directory, 'core') === 0;
     });
@@ -281,8 +281,8 @@ class HelpTopicsSyntaxTest extends BrowserTestBase {
     // excluding test ones.
     $lister = \Drupal::service('extension.list.' . $type);
     foreach ($lister->getAllAvailableInfo() as $name => $info) {
-      // Skip obsolete modules.
-      if (isset($info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER]) && $info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER] === ExtensionLifecycle::OBSOLETE) {
+      // Skip obsolete and deprecated modules.
+      if ($info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER] === ExtensionLifecycle::OBSOLETE || $info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER] === ExtensionLifecycle::DEPRECATED) {
         continue;
       }
       $path = $lister->getPath($name);

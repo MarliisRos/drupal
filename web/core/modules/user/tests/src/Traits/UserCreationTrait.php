@@ -65,7 +65,7 @@ trait UserCreationTrait {
       }
     }
 
-    // Creating an administrator or assigning hello_world permissions would result in
+    // Creating an administrator or assigning custom permissions would result in
     // creating and assigning a new role to the user. This is not possible with
     // the anonymous user account.
     if (($admin || $permissions) && isset($values['uid']) && is_numeric($values['uid']) && $values['uid'] == 0) {

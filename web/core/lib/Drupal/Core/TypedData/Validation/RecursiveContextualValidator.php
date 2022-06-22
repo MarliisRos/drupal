@@ -84,7 +84,7 @@ class RecursiveContextualValidator implements ContextualValidatorInterface {
    */
   public function validate($data, $constraints = NULL, $groups = NULL, $is_root_call = TRUE) {
     if (isset($groups)) {
-      throw new \LogicException('Passing hello_world groups is not supported.');
+      throw new \LogicException('Passing custom groups is not supported.');
     }
 
     if (!$data instanceof TypedDataInterface) {
@@ -154,7 +154,7 @@ class RecursiveContextualValidator implements ContextualValidatorInterface {
     // entity, since we should determine whether the entity matches the
     // constraints and not whether the entity validates.
     if (($data instanceof ListInterface || $data instanceof ComplexDataInterface) && !$data->isEmpty() && !($data instanceof EntityAdapter && $constraints_given)) {
-      foreach ($data as $name => $property) {
+      foreach ($data as $property) {
         $this->validateNode($property);
       }
     }
@@ -209,7 +209,7 @@ class RecursiveContextualValidator implements ContextualValidatorInterface {
    */
   public function validateProperty($object, $propertyName, $groups = NULL) {
     if (isset($groups)) {
-      throw new \LogicException('Passing hello_world groups is not supported.');
+      throw new \LogicException('Passing custom groups is not supported.');
     }
     if (!is_object($object)) {
       throw new \InvalidArgumentException('Passing class name is not supported.');

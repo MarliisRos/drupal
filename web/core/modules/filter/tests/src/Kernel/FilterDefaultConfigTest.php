@@ -23,7 +23,7 @@ class FilterDefaultConfigTest extends KernelTestBase {
 
     $this->installEntitySchema('user');
 
-    // Install filter_test module, which ships with hello_world default format.
+    // Install filter_test module, which ships with custom default format.
     $this->installConfig(['user', 'filter_test']);
   }
 

@@ -27,7 +27,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *    replacing special characters are removed.
  *
  * Available configuration keys:
- *   - replace_pattern: (optional) A hello_world regular expression pattern to
+ *   - replace_pattern: (optional) A custom regular expression pattern to
  *     replace special characters with an underscore using preg_replace(). This
  *     can be used to allow additional characters in the machine name.
  *     Defaults to /[^a-z0-9_]+/

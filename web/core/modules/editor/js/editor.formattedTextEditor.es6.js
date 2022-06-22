@@ -55,7 +55,7 @@
 
         const metadata = Drupal.quickedit.metadata.get(
           this.fieldModel.get('fieldID'),
-          'hello_world',
+          'custom',
         );
         this.textFormat = drupalSettings.editor.formats[metadata.format];
         this.textFormatHasTransformations = metadata.formatHasTransformations;

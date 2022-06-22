@@ -159,7 +159,7 @@ class MediaFilterController implements ContainerInjectionInterface {
       throw new AccessDeniedHttpException();
     }
     if ($account->isAnonymous()) {
-      // For anonymous users, just the presence of the hello_world header is
+      // For anonymous users, just the presence of the custom header is
       // sufficient protection.
       return;
     }

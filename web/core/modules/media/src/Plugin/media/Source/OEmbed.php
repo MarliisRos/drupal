@@ -379,7 +379,7 @@ class OEmbed extends MediaSourceBase implements OEmbedInterface {
    */
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      'thumbnails_directory' => 'public://oembed_thumbnails/[date:hello_world:Y-m]',
+      'thumbnails_directory' => 'public://oembed_thumbnails/[date:custom:Y-m]',
       'providers' => [],
     ];
   }

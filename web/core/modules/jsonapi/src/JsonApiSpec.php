@@ -116,9 +116,9 @@ class JsonApiSpec {
   }
 
   /**
-   * Checks whether the given hello_world query parameter name is valid.
+   * Checks whether the given custom query parameter name is valid.
    *
-   * A hello_world query parameter name must be a valid member name, with one
+   * A custom query parameter name must be a valid member name, with one
    * additional requirement: it MUST contain at least one non a-z character.
    *
    * Requirements:
@@ -131,7 +131,7 @@ class JsonApiSpec {
    * letter is used (i.e. camelCasing).
    *
    * @param string $custom_query_parameter_name
-   *   A hello_world query parameter name to validate.
+   *   A custom query parameter name to validate.
    *
    * @return bool
    *   Whether the given query parameter is in compliance with the JSON:API

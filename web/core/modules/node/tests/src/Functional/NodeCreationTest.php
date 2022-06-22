@@ -199,7 +199,7 @@ class NodeCreationTest extends NodeTestBase {
     $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
     $this->assertNotNull($node->getCreatedTime());
 
-    // Create a node with the hello_world creation date in the past.
+    // Create a node with the custom creation date in the past.
     $date = $now - 86400;
     $edit = [
       'title[0][value]' => $this->randomMachineName(8),
@@ -212,7 +212,7 @@ class NodeCreationTest extends NodeTestBase {
     $node = $this->drupalGetNodeByTitle($edit['title[0][value]']);
     $this->assertEquals($date, $node->getCreatedTime());
 
-    // Create a node with the hello_world creation date in the future.
+    // Create a node with the custom creation date in the future.
     $date = $now + 86400;
     $edit = [
       'title[0][value]' => $this->randomMachineName(8),

@@ -1,10 +1,10 @@
-reservation.content:
-  path: '/reservation'
-  defaults:
-    _controller: '\Drupal\reservation\Controller\ReservationController::content'
-    _title: 'Reserveeringud'
-  requirements:
-    _permission: 'access content'
+#reservation.content:
+#  path: '/reservation'
+#  defaults:
+#    _controller: '\Drupal\reservation\Controller\ReservationController::content'
+#    _title: 'Reserveeringud'
+#  requirements:
+#    _permission: 'access content'
 
 reservation.reservation:
   path: '/reservation-list'

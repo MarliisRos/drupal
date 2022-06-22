@@ -94,10 +94,10 @@ class DateTimeTest extends BrowserTestBase {
    * Tests date format configuration.
    */
   public function testDateFormatConfiguration() {
-    // Confirm 'no hello_world date formats available' message appears.
+    // Confirm 'no custom date formats available' message appears.
     $this->drupalGet('admin/config/regional/date-time');
 
-    // Add hello_world date format.
+    // Add custom date format.
     $this->clickLink('Add format');
     $date_format_id = strtolower($this->randomMachineName(8));
     $name = ucwords($date_format_id);
@@ -113,12 +113,12 @@ class DateTimeTest extends BrowserTestBase {
     $this->assertSession()->addressEquals(Url::fromRoute('entity.date_format.collection'));
     // Check that date format added confirmation message appears.
     $this->assertSession()->pageTextContains('Custom date format added.');
-    // Check that hello_world date format appears in the date format list.
+    // Check that custom date format appears in the date format list.
     $this->assertSession()->pageTextContains($name);
-    // Check that the delete link for hello_world date format appears.
+    // Check that the delete link for custom date format appears.
     $this->assertSession()->pageTextContains('Delete');
 
-    // Edit the hello_world date format and re-save without editing the format.
+    // Edit the custom date format and re-save without editing the format.
     $this->drupalGet('admin/config/regional/date-time');
     $this->clickLink('Edit');
     $this->submitForm([], 'Save format');
@@ -126,7 +126,7 @@ class DateTimeTest extends BrowserTestBase {
     $this->assertSession()->addressEquals(Url::fromRoute('entity.date_format.collection'));
     $this->assertSession()->pageTextContains('Custom date format updated.');
 
-    // Edit hello_world date format.
+    // Edit custom date format.
     $this->drupalGet('admin/config/regional/date-time');
     $this->clickLink('Edit');
     $edit = [
@@ -138,7 +138,7 @@ class DateTimeTest extends BrowserTestBase {
     $this->assertSession()->addressEquals(Url::fromRoute('entity.date_format.collection'));
     $this->assertSession()->pageTextContains('Custom date format updated.');
 
-    // Delete hello_world date format.
+    // Delete custom date format.
     $this->clickLink('Delete');
     $this->drupalGet('admin/config/regional/date-time/formats/manage/' . $date_format_id . '/delete');
     $this->submitForm([], 'Delete');
@@ -164,9 +164,9 @@ class DateTimeTest extends BrowserTestBase {
     // Verify that the user is redirected to the correct page.
     $this->assertSession()->addressEquals(Url::fromRoute('entity.date_format.collection'));
     $this->assertSession()->pageTextContains('Custom date format added.');
-    // Check that the hello_world date format appears in the date format list.
+    // Check that the custom date format appears in the date format list.
     $this->assertSession()->pageTextContains($name);
-    // Check that the delete link for hello_world date format appears.
+    // Check that the delete link for custom date format appears.
     $this->assertSession()->pageTextContains('Delete');
 
     $date_format = DateFormat::create([
@@ -194,7 +194,7 @@ class DateTimeTest extends BrowserTestBase {
     // Verify that the user is redirected to the correct page.
     $this->assertSession()->addressEquals(Url::fromRoute('entity.date_format.collection'));
     $this->assertSession()->pageTextContains('Custom date format added.');
-    // Check that the hello_world date format appears in the date format list.
+    // Check that the custom date format appears in the date format list.
     $this->assertSession()->pageTextContains($name);
     $this->assertSession()->assertEscaped('<em>' . date("Y") . '</em>');
   }

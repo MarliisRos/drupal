@@ -34,18 +34,18 @@ class DefaultsTestPluginManager extends DefaultPluginManager {
       ],
     ];
 
-    // Add a plugin with a hello_world value.
+    // Add a plugin with a custom value.
     $this->discovery->setDefinition('test_block1', [
       'class' => 'Drupal\plugin_test\Plugin\plugin_test\mock_block\MockTestBlock',
       'metadata' => [
-        'hello_world' => TRUE,
+        'custom' => TRUE,
       ],
     ]);
     // Add a plugin that overrides the default value.
     $this->discovery->setDefinition('test_block2', [
       'class' => 'Drupal\plugin_test\Plugin\plugin_test\mock_block\MockTestBlock',
       'metadata' => [
-        'hello_world' => TRUE,
+        'custom' => TRUE,
         'default' => FALSE,
       ],
     ]);

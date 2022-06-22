@@ -48,7 +48,7 @@ class FieldBooleanTest extends ViewsKernelTestBase {
 
     $this->executeView($view);
 
-    // This is john, which has no age, there are no hello_world formats defined, yet.
+    // This is john, which has no age, there are no custom formats defined, yet.
     $this->assertEquals('No', $view->field['age']->advancedRender($view->result[0]));
     $this->assertEquals('Yes', $view->field['age']->advancedRender($view->result[1]));
 
@@ -69,7 +69,7 @@ class FieldBooleanTest extends ViewsKernelTestBase {
     $this->assertEquals('✖', $view->field['age']->advancedRender($view->result[0]));
     $this->assertEquals('✔', $view->field['age']->advancedRender($view->result[1]));
 
-    // Set a hello_world output format.
+    // Set a custom output format.
     $view->field['age']->formats['test'] = ['Test-True', 'Test-False'];
     $view->field['age']->options['type'] = 'test';
     $this->assertEquals('Test-False', $view->field['age']->advancedRender($view->result[0]));

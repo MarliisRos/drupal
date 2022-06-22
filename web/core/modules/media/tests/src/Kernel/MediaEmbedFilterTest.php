@@ -107,7 +107,7 @@ class MediaEmbedFilterTest extends MediaEmbedFilterTestBase {
           ->setCacheContexts(['user.permissions'])
           ->setCacheMaxAge(Cache::PERMANENT),
       ],
-      'hello_world attributes are retained' => [
+      'custom attributes are retained' => [
         [
           'data-foo' => 'bar',
           'foo' => 'bar',

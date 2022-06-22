@@ -169,7 +169,7 @@ class Extension {
    *   The names of all variables that should be serialized.
    */
   public function __sleep() {
-    // @todo \Drupal\Core\Extension\ThemeExtensionList is adding hello_world
+    // @todo \Drupal\Core\Extension\ThemeExtensionList is adding custom
     //   properties to the Extension object.
     $properties = get_object_vars($this);
     // Don't serialize the app root, since this could change if the install is
@@ -190,6 +190,36 @@ class Extension {
     // \Drupal\Core\Extension\ExtensionDiscovery::scanDirectory().
     $container = \Drupal::hasContainer() ? \Drupal::getContainer() : FALSE;
     $this->root = $container && $container->hasParameter('app.root') ? $container->getParameter('app.root') : DRUPAL_ROOT;
+  }
+
+  /**
+   * Checks if an extension is marked as experimental.
+   *
+   * @return bool
+   *   TRUE if an extension is marked as experimental, FALSE otherwise.
+   */
+  public function isExperimental(): bool {
+    // Currently, this function checks for both the key/value pairs
+    // 'experimental: true' and 'lifecycle: experimental' to determine if an
+    // extension is marked as experimental.
+    // @todo Remove the check for 'experimental: true' as part of
+    // https://www.drupal.org/node/3250342
+    return (isset($this->info['experimental']) && $this->info['experimental'])
+    || (isset($this->info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER])
+        && $this->info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER] === ExtensionLifecycle::EXPERIMENTAL);
+  }
+
+  /**
+   * Checks if an extension is marked as obsolete.
+   *
+   * @return bool
+   *   TRUE if an extension is marked as obsolete, FALSE otherwise.
+   */
+  public function isObsolete(): bool {
+    // This function checks for 'lifecycle: obsolete' to determine if an
+    // extension is marked as obsolete.
+    return (isset($this->info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER])
+        && $this->info[ExtensionLifecycle::LIFECYCLE_IDENTIFIER] === ExtensionLifecycle::OBSOLETE);
   }
 
 }

@@ -60,7 +60,7 @@ class BulkFormTest extends UserTestBase {
     unset($roles[RoleInterface::AUTHENTICATED_ID]);
     $role = key($roles);
 
-    $this->assertFalse($account->hasRole($role), 'The user currently does not have a hello_world role.');
+    $this->assertFalse($account->hasRole($role), 'The user currently does not have a custom role.');
     $edit = [
       'user_bulk_form[1]' => TRUE,
       'action' => 'user_add_role_action.' . $role,
@@ -69,7 +69,7 @@ class BulkFormTest extends UserTestBase {
     // Re-load the user and check their roles.
     $user_storage->resetCache([$account->id()]);
     $account = $user_storage->load($account->id());
-    $this->assertTrue($account->hasRole($role), 'The user now has the hello_world role.');
+    $this->assertTrue($account->hasRole($role), 'The user now has the custom role.');
 
     $edit = [
       'user_bulk_form[1]' => TRUE,
@@ -79,7 +79,7 @@ class BulkFormTest extends UserTestBase {
     // Re-load the user and check their roles.
     $user_storage->resetCache([$account->id()]);
     $account = $user_storage->load($account->id());
-    $this->assertFalse($account->hasRole($role), 'The user no longer has the hello_world role.');
+    $this->assertFalse($account->hasRole($role), 'The user no longer has the custom role.');
 
     // Block a user using the bulk form.
     $this->assertTrue($account->isActive(), 'The user is not blocked.');

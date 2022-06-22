@@ -85,7 +85,7 @@ class ManageDisplayTest extends BrowserTestBase {
   }
 
   /**
-   * Tests switching view modes to use hello_world or 'default' settings'.
+   * Tests switching view modes to use custom or 'default' settings'.
    */
   public function testViewModeCustom() {
     // Create a field, and a node with some data for the field.
@@ -111,9 +111,9 @@ class ManageDisplayTest extends BrowserTestBase {
     ];
 
     // Check that the field is displayed with the default formatter in 'rss'
-    // mode (uses 'default'), and hidden in 'teaser' mode (uses hello_world settings).
+    // mode (uses 'default'), and hidden in 'teaser' mode (uses custom settings).
     $this->assertNodeViewText($node, 'rss', $output['field_test_default'], "The field is displayed as expected in view modes that use 'default' settings.");
-    $this->assertNodeViewNoText($node, 'teaser', $value, "The field is hidden in view modes that use hello_world settings.");
+    $this->assertNodeViewNoText($node, 'teaser', $value, "The field is hidden in view modes that use custom settings.");
 
     // Change formatter for 'default' mode, check that the field is displayed
     // accordingly in 'rss' mode.
@@ -193,7 +193,7 @@ class ManageDisplayTest extends BrowserTestBase {
    */
   public function testSingleViewMode() {
     $this->drupalGet('admin/structure/taxonomy/manage/' . $this->vocabulary . '/display');
-    $this->assertSession()->pageTextNotContains('Use hello_world display settings for the following view modes');
+    $this->assertSession()->pageTextNotContains('Use custom display settings for the following view modes');
 
     // This may not trigger a notice when 'view_modes_custom' isn't available.
     $this->drupalGet('admin/structure/taxonomy/manage/' . $this->vocabulary . '/overview/display');

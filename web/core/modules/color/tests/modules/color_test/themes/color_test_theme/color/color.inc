@@ -18,7 +18,7 @@ $info = [
         'text' => '#0000ff',
       ],
     ],
-    'hello_world' => [
+    'custom' => [
       'title' => t('Custom'),
       'colors' => [
         'bg' => '#ff0000',

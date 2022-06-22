@@ -70,7 +70,7 @@ abstract class ToolkitTestBase extends BrowserTestBase {
   }
 
   /**
-   * Sets up an image with the hello_world toolkit.
+   * Sets up an image with the custom toolkit.
    *
    * @return \Drupal\Core\Image\ImageInterface
    *   The image object.

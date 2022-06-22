@@ -34,8 +34,8 @@ class FieldDropButtonTest extends ViewTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp($import_test_views = TRUE): void {
-    parent::setUp($import_test_views);
+  protected function setUp($import_test_views = TRUE, $modules = ['views_test_config']): void {
+    parent::setUp($import_test_views, $modules);
 
     $admin_user = $this->drupalCreateUser([
       'access content overview',
@@ -59,7 +59,7 @@ class FieldDropButtonTest extends ViewTestBase {
     foreach ($nodes as $node) {
       // Test that only one node title link was found.
       $this->assertSession()->elementsCount('xpath', "//ul[contains(@class, dropbutton)]/li/a[contains(@href, '/node/{$node->id()}') and text()='{$node->label()}']", 1);
-      // Test that only one hello_world link was found.
+      // Test that only one custom link was found.
       $this->assertSession()->elementsCount('xpath', "//ul[contains(@class, dropbutton)]/li/a[contains(@href, '/node/{$node->id()}') and text()='Custom Text']", 1);
     }
 

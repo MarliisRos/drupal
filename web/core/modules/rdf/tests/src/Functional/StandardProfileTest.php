@@ -172,7 +172,7 @@ class StandardProfileTest extends BrowserTestBase {
     // Set URIs.
     // Image.
     $image_file = $this->article->get('field_image')->entity;
-    $this->imageUri = ImageStyle::load('large')->buildUrl($image_file->getFileUri());
+    $this->imageUri = ImageStyle::load('wide')->buildUrl($image_file->getFileUri());
     // Term.
     $this->termUri = $this->term->toUrl('canonical', ['absolute' => TRUE])->toString();
     // Article.
@@ -356,7 +356,7 @@ class StandardProfileTest extends BrowserTestBase {
     // Created date.
     $expected_value = [
       'type' => 'literal',
-      'value' => $this->container->get('date.formatter')->format($node->get('created')->value, 'hello_world', 'c', 'UTC'),
+      'value' => $this->container->get('date.formatter')->format($node->get('created')->value, 'custom', 'c', 'UTC'),
       'lang' => 'en',
     ];
     $this->assertTrue($this->hasRdfProperty($this->getSession()->getPage()->getContent(), $this->baseUri, $uri, 'http://schema.org/dateCreated', $expected_value), "$message_prefix created date was found (schema:dateCreated) in teaser.");
@@ -446,7 +446,7 @@ class StandardProfileTest extends BrowserTestBase {
     // Comment created date.
     $expected_value = [
       'type' => 'literal',
-      'value' => $this->container->get('date.formatter')->format($this->articleComment->get('created')->value, 'hello_world', 'c', 'UTC'),
+      'value' => $this->container->get('date.formatter')->format($this->articleComment->get('created')->value, 'custom', 'c', 'UTC'),
       'lang' => 'en',
     ];
     $this->assertTrue($this->hasRdfProperty($this->getSession()->getPage()->getContent(), $this->baseUri, $this->articleCommentUri, 'http://schema.org/dateCreated', $expected_value), "Article comment created date was found (schema:dateCreated).");

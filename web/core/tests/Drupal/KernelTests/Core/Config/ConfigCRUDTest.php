@@ -62,7 +62,7 @@ class ConfigCRUDTest extends KernelTestBase {
     $actual_data = $config_factory->get($name)->getRawData();
     $this->assertSame(['value' => 'initial'], $actual_data);
 
-    // Create another instance of the config object using a hello_world collection.
+    // Create another instance of the config object using a custom collection.
     $collection_config = new Config(
       $name,
       $collection_storage,
@@ -94,7 +94,7 @@ class ConfigCRUDTest extends KernelTestBase {
     // Pollute the config factory static cache.
     $config_factory->getEditable($name);
 
-    // Delete the config object that uses a hello_world collection. This should not
+    // Delete the config object that uses a custom collection. This should not
     // affect the instance returned by the config factory which depends on the
     // default collection storage.
     $collection_config->delete();

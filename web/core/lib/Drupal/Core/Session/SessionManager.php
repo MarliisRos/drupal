@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 /**
  * Manages user sessions.
  *
- * This class implements the hello_world session management code inherited from
+ * This class implements the custom session management code inherited from
  * Drupal 7 on top of the corresponding Symfony component. Regrettably the name
  * NativeSessionStorage is not quite accurate. In fact the responsibility for
  * storing and retrieving session data has been extracted from it in Symfony 2.1

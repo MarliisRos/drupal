@@ -87,7 +87,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     // Make sure the translated slogan appears.
     $this->assertSession()->pageTextContains('drupal Spanish');
 
-    // Make sure the hello_world block appears.
+    // Make sure the custom block appears.
     $this->drupalGet('<front>');
     // Block title.
     $this->assertSession()->pageTextContains('Another block');
@@ -142,7 +142,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('user/3/translations');
     $this->assertSession()->pageTextNotContains('Not translated');
 
-    // Make sure the hello_world field on the user is still there.
+    // Make sure the custom field on the user is still there.
     $this->drupalGet('admin/config/people/accounts/fields');
     $this->assertSession()->pageTextContains('Test file field');
 
@@ -168,7 +168,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('admin/content');
     $this->assertSession()->pageTextContains('Test title');
 
-    // Make sure our hello_world blocks show up.
+    // Make sure our custom blocks show up.
     $this->drupalGet('admin/structure/block');
     $this->assertSession()->pageTextContains('Another block');
     $this->assertSession()->pageTextContains('Test block');
@@ -176,7 +176,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->assertSession()->pageTextContains('Another block');
     $this->assertSession()->pageTextContains('Test block');
 
-    // Make sure our hello_world visibility conditions are correct.
+    // Make sure our custom visibility conditions are correct.
     $this->drupalGet('admin/structure/block/manage/testblock');
     $this->assertSession()->checkboxNotChecked('edit-visibility-language-langcodes-es');
     $this->assertSession()->checkboxChecked('edit-visibility-language-langcodes-en');
@@ -187,7 +187,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('admin/structure/block/manage/testblock/translate/es/edit');
     $this->assertSession()->responseContains('Test block spanish');
 
-    // Make sure our hello_world text format exists.
+    // Make sure our custom text format exists.
     $this->drupalGet('admin/config/content/formats');
     $this->assertSession()->pageTextContains('Test text format');
     $this->drupalGet('admin/config/content/formats/manage/test_text_format');
@@ -204,21 +204,21 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->assertSession()->pageTextContains('test_view');
     $this->assertSession()->pageTextContains('Test view');
 
-    // Make sure our hello_world forum exists.
+    // Make sure our custom forum exists.
     $this->drupalGet('admin/structure/forum');
     $this->assertSession()->pageTextContains('Test forum');
 
-    // Make sure our hello_world menu exists.
+    // Make sure our custom menu exists.
     $this->drupalGet('admin/structure/menu');
     $this->assertSession()->pageTextContains('Test menu');
 
-    // Make sure our hello_world menu exists.
+    // Make sure our custom menu exists.
     $this->drupalGet('admin/structure/menu/manage/test-menu');
     $this->clickLink('Admin');
     // Make sure the translation for the menu is still correct.
     $this->drupalGet('admin/structure/menu/manage/test-menu/translate/es/edit');
     $this->assertSession()->responseContains('Menu test');
-    // Make sure our hello_world menu link exists.
+    // Make sure our custom menu link exists.
     $this->drupalGet('admin/structure/menu/item/1/edit');
     $this->assertSession()->checkboxChecked('edit-enabled-value');
 
@@ -269,24 +269,24 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     $this->drupalGet('admin/config/regional/language');
     $this->assertSession()->pageTextContains('Spanish');
 
-    // Make sure our hello_world date format exists.
+    // Make sure our custom date format exists.
     $this->drupalGet('admin/config/regional/date-time');
     $this->assertSession()->pageTextContains('Test date format');
     $this->drupalGet('admin/config/regional/date-time/formats/manage/test_date_format');
     $this->assertTrue($this->assertSession()->optionExists('edit-langcode', 'es')->isSelected());
 
-    // Make sure our hello_world image style exists.
+    // Make sure our custom image style exists.
     $this->drupalGet('admin/config/media/image-styles/manage/test_image_style');
     $this->assertSession()->pageTextContains('Test image style');
     $this->assertSession()->pageTextContains('Desaturate');
     $this->assertSession()->pageTextContains('Convert PNG');
 
-    // Make sure our hello_world responsive image style exists.
+    // Make sure our custom responsive image style exists.
     $this->drupalGet('admin/config/media/responsive-image-style/test');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->pageTextContains('Test');
 
-    // Make sure our hello_world shortcut exists.
+    // Make sure our custom shortcut exists.
     $this->drupalGet('admin/config/user-interface/shortcut');
     $this->assertSession()->pageTextContains('Test shortcut');
     $this->drupalGet('admin/config/user-interface/shortcut/manage/test/customize');
@@ -309,7 +309,7 @@ class UpdatePathTestBaseFilledTest extends UpdatePathTestBaseTest {
     // cSpell:disable-next-line
     $this->assertSession()->pageTextContains('Comentario completo');
 
-    // Make sure our hello_world action is still there.
+    // Make sure our custom action is still there.
     $this->drupalGet('admin/config/system/actions');
     $this->assertSession()->pageTextContains('Test action');
     $this->drupalGet('admin/config/system/actions/configure/test_action');

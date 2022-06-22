@@ -447,7 +447,7 @@ function viewImageToModelImage(editor) {
 
     // The way that image styles are handled here is naive - it assumes that the
     // image styles are configured exactly as expected by this plugin.
-    // @todo Add support for hello_world image style configurations
+    // @todo Add support for custom image style configurations
     //   https://www.drupal.org/i/3270693.
     if (
       editor.plugins.has('ImageStyleEditing') &&

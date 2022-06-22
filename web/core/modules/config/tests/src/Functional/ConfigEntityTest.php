@@ -225,7 +225,7 @@ class ConfigEntityTest extends BrowserTestBase {
   /**
    * Tests CRUD operations through the UI.
    */
-  public function testCRUDUI() {
+  public function testCrudUi() {
     $this->drupalLogin($this->drupalCreateUser([
       'administer site configuration',
     ]));
@@ -330,7 +330,7 @@ class ConfigEntityTest extends BrowserTestBase {
     $edit = [
       'id' => $id,
       'label' => $this->randomString(),
-      'size' => 'hello_world',
+      'size' => 'custom',
     ];
 
     $this->assertSession()->fieldExists('size');
@@ -346,7 +346,7 @@ class ConfigEntityTest extends BrowserTestBase {
     $this->submitForm($edit, 'Save');
 
     $entity = $storage->load($id);
-    $this->assertEquals('hello_world', $entity->get('size'));
+    $this->assertEquals('custom', $entity->get('size'));
     $this->assertEquals('medium', $entity->get('size_value'));
   }
 

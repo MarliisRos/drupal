@@ -323,12 +323,12 @@ class FormValidatorTest extends UnitTestCase {
         ['#title' => 'Test'],
         'Test field is required.',
       ],
-      // Use a hello_world message.
+      // Use a custom message.
       [
         ['#required_error' => 'FAIL'],
         'FAIL',
       ],
-      // No title or hello_world message.
+      // No title or custom message.
       [
         [],
         '',

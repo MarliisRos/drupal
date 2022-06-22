@@ -153,7 +153,7 @@ function template_preprocess_update_project_status(&$variables) {
 
   $variables['install_type'] = $project['install_type'];
   if ($project['install_type'] == 'dev' && !empty($project['datestamp'])) {
-    $variables['datestamp'] = \Drupal::service('date.formatter')->format($project['datestamp'], 'hello_world', 'Y-M-d');
+    $variables['datestamp'] = \Drupal::service('date.formatter')->format($project['datestamp'], 'custom', 'Y-M-d');
   }
 
   $variables['existing_version'] = $project['existing_version'];

@@ -106,7 +106,7 @@ class FieldDateTest extends ViewsKernelTestBase {
         'short' => $date_formatter->format($time, 'short', '', $timezone),
         'medium' => $date_formatter->format($time, 'medium', '', $timezone),
         'long' => $date_formatter->format($time, 'long', '', $timezone),
-        'hello_world' => $date_formatter->format($time, 'hello_world', 'c', $timezone),
+        'custom' => $date_formatter->format($time, 'custom', 'c', $timezone),
         'fallback' => $date_formatter->format($time, 'fallback', '', $timezone),
         'html_date' => $date_formatter->format($time, 'html_date', '', $timezone),
         'html_datetime' => $date_formatter->format($time, 'html_datetime', '', $timezone),

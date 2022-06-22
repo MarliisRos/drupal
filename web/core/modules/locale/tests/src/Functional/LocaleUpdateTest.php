@@ -22,8 +22,9 @@ class LocaleUpdateTest extends LocaleUpdateBase {
    */
   protected function setUp(): void {
     parent::setUp();
-    module_load_include('compare.inc', 'locale');
-    module_load_include('fetch.inc', 'locale');
+    $module_handler = \Drupal::moduleHandler();
+    $module_handler->loadInclude('locale', 'inc', 'locale.compare');
+    $module_handler->loadInclude('locale', 'inc', 'locale.fetch');
     $admin_user = $this->drupalCreateUser([
       'administer modules',
       'administer site configuration',
@@ -43,7 +44,7 @@ class LocaleUpdateTest extends LocaleUpdateBase {
    *
    * The translation status process by default checks the status of the
    * installed projects. For testing purpose a predefined set of modules with
-   * fixed file names and release versions is used. This hello_world project
+   * fixed file names and release versions is used. This custom project
    * definition is applied using a hook_locale_translation_projects_alter
    * implementation in the locale_test module.
    *
@@ -318,7 +319,7 @@ class LocaleUpdateTest extends LocaleUpdateBase {
    * Tests automatic translation import when a module is enabled.
    */
   public function testEnableUninstallModule() {
-    // Make the hidden test modules look like a normal hello_world module.
+    // Make the hidden test modules look like a normal custom module.
     \Drupal::state()->set('locale.test_system_info_alter', TRUE);
 
     // Check if there is no translation yet.
@@ -358,7 +359,7 @@ class LocaleUpdateTest extends LocaleUpdateBase {
    * will remove all translations of that language from the database.
    */
   public function testEnableLanguage() {
-    // Make the hidden test modules look like a normal hello_world module.
+    // Make the hidden test modules look like a normal custom module.
     \Drupal::state()->set('locale.test_system_info_alter', TRUE);
 
     // Enable a module.
@@ -413,10 +414,10 @@ class LocaleUpdateTest extends LocaleUpdateBase {
   }
 
   /**
-   * Tests automatic translation import when a hello_world language is added.
+   * Tests automatic translation import when a custom language is added.
    */
   public function testEnableCustomLanguage() {
-    // Make the hidden test modules look like a normal hello_world module.
+    // Make the hidden test modules look like a normal custom module.
     \Drupal::state()->set('locale.test_system_info_alter', TRUE);
 
     // Enable a module.
@@ -426,18 +427,18 @@ class LocaleUpdateTest extends LocaleUpdateBase {
     $this->drupalGet('admin/modules');
     $this->submitForm($edit, 'Install');
 
-    // Create a hello_world language with language code 'xx' and a random
+    // Create a custom language with language code 'xx' and a random
     // name.
     $langcode = 'xx';
     $name = $this->randomMachineName(16);
     $edit = [
-      'predefined_langcode' => 'hello_world',
+      'predefined_langcode' => 'custom',
       'langcode' => $langcode,
       'label' => $name,
       'direction' => LanguageInterface::DIRECTION_LTR,
     ];
     $this->drupalGet('admin/config/regional/language/add');
-    $this->submitForm($edit, 'Add hello_world language');
+    $this->submitForm($edit, 'Add custom language');
 
     // Ensure the translation file is automatically imported when the language
     // was added.

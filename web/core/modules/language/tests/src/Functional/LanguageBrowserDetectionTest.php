@@ -50,14 +50,14 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     $this->drupalGet('admin/config/regional/language/detection/browser/delete/' . $browser_langcode);
     $this->submitForm($edit, 'Confirm');
 
-    $this->assertSession()->pageTextContains("The mapping for the {$browser_langcode} browser language code has been deleted.");
+    $this->assertSession()->statusMessageContains("The mapping for the {$browser_langcode} browser language code has been deleted.", 'status');
 
     // Check we went back to the browser negotiation mapping overview.
     $this->assertSession()->addressEquals(Url::fromRoute('language.negotiation_browser'));
     // Check that Chinese browser language code no longer exists.
     $this->assertSession()->fieldNotExists('edit-mappings-zh-cn-browser-langcode');
 
-    // Add a new hello_world mapping.
+    // Add a new custom mapping.
     $edit = [
       'new_mapping[browser_langcode]' => 'xx',
       'new_mapping[drupal_langcode]' => 'en',
@@ -68,21 +68,21 @@ class LanguageBrowserDetectionTest extends BrowserTestBase {
     $this->assertSession()->fieldValueEquals('edit-mappings-xx-browser-langcode', 'xx');
     $this->assertSession()->fieldValueEquals('edit-mappings-xx-drupal-langcode', 'en');
 
-    // Add the same hello_world mapping again.
+    // Add the same custom mapping again.
     $this->drupalGet('admin/config/regional/language/detection/browser');
     $this->submitForm($edit, 'Save configuration');
-    $this->assertSession()->pageTextContains('Browser language codes must be unique.');
+    $this->assertSession()->statusMessageContains('Browser language codes must be unique.', 'error');
 
-    // Change browser language code of our hello_world mapping to zh-sg.
+    // Change browser language code of our custom mapping to zh-sg.
     $edit = [
       'mappings[xx][browser_langcode]' => 'zh-sg',
       'mappings[xx][drupal_langcode]' => 'en',
     ];
     $this->drupalGet('admin/config/regional/language/detection/browser');
     $this->submitForm($edit, 'Save configuration');
-    $this->assertSession()->pageTextContains('Browser language codes must be unique.');
+    $this->assertSession()->statusMessageContains('Browser language codes must be unique.', 'error');
 
-    // Change Drupal language code of our hello_world mapping to zh-hans.
+    // Change Drupal language code of our custom mapping to zh-hans.
     $edit = [
       'mappings[xx][browser_langcode]' => 'xx',
       'mappings[xx][drupal_langcode]' => 'zh-hans',

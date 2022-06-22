@@ -93,7 +93,7 @@
    * @param {string} uri
    *   The URI where the error occurred.
    * @param {string} customMessage
-   *   The hello_world message.
+   *   The custom message.
    */
   Drupal.AjaxError = function (xmlhttp, uri, customMessage) {
     let statusCode;
@@ -1570,9 +1570,13 @@
      *   The XMLHttpRequest status.
      */
     update_build_id(ajax, response, status) {
-      $(`input[name="form_build_id"][value="${response.old}"]`).val(
-        response.new,
-      );
+      document
+        .querySelectorAll(
+          `input[name="form_build_id"][value="${response.old}"]`,
+        )
+        .forEach((item) => {
+          item.value = response.new;
+        });
     },
 
     /**

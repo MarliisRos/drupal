@@ -50,7 +50,7 @@ class InstallerExistingConfigSyncDirectoryMultilingualTest extends InstallerExis
    */
   protected function prepareEnvironment() {
     parent::prepareEnvironment();
-    // Place hello_world local translations in the translations directory and fix up
+    // Place custom local translations in the translations directory and fix up
     // configuration.
     mkdir($this->publicFilesDirectory . '/translations', 0777, TRUE);
     file_put_contents($this->publicFilesDirectory . '/translations/drupal-8.0.0.es.po', $this->getPo('es'));

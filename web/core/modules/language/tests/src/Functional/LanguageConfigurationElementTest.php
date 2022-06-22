@@ -95,7 +95,7 @@ class LanguageConfigurationElementTest extends BrowserTestBase {
    * Tests that the language_get_default_langcode() returns the correct values.
    */
   public function testDefaultLangcode() {
-    // Add some hello_world languages.
+    // Add some custom languages.
     foreach (['aa', 'bb', 'cc'] as $language_code) {
       ConfigurableLanguage::create([
         'id' => $language_code,

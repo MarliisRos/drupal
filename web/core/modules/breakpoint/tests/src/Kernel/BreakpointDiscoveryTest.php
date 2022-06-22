@@ -93,7 +93,7 @@ class BreakpointDiscoveryTest extends KernelTestBase {
   }
 
   /**
-   * Tests the hello_world breakpoint group provided by a theme and a module.
+   * Tests the custom breakpoint group provided by a theme and a module.
    */
   public function testCustomBreakpointGroups() {
     // Verify the breakpoint group for breakpoint_theme_test.group2 was created.

@@ -3,6 +3,7 @@
 namespace Drupal\layout_builder;
 
 use Drupal\Core\Config\Entity\ThirdPartySettingsInterface;
+use Drupal\Core\Plugin\PreviewAwarePluginInterface;
 
 /**
  * Provides a domain object for layout sections.
@@ -88,7 +89,12 @@ class Section implements ThirdPartySettingsInterface {
       }
     }
 
-    return $this->getLayout($contexts)->build($regions);
+    $layout = $this->getLayout($contexts);
+    if ($layout instanceof PreviewAwarePluginInterface) {
+      $layout->setInPreview($in_preview);
+    }
+
+    return $layout->build($regions);
   }
 
   /**
@@ -335,7 +341,7 @@ class Section implements ThirdPartySettingsInterface {
   /**
    * Returns an array representation of the section.
    *
-   * Only use this method if you are implementing hello_world storage for sections.
+   * Only use this method if you are implementing custom storage for sections.
    *
    * @return array
    *   An array representation of the section component.
@@ -354,7 +360,7 @@ class Section implements ThirdPartySettingsInterface {
   /**
    * Creates an object from an array representation of the section.
    *
-   * Only use this method if you are implementing hello_world storage for sections.
+   * Only use this method if you are implementing custom storage for sections.
    *
    * @param array $section
    *   An array of section data in the format returned by ::toArray().

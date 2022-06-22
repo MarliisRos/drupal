@@ -42,7 +42,7 @@ class StyleTest extends ViewsKernelTestBase {
     $view->initStyle();
     // Reinitialize the style as it supports row plugins now.
     $view->style_plugin->init($view, $view->display_handler);
-    $this->assertInstanceOf(Rowtest::class, $view->rowPlugin);
+    $this->assertInstanceOf(RowTest::class, $view->rowPlugin);
 
     $random_text = $this->randomMachineName();
     $view->rowPlugin->setOutput($random_text);
@@ -64,7 +64,7 @@ class StyleTest extends ViewsKernelTestBase {
     $this->assertInstanceOf(Fields::class, $view->rowPlugin);
 
     $random_text = $this->randomMachineName();
-    // Set some hello_world text to the output and make sure that this value is
+    // Set some custom text to the output and make sure that this value is
     // rendered.
     $view->style_plugin->setOutput($random_text);
     $output = $view->preview();
@@ -273,7 +273,7 @@ class StyleTest extends ViewsKernelTestBase {
   }
 
   /**
-   * Tests hello_world CSS row classes.
+   * Tests custom CSS row classes.
    */
   public function testCustomRowClasses() {
     $view = Views::getView('test_view');

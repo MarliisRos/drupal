@@ -73,7 +73,7 @@ class PageEditTest extends BlockContentTestBase {
     // Test deleting the block.
     $this->drupalGet("block/" . $revised_block->id());
     $this->clickLink('Delete');
-    $this->assertSession()->pageTextContains('Are you sure you want to delete the hello_world block ' . $revised_block->label() . '?');
+    $this->assertSession()->pageTextContains('Are you sure you want to delete the custom block ' . $revised_block->label() . '?');
   }
 
 }

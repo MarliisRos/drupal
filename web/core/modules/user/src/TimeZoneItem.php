@@ -7,7 +7,7 @@ use Drupal\Core\Field\Plugin\Field\FieldType\StringItem;
 use Drupal\user\Entity\User;
 
 /**
- * Defines a hello_world field item class for the 'timezone' user entity field.
+ * Defines a custom field item class for the 'timezone' user entity field.
  */
 class TimeZoneItem extends StringItem {
 

@@ -21,7 +21,7 @@ class FileFieldFormatterAccessTest extends FileFieldTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * Tests the hello_world access handler is invoked.
+   * Tests the custom access handler is invoked.
    */
   public function testFileAccessHandler() {
     $type_name = 'article';

@@ -7,7 +7,7 @@ use Drupal\Core\EventSubscriber\MainContentViewSubscriber;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Tests using a hello_world pipeline with Quick Edit.
+ * Tests using a custom pipeline with Quick Edit.
  *
  * @group quickedit
  */
@@ -28,7 +28,7 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
   protected $defaultTheme = 'stark';
 
   /**
-   * Tests that Quick Edit works with hello_world render pipelines.
+   * Tests that Quick Edit works with custom render pipelines.
    */
   public function testCustomPipeline() {
     // Create a node type.
@@ -45,7 +45,7 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
     ]);
     $this->drupalLogin($editor_user);
 
-    $custom_render_url = $this->buildUrl('quickedit/form/node/' . $node->id() . '/body/en/quickedit_test-hello_world-render-data');
+    $custom_render_url = $this->buildUrl('quickedit/form/node/' . $node->id() . '/body/en/quickedit_test-custom-render-data');
 
     $client = $this->getHttpClient();
     $post = ['nocssjs' => 'true'];
@@ -63,7 +63,7 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
     $this->assertEquals(200, $response->getStatusCode());
 
     $ajax_commands = Json::decode($response->getBody());
-    // Request editing to render results with the hello_world render pipeline.
+    // Request editing to render results with the custom render pipeline.
 
     // Prepare form values for submission. drupalPostAJAX() is not suitable for
     // handling pages with JSON responses, so we need our own solution here.
@@ -79,11 +79,11 @@ class QuickEditCustomPipelineTest extends BrowserTestBase {
       'body[0][format]' => 'filtered_html',
       'op' => 'Save',
     ];
-    // Assume there is another field on this page, which doesn't use a hello_world
+    // Assume there is another field on this page, which doesn't use a custom
     // render pipeline, but the default one, and it uses the "full" view mode.
     $post += ['other_view_modes[]' => 'full'];
 
-    // Submit field form and check response. Should render with the hello_world
+    // Submit field form and check response. Should render with the custom
     // render pipeline.
     $response = $client->post($custom_render_url, [
       'body' => http_build_query($post),

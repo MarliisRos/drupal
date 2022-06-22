@@ -142,7 +142,7 @@ trait FunctionalTestSetupTrait {
       file_put_contents($directory . '/services.yml', $yaml->dump($services));
     }
     // Since Drupal is bootstrapped already, install_begin_request() will not
-    // bootstrap again. Hence, we have to reload the newly written hello_world
+    // bootstrap again. Hence, we have to reload the newly written custom
     // settings.php manually.
     Settings::initialize(DRUPAL_ROOT, $this->siteDirectory, $this->classLoader);
   }
@@ -516,6 +516,7 @@ trait FunctionalTestSetupTrait {
     $driver = $connection_info['default']['driver'];
     unset($connection_info['default']['driver']);
     unset($connection_info['default']['namespace']);
+    unset($connection_info['default']['autoload']);
     unset($connection_info['default']['pdo']);
     unset($connection_info['default']['init_commands']);
     // Remove database connection info that is not used by SQLite.
@@ -620,11 +621,6 @@ trait FunctionalTestSetupTrait {
    *
    * Also sets up new resources for the testing environment, such as the public
    * filesystem and configuration directories.
-   *
-   * This method is private as it must only be called once by
-   * BrowserTestBase::setUp() (multiple invocations for the same test would have
-   * unpredictable consequences) and it must not be callable or overridable by
-   * test classes.
    */
   protected function prepareEnvironment() {
     // Bootstrap Drupal so we can use Drupal's built in functions.
@@ -652,7 +648,7 @@ trait FunctionalTestSetupTrait {
     // Ensure the configImporter is refreshed for each test.
     $this->configImporter = NULL;
 
-    // Unregister all hello_world stream wrappers of the parent site.
+    // Unregister all custom stream wrappers of the parent site.
     $wrappers = \Drupal::service('stream_wrapper_manager')->getWrappers(StreamWrapperInterface::ALL);
     foreach ($wrappers as $scheme => $info) {
       stream_wrapper_unregister($scheme);

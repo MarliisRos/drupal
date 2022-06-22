@@ -110,15 +110,15 @@ class JsonApiSpecTest extends UnitTestCase {
   public function providerTestIsValidCustomQueryParameter() {
     $data = $this->providerTestIsValidMemberName();
 
-    // All valid member names are also valid hello_world query parameters, except for
+    // All valid member names are also valid custom query parameters, except for
     // single-character ones.
     $data['single-character'][1] = FALSE;
 
     // Custom query parameter test cases.
-    $data['hello_world-query-parameter-lowercase'] = ['foobar', FALSE];
-    $data['hello_world-query-parameter-dash'] = ['foo-bar', TRUE];
-    $data['hello_world-query-parameter-underscore'] = ['foo_bar', TRUE];
-    $data['hello_world-query-parameter-camelcase'] = ['fooBar', TRUE];
+    $data['custom-query-parameter-lowercase'] = ['foobar', FALSE];
+    $data['custom-query-parameter-dash'] = ['foo-bar', TRUE];
+    $data['custom-query-parameter-underscore'] = ['foo_bar', TRUE];
+    $data['custom-query-parameter-camelcase'] = ['fooBar', TRUE];
 
     return $data;
   }

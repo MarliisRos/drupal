@@ -7,7 +7,7 @@ use Drupal\Tests\system\Functional\Cache\AssertPageCacheContextsAndTagsTrait;
 use Drupal\user\RoleInterface;
 
 /**
- * Tests page access denied functionality, including hello_world 403 pages.
+ * Tests page access denied functionality, including custom 403 pages.
  *
  * @group system
  */
@@ -65,7 +65,7 @@ class AccessDeniedTest extends BrowserTestBase {
 
     $this->drupalLogin($this->adminUser);
 
-    // Set a hello_world 404 page without a starting slash.
+    // Set a custom 404 page without a starting slash.
     $edit = [
       'site_403' => 'user/' . $this->adminUser->id(),
     ];
@@ -73,7 +73,7 @@ class AccessDeniedTest extends BrowserTestBase {
     $this->submitForm($edit, 'Save configuration');
     $this->assertSession()->pageTextContains("The path '{$edit['site_403']}' has to start with a slash.");
 
-    // Use a hello_world 403 page.
+    // Use a custom 403 page.
     $edit = [
       'site_403' => '/user/' . $this->adminUser->id(),
     ];
@@ -83,13 +83,13 @@ class AccessDeniedTest extends BrowserTestBase {
     // Enable the user login block.
     $block = $this->drupalPlaceBlock('user_login_block', ['id' => 'login']);
 
-    // Log out and check that the user login block is shown on hello_world 403 pages.
+    // Log out and check that the user login block is shown on custom 403 pages.
     $this->drupalLogout();
     $this->drupalGet('admin');
     $this->assertSession()->pageTextContains($this->adminUser->getAccountName());
     $this->assertSession()->pageTextContains('Username');
 
-    // Log back in and remove the hello_world 403 page.
+    // Log back in and remove the custom 403 page.
     $this->drupalLogin($this->adminUser);
     $edit = [
       'site_403' => '',
@@ -104,7 +104,7 @@ class AccessDeniedTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(403);
     $this->assertSession()->pageTextContains('Username');
 
-    // Log back in, set the hello_world 403 page to /user/login and remove the block
+    // Log back in, set the custom 403 page to /user/login and remove the block
     $this->drupalLogin($this->adminUser);
     $this->config('system.site')->set('page.403', '/user/login')->save();
     $block->disable()->save();
@@ -123,24 +123,24 @@ class AccessDeniedTest extends BrowserTestBase {
   }
 
   /**
-   * Tests that an inaccessible hello_world 403 page falls back to the default.
+   * Tests that an inaccessible custom 403 page falls back to the default.
    */
   public function testAccessDeniedCustomPageWithAccessDenied() {
     // Sets up a 403 page not accessible by the anonymous user.
-    $this->config('system.site')->set('page.403', '/system-test/hello_world-4xx')->save();
+    $this->config('system.site')->set('page.403', '/system-test/custom-4xx')->save();
 
     $this->drupalGet('/system-test/always-denied');
     $this->assertSession()->pageTextNotContains('Admin-only 4xx response');
     $this->assertSession()->pageTextContains('You are not authorized to access this page.');
     $this->assertSession()->statusCodeEquals(403);
-    // Verify the access cacheability metadata for hello_world 403 is bubbled.
+    // Verify the access cacheability metadata for custom 403 is bubbled.
     $this->assertCacheContext('user.roles');
 
     $this->drupalLogin($this->adminUser);
     $this->drupalGet('/system-test/always-denied');
     $this->assertSession()->pageTextContains('Admin-only 4xx response');
     $this->assertSession()->statusCodeEquals(403);
-    // Verify the access cacheability metadata for hello_world 403 is bubbled.
+    // Verify the access cacheability metadata for custom 403 is bubbled.
     $this->assertCacheContext('user.roles');
   }
 

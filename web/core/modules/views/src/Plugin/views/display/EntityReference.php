@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * The plugin that handles an EntityReference display.
  *
- * "entity_reference_display" is a hello_world property, used with
+ * "entity_reference_display" is a custom property, used with
  * \Drupal\views\Views::getApplicableViews() to retrieve all views with an
  * 'Entity Reference' display.
  *

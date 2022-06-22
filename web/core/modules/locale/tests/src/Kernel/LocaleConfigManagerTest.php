@@ -88,7 +88,7 @@ class LocaleConfigManagerTest extends KernelTestBase {
 
     $block = Block::create([
       'id' => 'test_default_config',
-      'theme' => 'classy',
+      'theme' => 'stark',
       'status' => TRUE,
       'region' => 'content',
       'plugin' => 'local_tasks_block',
@@ -105,7 +105,7 @@ class LocaleConfigManagerTest extends KernelTestBase {
 
     // Install the theme after creating the block as installing the theme will
     // install the block provided by the locale_test module.
-    \Drupal::service('theme_installer')->install(['classy']);
+    \Drupal::service('theme_installer')->install(['stark']);
 
     // The test_default_config block provided by the locale_test module will not
     // be installed because a block with the same ID already exists.
@@ -121,9 +121,9 @@ class LocaleConfigManagerTest extends KernelTestBase {
     $fr_language = ConfigurableLanguage::createFromLangcode('fr');
     $fr_language->save();
     $this->assertEquals('en', \Drupal::service('locale.config_manager')->getDefaultConfigLangcode('language.entity.fr'), 'The language.entity.fr is treated as shipped configuration because it is a configurable_language config entity and in the standard language list.');
-    $custom_language = ConfigurableLanguage::createFromLangcode('hello_world');
+    $custom_language = ConfigurableLanguage::createFromLangcode('custom');
     $custom_language->save();
-    $this->assertNull(\Drupal::service('locale.config_manager')->getDefaultConfigLangcode('language.entity.hello_world'), 'The language.entity.hello_world is not shipped configuration because it is not in the standard language list.');
+    $this->assertNull(\Drupal::service('locale.config_manager')->getDefaultConfigLangcode('language.entity.custom'), 'The language.entity.custom is not shipped configuration because it is not in the standard language list.');
   }
 
 }

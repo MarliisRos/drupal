@@ -354,7 +354,7 @@ class ConfigSchemaTest extends KernelTestBase {
    */
   public function testConfigSaveWithSchema() {
     $untyped_values = [
-      // Test a hello_world type.
+      // Test a custom type.
       'config_schema_test_integer' => '1',
       'config_schema_test_integer_empty_string' => '',
       'integer' => '100',

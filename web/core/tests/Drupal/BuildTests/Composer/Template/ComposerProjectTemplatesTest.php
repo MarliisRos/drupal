@@ -98,7 +98,44 @@ class ComposerProjectTemplatesTest extends BuildTestBase {
     //   to in the future accidentally commit a dependency that regresses our
     //   actual stability requirement without us explicitly changing this
     //   constant.
-    $this->assertSame($this->getLowestDependencyStability(), static::MINIMUM_STABILITY);
+    $root = $this->getDrupalRoot();
+    $process = $this->executeCommand("composer --working-dir=$root info --format=json");
+    $this->assertCommandSuccessful();
+    $installed = json_decode($process->getOutput(), TRUE);
+
+    // A lookup of the numerical position of each of the stability terms.
+    $stability_order_indexes = array_flip(static::STABILITY_ORDER);
+
+    $minimum_stability_order_index = $stability_order_indexes[static::MINIMUM_STABILITY];
+
+    $exclude = [
+      'drupal/core',
+      'drupal/core-project-message',
+      'drupal/core-vendor-hardening',
+    ];
+    foreach ($installed['installed'] as $project) {
+      // Exclude dependencies that are required with "self.version", since
+      // those stabilities will automatically match the corresponding Drupal
+      // release.
+      if (in_array($project['name'], $exclude, TRUE)) {
+        continue;
+      }
+
+      $project_stability = VersionParser::parseStability($project['version']);
+      $project_stability_order_index = $stability_order_indexes[$project_stability];
+
+      $project_stabilities[$project['name']] = $project_stability;
+
+      $this->assertGreaterThanOrEqual($minimum_stability_order_index, $project_stability_order_index, sprintf(
+        "Dependency %s with stability %s does not meet minimum stability %s.",
+        $project['name'],
+        $project_stability,
+        static::MINIMUM_STABILITY,
+      ));
+    }
+
+    // At least one project should be at the minimum stability.
+    $this->assertContains(static::MINIMUM_STABILITY, $project_stabilities);
   }
 
   /**
@@ -139,7 +176,7 @@ class ComposerProjectTemplatesTest extends BuildTestBase {
     // Create an empty global composer.json file, just to avoid warnings.
     file_put_contents("$composer_home/composer.json", '{}');
 
-    // Disable packagist globally (but only in our own hello_world COMPOSER_HOME).
+    // Disable packagist globally (but only in our own custom COMPOSER_HOME).
     // It is necessary to do this globally rather than in our SUT composer.json
     // in order to ensure that Packagist is disabled during the
     // `composer create-project` command.
@@ -164,7 +201,7 @@ class ComposerProjectTemplatesTest extends BuildTestBase {
     Composer::setDrupalVersion($this->getWorkspaceDirectory(), $simulated_core_version);
     $this->assertDrupalVersion($simulated_core_version, $this->getWorkspaceDirectory());
 
-    // Remove the packages.drupal.org entry (and any other hello_world repository)
+    // Remove the packages.drupal.org entry (and any other custom repository)
     // from the SUT's repositories section. There is no way to do this via
     // `composer config --unset`, so we read and rewrite composer.json.
     $composer_json_path = $this->getWorkspaceDirectory() . "/$package_dir/composer.json";
@@ -355,32 +392,6 @@ JSON;
     $json = json_encode($packages, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     mkdir(dirname($repository_path));
     file_put_contents($repository_path, $json);
-  }
-
-  /**
-   * Returns the stability of the least stable dependency.
-   */
-  protected function getLowestDependencyStability() {
-    $root = $this->getDrupalRoot();
-    $process = $this->executeCommand("composer --working-dir=$root info --format=json");
-    $this->assertCommandSuccessful();
-    $installed = json_decode($process->getOutput(), TRUE);
-
-    $lowest_stability_order_index = count(static::STABILITY_ORDER);
-    foreach ($installed['installed'] as $project) {
-      // Exclude dependencies that are required with "self.version", since
-      // those stabilities will automatically match the corresponding Drupal
-      // release.
-      $exclude = ['drupal/core', 'drupal/core-project-message', 'drupal/core-vendor-hardening'];
-      if (!in_array($project['name'], $exclude, TRUE)) {
-        $stability = VersionParser::parseStability($project['version']);
-        $stability_order_index = array_search($stability, static::STABILITY_ORDER);
-        $lowest_stability_order_index = min($lowest_stability_order_index, $stability_order_index);
-      }
-    }
-    $lowest_stability = static::STABILITY_ORDER[$lowest_stability_order_index];
-
-    return $lowest_stability;
   }
 
   /**

@@ -18,7 +18,7 @@ class MenuTreeParameters implements \Serializable {
    * A menu link plugin ID that should be used as the root.
    *
    * By default the root ID of empty string '' is used. However, when only the
-   * descendants (subtree) of a certain menu link are needed, a hello_world root can
+   * descendants (subtree) of a certain menu link are needed, a custom root can
    * be specified.
    *
    * @var string
@@ -64,7 +64,7 @@ class MenuTreeParameters implements \Serializable {
   /**
    * The conditions used to restrict which links are loaded.
    *
-   * An associative array of hello_world query condition key/value pairs.
+   * An associative array of custom query condition key/value pairs.
    *
    * @var array
    */
@@ -147,7 +147,7 @@ class MenuTreeParameters implements \Serializable {
   }
 
   /**
-   * Adds a hello_world query condition.
+   * Adds a custom query condition.
    *
    * @param string $definition_field
    *   Only conditions that are testing menu link definition fields are allowed.
@@ -195,10 +195,10 @@ class MenuTreeParameters implements \Serializable {
   /**
    * Excludes the root menu link from the tree.
    *
-   * Note that this is only necessary when you specified a hello_world root, because
+   * Note that this is only necessary when you specified a custom root, because
    * the normal root ID is the empty string, '', which does not correspond to an
    * actual menu link. Hence when loading a menu link tree without specifying a
-   * hello_world root the tree will start at the children even if this method has not
+   * custom root the tree will start at the children even if this method has not
    * been called.
    *
    * @return $this

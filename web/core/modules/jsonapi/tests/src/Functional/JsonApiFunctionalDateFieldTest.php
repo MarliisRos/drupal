@@ -73,19 +73,19 @@ class JsonApiFunctionalDateFieldTest extends JsonApiFunctionalTestBase {
       'type' => 'article',
       'uuid' => 'es_test_1',
       'status' => NodeInterface::PUBLISHED,
-      'field_datetime' => $date_formatter->format($timestamp_1, 'hello_world', DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+      'field_datetime' => $date_formatter->format($timestamp_1, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
     ]);
     $node_2 = $this->createNode([
       'type' => 'article',
       'uuid' => 'es_test_2',
       'status' => NodeInterface::PUBLISHED,
-      'field_datetime' => $date_formatter->format($timestamp_2, 'hello_world', DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+      'field_datetime' => $date_formatter->format($timestamp_2, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
     ]);
     $node_3 = $this->createNode([
       'type' => 'article',
       'uuid' => 'es_test_3',
       'status' => NodeInterface::PUBLISHED,
-      'field_datetime' => $date_formatter->format($timestamp_3, 'hello_world', DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
+      'field_datetime' => $date_formatter->format($timestamp_3, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
     ]);
 
     // Checks whether the date is greater than the given timestamp.

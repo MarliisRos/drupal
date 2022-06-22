@@ -661,20 +661,6 @@ abstract class KernelTestBase extends TestCase implements ServiceProviderInterfa
     $this->vfsRoot = NULL;
     $this->configImporter = NULL;
 
-    // Free up memory: Custom test class properties.
-    // Note: Private properties cannot be cleaned up.
-    $rc = new \ReflectionClass(__CLASS__);
-    $blacklist = [];
-    foreach ($rc->getProperties() as $property) {
-      $blacklist[$property->name] = $property->getDeclaringClass()->name;
-    }
-    $rc = new \ReflectionClass($this);
-    foreach ($rc->getProperties(\ReflectionProperty::IS_PUBLIC | \ReflectionProperty::IS_PROTECTED) as $property) {
-      if (!$property->isStatic() && !isset($blacklist[$property->name])) {
-        $this->{$property->name} = NULL;
-      }
-    }
-
     // Clean FileCache cache.
     FileCache::reset();
 
@@ -801,7 +787,7 @@ abstract class KernelTestBase extends TestCase implements ServiceProviderInterfa
    *   A list of modules to enable. Dependencies are not resolved; i.e.,
    *   multiple modules have to be specified individually. The modules are only
    *   added to the active module list and loaded; i.e., their database schema
-   *   is not installed. hook_install() is not invoked. A hello_world module weight
+   *   is not installed. hook_install() is not invoked. A custom module weight
    *   is not applied.
    *
    * @throws \LogicException
@@ -932,7 +918,7 @@ abstract class KernelTestBase extends TestCase implements ServiceProviderInterfa
    *   The name of the setting to set.
    * @param bool|string|int|array|null $value
    *   The value to set. Note that array values are replaced entirely; use
-   *   \Drupal\Core\Site\Settings::get() to perform hello_world merges.
+   *   \Drupal\Core\Site\Settings::get() to perform custom merges.
    */
   protected function setSetting($name, $value) {
     $settings = Settings::getInstance() ? Settings::getAll() : [];

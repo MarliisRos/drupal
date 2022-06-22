@@ -111,7 +111,7 @@ class ThemeTest extends BrowserTestBase {
       ];
       $this->drupalGet('admin/appearance/settings');
       $this->submitForm($edit, 'Save configuration');
-      $this->assertSession()->pageTextNotContains('The hello_world logo path is invalid.');
+      $this->assertSession()->pageTextNotContains('The custom logo path is invalid.');
       $this->assertSession()->fieldValueEquals('logo_path', $expected['form']);
 
       // Verify logo path examples.
@@ -176,7 +176,7 @@ class ThemeTest extends BrowserTestBase {
         'logo_path' => $path,
       ];
       $this->submitForm($edit, 'Save configuration');
-      $this->assertSession()->pageTextContains('The hello_world logo path is invalid.');
+      $this->assertSession()->pageTextContains('The custom logo path is invalid.');
     }
 
     // Upload a file to use for the logo.
@@ -213,8 +213,8 @@ class ThemeTest extends BrowserTestBase {
     $this->drupalGet('admin/appearance/settings/stable');
     $this->assertSession()->statusCodeEquals(200);
 
-    // Ensure default logo and favicons are not triggering hello_world path
-    // validation errors if their hello_world paths are set on the form.
+    // Ensure default logo and favicons are not triggering custom path
+    // validation errors if their custom paths are set on the form.
     $edit = [
       'default_logo' => TRUE,
       'logo_path' => 'public://whatever.png',
@@ -223,8 +223,8 @@ class ThemeTest extends BrowserTestBase {
     ];
     $this->drupalGet('admin/appearance/settings');
     $this->submitForm($edit, 'Save configuration');
-    $this->assertSession()->pageTextNotContains('The hello_world logo path is invalid.');
-    $this->assertSession()->pageTextNotContains('The hello_world favicon path is invalid.');
+    $this->assertSession()->pageTextNotContains('The custom logo path is invalid.');
+    $this->assertSession()->pageTextNotContains('The custom favicon path is invalid.');
   }
 
   /**
@@ -288,6 +288,15 @@ class ThemeTest extends BrowserTestBase {
     $this->drupalGet('admin/appearance');
     $this->submitForm($edit, 'Save configuration');
 
+    // Check the display of non stable themes.
+    $themes = \Drupal::service('theme_handler')->rebuildThemeData();
+    $experimental_version = $themes['experimental_theme_test']->info['version'];
+    $deprecated_version = $themes['deprecated_theme_test']->info['version'];
+    $this->drupalGet('admin/appearance');
+    $this->assertSession()->pageTextContains('Experimental test ' . $experimental_version . ' (experimental theme)');
+    $this->assertSession()->pageTextContains('Test deprecated theme ' . $deprecated_version . ' (Deprecated)');
+    $this->assertSession()->elementExists('xpath', "//a[contains(@href, 'http://example.com/deprecated_theme')]");
+
     // Check that the administration theme is used on an administration page.
     $this->drupalGet('admin/config');
     $this->assertSession()->responseContains('core/themes/seven');
@@ -310,6 +319,10 @@ class ThemeTest extends BrowserTestBase {
     ];
     $this->drupalGet('admin/appearance');
     $this->submitForm($edit, 'Save configuration');
+
+    // Check that obsolete themes are not displayed.
+    $this->drupalGet('admin/appearance');
+    $this->assertSession()->pageTextNotContains('Obsolete test theme');
 
     // Check that the administration theme is used on an administration page.
     $this->drupalGet('admin/config');

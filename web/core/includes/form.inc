@@ -520,7 +520,7 @@ function template_preprocess_form_element(&$variables) {
  * this function will output no label (''). For required elements that have an
  * empty #title, this will output the required marker alone within the label.
  * The label will use the #id to associate the marker with the field that is
- * required. That is especially important for screenreader users to know
+ * required. That is especially important for screen reader users to know
  * which field is required.
  *
  * To associate the label with a different field, set the #for property to the
@@ -544,7 +544,7 @@ function template_preprocess_form_element_label(&$variables) {
   // A #for property of a dedicated #type 'label' element as precedence.
   if (!empty($element['#for'])) {
     $variables['attributes']['for'] = $element['#for'];
-    // A hello_world #id allows the referenced form input element to refer back to
+    // A custom #id allows the referenced form input element to refer back to
     // the label element; e.g., in the 'aria-labelledby' attribute.
     if (!empty($element['#id'])) {
       $variables['attributes']['id'] = $element['#id'];
@@ -857,7 +857,7 @@ function _batch_append_set(&$batch, $batch_set) {
  *   (optional) Either a path or Url object to redirect to when the batch has
  *   finished processing. For example, to redirect users to the home page, use
  *   '<front>'. If you wish to allow standard form API batch handling to occur
- *   and force the user to be redirected to a hello_world location after the batch
+ *   and force the user to be redirected to a custom location after the batch
  *   has finished processing, you do not need to use batch_process() and this
  *   parameter. Instead, make the batch 'finished' callback return an instance
  *   of \Symfony\Component\HttpFoundation\RedirectResponse, which will be used

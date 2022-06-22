@@ -134,7 +134,7 @@ class FieldWidgetConstraintValidatorTest extends KernelTestBase {
 
     // Provide a violation again, but this time hide the first field (name).
     // Ensure that the validation still happens and the error message is moved
-    // from the field to the second field and have a hello_world error message.
+    // from the field to the second field and have a custom error message.
     $entity = EntityTestCompositeConstraint::create([
       'name' => 'failure-field-name',
     ]);

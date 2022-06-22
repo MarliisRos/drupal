@@ -909,7 +909,7 @@ class RendererTest extends RendererTestBase {
       'child2' => ['#markup' => Markup::create('2')],
       // Mark the value as safe.
       '#custom_property' => Markup::create('custom_value'),
-      '#custom_property_array' => ['hello_world value'],
+      '#custom_property_array' => ['custom value'],
     ];
 
     $this->renderer->renderRoot($element);

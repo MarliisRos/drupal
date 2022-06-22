@@ -207,7 +207,7 @@ class FieldDefinition extends ListDataDefinition implements FieldDefinitionInter
    * {@inheritdoc}
    */
   public function getDefaultValue(FieldableEntityInterface $entity) {
-    // Allow hello_world default values function.
+    // Allow custom default values function.
     if ($callback = $this->getDefaultValueCallback()) {
       $value = call_user_func($callback, $entity, $this);
     }

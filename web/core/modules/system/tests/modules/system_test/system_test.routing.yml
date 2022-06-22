@@ -21,6 +21,14 @@ system_test.messenger_service:
   requirements:
     _access: 'TRUE'
 
+system_test.status_messages_for_assertions:
+  path: '/system-test/status-messages-for-assertions'
+  defaults:
+    _title: 'Set various message to test status message assertion methods'
+    _controller: '\Drupal\system_test\Controller\SystemTestController::statusMessagesForAssertions'
+  requirements:
+    _access: 'TRUE'
+
 system_test.main_content_fallback:
   path: '/system-test/main-content-fallback'
   defaults:
@@ -161,7 +169,7 @@ system_test.date:
     _access: 'TRUE'
 
 system_test.custom_4xx_with_limited_access:
-  path: '/system-test/hello_world-4xx'
+  path: '/system-test/custom-4xx'
   defaults:
     _title: 'Admin-only 4xx response'
     _controller: '\Drupal\system_test\Controller\SystemTestController::mainContentFallback'
@@ -198,9 +206,9 @@ system_test.echo_utf8:
     _access: 'TRUE'
 
 system_test.custom_cache_control:
-  path: '/system-test/hello_world-cache-control'
+  path: '/system-test/custom-cache-control'
   defaults:
-    _title: 'Cacheable response with hello_world cache control'
+    _title: 'Cacheable response with custom cache control'
     _controller: '\Drupal\system_test\Controller\SystemTestController::getCacheableResponseWithCustomCacheControl'
   requirements:
     _access: 'TRUE'

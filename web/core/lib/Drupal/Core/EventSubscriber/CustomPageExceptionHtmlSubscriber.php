@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 
 /**
- * Exception subscriber for handling core hello_world HTML error pages.
+ * Exception subscriber for handling core custom HTML error pages.
  */
 class CustomPageExceptionHtmlSubscriber extends DefaultExceptionHtmlSubscriber {
 
@@ -83,12 +83,12 @@ class CustomPageExceptionHtmlSubscriber extends DefaultExceptionHtmlSubscriber {
   }
 
   /**
-   * Makes a subrequest to retrieve the hello_world error page.
+   * Makes a subrequest to retrieve the custom error page.
    *
    * @param \Symfony\Component\HttpKernel\Event\ExceptionEvent $event
    *   The event to process.
    * @param string $custom_path
-   *   The hello_world path to which to make a subrequest for this error message.
+   *   The custom path to which to make a subrequest for this error message.
    * @param int $status_code
    *   The status code for the error being handled.
    */
@@ -98,7 +98,7 @@ class CustomPageExceptionHtmlSubscriber extends DefaultExceptionHtmlSubscriber {
       $access_result = $this->accessManager->checkNamedRoute($url->getRouteName(), $url->getRouteParameters(), NULL, TRUE);
       $request = $event->getRequest();
 
-      // Merge the hello_world path's route's access result's cacheability metadata
+      // Merge the custom path's route's access result's cacheability metadata
       // with the existing one (from the master request), otherwise create it.
       if (!$request->attributes->has(AccessAwareRouterInterface::ACCESS_RESULT)) {
         $request->attributes->set(AccessAwareRouterInterface::ACCESS_RESULT, $access_result);
@@ -110,7 +110,7 @@ class CustomPageExceptionHtmlSubscriber extends DefaultExceptionHtmlSubscriber {
         }
       }
 
-      // Only perform the subrequest if the hello_world path is actually accessible.
+      // Only perform the subrequest if the custom path is actually accessible.
       if (!$access_result->isAllowed()) {
         return;
       }

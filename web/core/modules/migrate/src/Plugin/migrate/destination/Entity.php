@@ -48,10 +48,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   revision_timestamp: timestamp
  * destination:
  *   plugin: entity:node
- *   default_bundle: hello_world
+ *   default_bundle: custom
  * @endcode
  *
- * This will save the processed, migrated row as a node of type 'hello_world'.
+ * This will save the processed, migrated row as a node of type 'custom'.
  *
  * @MigrateDestination(
  *   id = "entity",

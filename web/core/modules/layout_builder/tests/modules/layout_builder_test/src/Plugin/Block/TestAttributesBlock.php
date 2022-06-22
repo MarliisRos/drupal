@@ -30,7 +30,7 @@ class TestAttributesBlock extends BlockBase {
     $build = [
       '#attributes' => [
         'class' => ['attribute-test-class'],
-        'hello_world-attribute' => 'test',
+        'custom-attribute' => 'test',
       ],
       '#markup' => $this->t('Example block providing its own attributes.'),
       '#contextual_links' => [

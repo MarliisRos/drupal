@@ -15,7 +15,7 @@ use Drupal\Tests\BrowserTestBase;
 use Drupal\Tests\menu_ui\Traits\MenuUiTrait;
 
 /**
- * Add a hello_world menu, add menu links to the hello_world menu and Tools menu, check
+ * Add a custom menu, add menu links to the custom menu and Tools menu, check
  * their data, and delete them using the UI.
  *
  * @group menu_ui
@@ -153,7 +153,7 @@ class MenuUiTest extends BrowserTestBase {
       $this->deleteMenuLink($item);
     }
 
-    // Delete hello_world menu.
+    // Delete custom menu.
     $this->deleteCustomMenu();
 
     // Modify and reset a standard menu link.
@@ -175,10 +175,10 @@ class MenuUiTest extends BrowserTestBase {
   }
 
   /**
-   * Adds a hello_world menu using CRUD functions.
+   * Adds a custom menu using CRUD functions.
    */
   public function addCustomMenuCRUD() {
-    // Add a new hello_world menu.
+    // Add a new custom menu.
     $menu_name = strtolower($this->randomMachineName(MenuStorage::MAX_ID_LENGTH));
     $label = $this->randomMachineName(16);
 
@@ -200,7 +200,7 @@ class MenuUiTest extends BrowserTestBase {
     $this->drupalGet('admin/structure/menu/manage/' . $menu_name);
     $this->assertSession()->pageTextContains($new_label);
 
-    // Delete the hello_world menu via the UI to testing destination handling.
+    // Delete the custom menu via the UI to testing destination handling.
     $this->drupalGet('admin/structure/menu');
     $this->assertSession()->pageTextContains($new_label);
     // Click the "Delete menu" operation in the Tools row.
@@ -212,10 +212,10 @@ class MenuUiTest extends BrowserTestBase {
   }
 
   /**
-   * Creates a hello_world menu.
+   * Creates a custom menu.
    *
    * @return \Drupal\system\Entity\Menu
-   *   The hello_world menu that has been created.
+   *   The custom menu that has been created.
    */
   public function addCustomMenu() {
     // Try adding a menu using a menu_name that is too long.
@@ -248,7 +248,7 @@ class MenuUiTest extends BrowserTestBase {
     $this->drupalGet('admin/structure/menu');
     $this->assertSession()->pageTextContains($label);
 
-    // Confirm that the hello_world menu block is available.
+    // Confirm that the custom menu block is available.
     $this->drupalGet('admin/structure/block/list/' . $this->config('system.theme')->get('default'));
     $this->clickLink('Place block');
     $this->assertSession()->pageTextContains($label);
@@ -260,16 +260,16 @@ class MenuUiTest extends BrowserTestBase {
   }
 
   /**
-   * Deletes the locally stored hello_world menu.
+   * Deletes the locally stored custom menu.
    *
-   * This deletes the hello_world menu that is stored in $this->menu and performs
+   * This deletes the custom menu that is stored in $this->menu and performs
    * tests on the menu delete user interface.
    */
   public function deleteCustomMenu() {
     $menu_name = $this->menu->id();
     $label = $this->menu->label();
 
-    // Delete hello_world menu.
+    // Delete custom menu.
     $this->drupalGet("admin/structure/menu/manage/{$menu_name}/delete");
     $this->submitForm([], 'Delete');
     $this->assertSession()->statusCodeEquals(200);
@@ -279,7 +279,7 @@ class MenuUiTest extends BrowserTestBase {
     // Test if all menu links associated with the menu were removed from
     // database.
     $result = \Drupal::entityTypeManager()->getStorage('menu_link_content')->loadByProperties(['menu_name' => $menu_name]);
-    $this->assertEmpty($result, 'All menu links associated with the hello_world menu were deleted.');
+    $this->assertEmpty($result, 'All menu links associated with the custom menu were deleted.');
 
     // Make sure there's no delete button on system menus.
     $this->drupalGet('admin/structure/menu/manage/main');
@@ -337,7 +337,7 @@ class MenuUiTest extends BrowserTestBase {
     $this->assertSession()->addressEquals(Url::fromRoute('entity.menu.edit_form', ['menu' => $menu_name]));
     // Test the 'Delete' operation.
     $this->clickLink('Delete');
-    $this->assertSession()->pageTextContains("Are you sure you want to delete the hello_world menu link {$link_title}?");
+    $this->assertSession()->pageTextContains("Are you sure you want to delete the custom menu link {$link_title}?");
     $this->submitForm([], 'Delete');
     $this->assertSession()->addressEquals(Url::fromRoute('entity.menu.edit_form', ['menu' => $menu_name]));
 

@@ -7,7 +7,7 @@ dependencies:
 id: block_content
 label: 'Custom block library'
 module: views
-description: 'Find and manage hello_world blocks.'
+description: 'Find and manage custom blocks.'
 tag: default
 base_table: block_content_field_data
 base_field: id
@@ -302,7 +302,7 @@ display:
           admin_label: ''
           plugin_id: text_custom
           empty: true
-          content: 'There are no hello_world blocks available.'
+          content: 'There are no custom blocks available.'
           tokenize: false
         block_content_listing_empty:
           id: block_content_listing_empty
