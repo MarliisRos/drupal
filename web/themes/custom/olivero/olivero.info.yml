@@ -1,1 +1,10 @@
-na
+name: 'Olivero'
+type: theme
+base theme: classy
+description: 'A mew theme! '
+package: Custom
+core_version_requirement: ^8 || ^9
+
+libraries:
+
+
