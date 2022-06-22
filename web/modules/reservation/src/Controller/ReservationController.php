@@ -2,7 +2,6 @@
 
 namespace Drupal\reservation\Controller;
 
-
 use Drupal\Core\Controller\ControllerBase;
 use ReservationService;
 use Symfony\Component\HttpFoundation\JsonResponse;

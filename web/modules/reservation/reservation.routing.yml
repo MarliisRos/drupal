@@ -7,7 +7,7 @@
 #    _permission: 'access content'
 
 reservation.reservation:
-  path: '/reservation'
+  path: '/reservation-list'
   defaults:
     _controller: '\Drupal\reservation\Controller\ReservationController::showAvailableTimes'
     _title: 'Reserveeringud list'

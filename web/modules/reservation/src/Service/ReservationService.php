@@ -27,10 +27,10 @@ class ReservationService
     $returnData = [];
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
     $reservationIds = $nodeStorage->getQuery()
-      ->condition('type', 'reservation')
+      ->condition('type', 'reservation_apike')
       ->condition('field_start_date', '2022-06-20T00:00:00', '>')
       ->condition('field_start_date', '2022-06-20T23:59:59', '<')
-      ->condition('field_confirmed', 1)
+      ->condition('field_confirm', 1)
       ->execute();
     $availTimes = self::AVAILABLE_TIMES;
     foreach ($reservationIds as $reservationId) {
@@ -39,6 +39,7 @@ class ReservationService
       $reservationHour = (new \DateTime($reservation->field_start_date->value))->format('G');
       unset($availTimes[$reservationHour]);
     }
+    var_dump($availTimes);die;
     return $availTimes;
   }
 }
