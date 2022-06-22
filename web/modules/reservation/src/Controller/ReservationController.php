@@ -2,7 +2,10 @@
 
 namespace Drupal\reservation\Controller;
 
+
 use Drupal\Core\Controller\ControllerBase;
+use ReservationService;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -10,14 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ReservationController extends ControllerBase
 {
-  private ?Request $request;
-  private $reservationStorage;
+//  private ?Request $request;
+//  private $reservationStorage;
 
   public function showAvailableTimes()
   {
     /*** @var ReservationService $reservationService */
     $reservationService = \Drupal::service(\ReservationService::SERVICE_ID);
-    return new JasonResponse(['data' => $reservationService->availTimes(), 'method' => 'GET', 'status' => 200]);
+    return new JsonResponse(['data' => $reservationService->availTimes(), 'method' => 'GET', 'status' => 200]);
   }
 
 //  public function content()
