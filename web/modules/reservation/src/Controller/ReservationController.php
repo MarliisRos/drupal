@@ -32,10 +32,10 @@ class ReservationController extends ControllerBase {
     ]);
   }
 
-  //  public function content()
-  //  {
-  //    return [
-  //      '#markup' => 'Reserveeringud!'
-  //    ];
-  //  }
+    public function content()
+    {
+      return [
+        '#markup' => 'Reserveeringud!'
+      ];
+    }
 }

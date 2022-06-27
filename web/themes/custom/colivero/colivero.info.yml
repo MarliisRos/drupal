@@ -1,6 +1,6 @@
 name: 'colivero'
 type: theme
-base theme: classy
+base theme: stable9
 description: 'Ad new theme! '
 package: Custom
 core_version_requirement: ^8 || ^9

@@ -5,7 +5,8 @@ namespace Drupal\reservation\Service;
 use Drupal\Core\Datetime\DateTime;
 
 class ReservationService
-{ const SERVICE_ID = 'reservation.reservation_service';
+{
+  const SERVICE_ID = 'reservation.reservation_service';
   const AVAILABLE_TIMES = [
     8 => true,
     9 => true,
@@ -37,7 +38,7 @@ class ReservationService
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function availTimes(): array {
-    $returnData = [];
+//    $returnData = [];
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
     $reservationIds = $nodeStorage->getQuery()
       ->condition('type', 'reservation_apike')
@@ -52,7 +53,7 @@ class ReservationService
       $reservationHour = (new \DateTime($reservation->field_start_date->value))->format('G');
       unset($availTimes[$reservationHour]);
     }
-//    var_dump($availTimes);die;
+   var_dump($availTimes);die;
     return $availTimes;
   }
 }
