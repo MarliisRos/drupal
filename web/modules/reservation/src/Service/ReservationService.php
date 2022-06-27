@@ -1,5 +1,9 @@
 <?php
 
+namespace Drupal\reservation\Service;
+
+use Drupal\Core\Datetime\DateTime;
+
 class ReservationService
 { const SERVICE_ID = 'reservation.reservation_service';
   const AVAILABLE_TIMES = [
@@ -17,6 +21,15 @@ class ReservationService
     19 => true,
     20 => true,
     21 => true,
+    22 => true,
+    23 => true,
+    24 => true,
+    25 => true,
+    26 => true,
+    27 => true,
+    28 => true,
+    29 => true,
+    30 => true,
   ];
   /**
    * @return array
@@ -39,7 +52,7 @@ class ReservationService
       $reservationHour = (new \DateTime($reservation->field_start_date->value))->format('G');
       unset($availTimes[$reservationHour]);
     }
-    var_dump($availTimes);die;
+//    var_dump($availTimes);die;
     return $availTimes;
   }
 }
