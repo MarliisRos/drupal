@@ -6,8 +6,9 @@ use Drupal\Core\Datetime\DateTime;
 
 class ReservationService
 {
-  const SERVICE_ID = 'reservation.reservation_service';
-  const AVAILABLE_TIMES = [
+  public const SERVICE_ID = 'reservation.reservation_service';
+
+  public const AVAILABLE_TIMES = [
     8 => true,
     9 => true,
     10 => true,
@@ -22,38 +23,46 @@ class ReservationService
     19 => true,
     20 => true,
     21 => true,
-    22 => true,
-    23 => true,
-    24 => true,
-    25 => true,
-    26 => true,
-    27 => true,
-    28 => true,
-    29 => true,
-    30 => true,
   ];
   /**
    * @return array
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
+
+  public function timesAvail(): array {
+    $timesAvail = $this->availTimes();
+    foreach ($timesAvail as $key => $value) {
+      if($value) {
+        $result = 'TRUE';
+      }
+      else {
+        $result = 'FALSE';
+      }
+      $times[$key] = ['time' => $key, 'available' => $result];
+    }
+    return $times;
+  }
+
   public function availTimes(): array {
-//    $returnData = [];
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
     $reservationIds = $nodeStorage->getQuery()
       ->condition('type', 'reservation_apike')
-      ->condition('field_start_date', '2022-06-20T00:00:00', '>')
-      ->condition('field_start_date', '2022-06-20T23:59:59', '<')
-      ->condition('field_confirm', 1)
+      ->condition('field_start_date', '2022-06-28T00:00:00', '>')
+      ->condition('field_start_date', '2022-06-28T23:59:59', '<')
+      ->condition('field_confirmed', 1)
       ->execute();
     $availTimes = self::AVAILABLE_TIMES;
+
     foreach ($reservationIds as $reservationId) {
       /*** @var \Drupal\node\NodeInterface $reservation */
       $reservation = $nodeStorage->load($reservationId);
+
       $reservationHour = (new \DateTime($reservation->field_start_date->value))->format('G');
+      $availTimes[$reservationHour];
       unset($availTimes[$reservationHour]);
     }
-   var_dump($availTimes);die;
+//   var_dump($availTimes);die;
     return $availTimes;
   }
 }

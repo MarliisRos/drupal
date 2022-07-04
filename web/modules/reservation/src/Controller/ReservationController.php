@@ -8,34 +8,50 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Returns responses for Reservation routes.
+* Returns responses for Reservation routes.
  */
 class ReservationController extends ControllerBase {
 
-  private ?Request $request;
+//  private ?Request $request;
+//
+//  private $reservationStorage;
 
-  private $reservationStorage;
+//  public function showAvailableTimes() {
+//        echo ('Hello World ');
+//        return [
+//          '#type' => 'view',
+//          '#name' => 'content',
+//          '#display_id' => 'page_1',
+//        ];
 
+  /**
+   * @throws \Drupal\Component\Plugin\Exception\
+   * @throws \Drupal\Component\Plugin\Exception\
+   */
   public function showAvailableTimes() {
-    //    echo ('Hello World ');
-    //    return [
-    //      '#type' => 'view',
-    //      '#name' => 'content',
-    //      '#display_id' => 'page_1',
-    //    ];
     /*** @var ReservationService $reservationService */
     $reservationService = \Drupal::service(\ReservationService::SERVICE_ID);
-    return new JsonResponse([
-      'data' => $reservationService->availTimes(),
-      'method' => 'GET',
-      'status' => 200,
-    ]);
+    return [
+      '#theme' => 'reservation_list',
+      '#items' => \Drupal\Component\Datetime\time(),
+      '#attached' => ['library' => ['reservation/reservation']],
+    ];
   }
 
-    public function content()
-    {
-      return [
-        '#markup' => 'Reserveeringud!'
-      ];
-    }
+  public function content() {
+    return [ '#markup' => 'Reserveeringud!'
+    ];
+  }
 }
+
+
+//public function showAvailableTimes(): JsonResponse
+//{
+//  /*** @var ReservationService $reservationService */
+//  $reservationService = \Drupal::service(\ReservationService::SERVICE_ID);
+//  return new JsonResponse([
+//    'data' => $reservationService->availTimes(),
+//    'method' => 'GET',
+//    'status' => 200,
+//  ]);
+//}
