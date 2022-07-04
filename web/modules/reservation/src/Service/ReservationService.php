@@ -3,6 +3,7 @@
 namespace Drupal\reservation\Service;
 
 use Drupal\Core\Datetime\DateTime;
+use Drupal\Core\Datetime\DrupalDateTime;
 
 class ReservationService
 {
@@ -48,9 +49,9 @@ class ReservationService
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
     $reservationIds = $nodeStorage->getQuery()
       ->condition('type', 'reservation_apike')
-      ->condition('field_start_date', '2022-06-28T00:00:00', '>')
-      ->condition('field_start_date', '2022-06-28T23:59:59', '<')
-      ->condition('field_confirmed', 1)
+      ->condition('field_start_date', date('Y-m-d').'T00:00', '>')
+      ->condition('field_start_date', date('Y-m-d').'T23:59', '<')
+      ->condition('field_confirm', 1)
       ->execute();
     $availTimes = self::AVAILABLE_TIMES;
 
@@ -58,9 +59,12 @@ class ReservationService
       /*** @var \Drupal\node\NodeInterface $reservation */
       $reservation = $nodeStorage->load($reservationId);
 
-      $reservationHour = (new \DateTime($reservation->field_start_date->value))->format('G');
-      $availTimes[$reservationHour];
-      unset($availTimes[$reservationHour]);
+      $date_original = new DrupalDateTime($reservation->file_start_date->value,'UTC');
+      $dateTime = \Drupal::service('date.formatter')
+        ->format($date_original->getTimestamp(), 'custom','Y-m-d H:i:s');
+      $reservationHour = (new \DateTime($dateTime))->format('G');
+//      $availTimes[$reservationHour];
+      $availTimes[$reservationHour] =FALSE;
     }
 //   var_dump($availTimes);die;
     return $availTimes;
