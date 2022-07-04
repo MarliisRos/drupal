@@ -313,7 +313,7 @@ $settings['hash_salt'] = '';
  * After finishing the upgrade, be sure to open this file again and change the
  * TRUE back to a FALSE!
  */
-$settings['update_free_access'] = FALSE;
+$settings['update_free_access'] = TRUE;
 
 /**
  * External access proxy settings:
@@ -778,3 +778,11 @@ if (file_exists(__DIR__ . '/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 
 //if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 // include $app_root . '/' . $site_path . '/settings.local.php';
 //}
+
+//requirements:
+//_permission: 'administer software updates'
+//    _access_update_manager: 'TRUE'
+
+$settings['class_loader_auto_detect'] = FALSE;
+
+

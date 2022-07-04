@@ -2,7 +2,7 @@
 
 namespace Drupal\hello_world\Controller;
 
-use Drupal\Core\Controller\ControllerBase;
+use Drupal\core\Controller\ControllerBase;
 
 class HelloController extends ControllerBase
 
