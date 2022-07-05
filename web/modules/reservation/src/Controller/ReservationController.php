@@ -28,16 +28,26 @@ class ReservationController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\
    * @throws \Drupal\Component\Plugin\Exception\
    */
-  public function showAvailableTimes() {
+  public function showAvailableTimes()
+  {
     /*** @var ReservationService $reservationService */
     $reservationService = \Drupal::service(ReservationService::SERVICE_ID);
-    $times = $reservationService ->timesAvail();
+    $times = $reservationService->timesAvail();
     return [
       '#theme' => 'reservation_list',
       '#items' => $times,
       '#attached' => ['library' => ['reservation/reservation']]
     ];
   }
+
+    public function reservtaionForm() {
+      $form = \Drupal::formBuilder()
+        ->getForm('Drupal\reservation\Form\ReservationForm');
+      return [
+        'form' => $form,
+      ];
+    }
+
 
   public function content() {
     return [ '#markup' => 'Reserveeringud!'

@@ -25,6 +25,20 @@ class ReservationForm extends FormBase {
 
   public function buildForm(array $form, FormStateInterface $form_state) {
     // TODO: Implement buildForm() method.
+    $reservationService = \Drupal::service(ReservationService::SERVICE_ID);
+    $times = $reservationService->AvailTimes();
+
+    foreach ($times as $time => $bool) {
+      if (!$bool) {
+        unset($times[$time]);
+      }
+      else {
+        $formattedTime = mktime($time, 00, 00);
+        $formattedTime = date('Y-m-d H:i:s', $formattedTime);
+        $formattedTimes[$formattedTime] = $formattedTime;
+      }
+    }
+
     $form['contact_name'] = [
       '#type' => 'textfield',
       '#title' => t('Contact Name'),
@@ -46,7 +60,8 @@ class ReservationForm extends FormBase {
     '#title' => t('Send me confirmation '),
     ];
 
-    $form['confirm'] = [
+    $form['actions']['#type'] = 'actions';
+    $form['actions']['submit'] =[
       '#type' => 'submit',
       '#value' => $this->t('Save'),
       '#button_type' => 'primary',

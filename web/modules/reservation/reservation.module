@@ -14,3 +14,15 @@ function reservation_theme($existing, $type, $theme, $path) {
     ];
 }
 
+/**
+ * Implements hook_mail_alter().
+ */
+function reservation_mail_alter (&$message) {
+  return [
+    'automatic_email' => [
+      'variables' => [
+        'items'=>[]
+      ],
+    ],
+  ];
+}
