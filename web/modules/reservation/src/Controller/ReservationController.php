@@ -40,7 +40,7 @@ class ReservationController extends ControllerBase {
     ];
   }
 
-    public function reservtaionForm() {
+    public function reservationForm() {
       $form = \Drupal::formBuilder()
         ->getForm('Drupal\reservation\Form\ReservationForm');
       return [
