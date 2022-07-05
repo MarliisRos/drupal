@@ -30,11 +30,12 @@ class ReservationController extends ControllerBase {
    */
   public function showAvailableTimes() {
     /*** @var ReservationService $reservationService */
-    $reservationService = \Drupal::service(\ReservationService::SERVICE_ID);
+    $reservationService = \Drupal::service(ReservationService::SERVICE_ID);
+    $times = $reservationService ->timesAvail();
     return [
       '#theme' => 'reservation_list',
-      '#items' => \Drupal\Component\Datetime\time(),
-      '#attached' => ['library' => ['reservation/reservation']],
+      '#items' => $times,
+      '#attached' => ['library' => ['reservation/reservation']]
     ];
   }
 
@@ -42,8 +43,9 @@ class ReservationController extends ControllerBase {
     return [ '#markup' => 'Reserveeringud!'
     ];
   }
-}
 
+
+}
 
 //public function showAvailableTimes(): JsonResponse
 //{

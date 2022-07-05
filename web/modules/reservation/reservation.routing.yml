@@ -14,3 +14,10 @@ reservation.content:
   requirements:
     _permission: 'access content'
 
+reservation.form:
+  path: '/reservation-form'
+  defaults:
+    _controller: '\Drupal\reservation\Controller\ReservationController::form'
+    _title: 'Reservation Form'
+  requirements:
+    _permission: 'access content'
