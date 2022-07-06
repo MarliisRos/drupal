@@ -74,8 +74,25 @@ class ReservationForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     foreach ($form_state->getValues() as $key => $value) {
+      $reservationTime = $form_state->getValue('start_date');
+      $contactName = $form_state->getValue('contact_name');
+      $contactEmail = $form_state->getValue('contact_email');
       drupal_set_message($key . ': ' . $value);
+      $this->messenger()->addMessaage($this->t("Your reservation jas been created"));
     }
+
+    /**
+     * add Node
+     */
+$node = \Drupal::entityTypeManager()->getStorage('node')->create(['type' => 'Reservation', 'title' =>
+  'Another node']);
+
+$node = Node::create(['type' => 'reservation']);
+$node -> setcontactName($contactName);
+$node -> set('field_contact_email', $contactEmail);
+$node -> set('field_start_date', $reservationTime);
+$node -> save();
+
       // TODO: Implement submitForm() method.
 //    reservation_set_message($form_state->getValues('Your reservation has been created'));
   }
