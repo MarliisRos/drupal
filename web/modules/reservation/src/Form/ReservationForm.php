@@ -92,8 +92,12 @@ $node -> setcontactName($contactName);
 $node -> set('field_contact_email', $contactEmail);
 $node -> set('field_start_date', $reservationTime);
 $node -> save();
+$reservationService= new ReservationService();
+$reservationService->sendEmail($reservationTime, $contactName, $contactEmail);
+$url = \Drupal\Core\Url::fromUri('https://reservation-app.ddev.site/');
+$form_state->setRedirectUrl($url);
 
-      // TODO: Implement submitForm() method.
+    // TODO: Implement submitForm() method.
 //    reservation_set_message($form_state->getValues('Your reservation has been created'));
   }
 
